@@ -96,7 +96,17 @@ namespace MongoDB
                                                   "Confirm Update",
                                                   MessageBoxButtons.YesNo,
                                                   MessageBoxIcon.Question);
+            DateTime startDate = eventDateTimeLocal; // Extract the date portion
+            DateTime endDate = startDate.AddDays(1).AddSeconds(-1); // Set the end time of the day
 
+            FilterDefinition<Event> filterDate = Builders<Event>.Filter.Gte(p => p.Date, startDate) &
+                                              Builders<Event>.Filter.Lt(p => p.Date, endDate);
+            bool eventExists = eventsCollection.Find(filterDate).Any();
+            if (eventExists)
+            {
+                MessageBox.Show("Event Already Exists on this date", "Event Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (result == DialogResult.Yes)
             {
                 try

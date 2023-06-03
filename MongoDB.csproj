@@ -177,6 +177,12 @@
     <Compile Include="UpdateOrDeleteEvent.Designer.cs">
       <DependentUpon>UpdateOrDeleteEvent.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdateOrDeleteEventMusician.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateOrDeleteEventMusician.Designer.cs">
+      <DependentUpon>UpdateOrDeleteEventMusician.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdateOrDeleteMusician.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,6 +203,9 @@
     </Compile>
     <EmbeddedResource Include="UpdateOrDeleteEvent.resx">
       <DependentUpon>UpdateOrDeleteEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateOrDeleteEventMusician.resx">
+      <DependentUpon>UpdateOrDeleteEventMusician.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateOrDeleteMusician.resx">
       <DependentUpon>UpdateOrDeleteMusician.cs</DependentUpon>

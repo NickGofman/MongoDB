@@ -13,16 +13,16 @@ namespace MongoDB.Models
         [BsonId, BsonElement("_id"), BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
         public string EventMusicianID { get; set; }
 
-        [BsonElement("musician_ID"), BsonRepresentation(MongoDB.Bson.BsonType.String)]
-        public string MusicianID { get; set; }
+        [BsonElement("musician_list"), BsonRepresentation(MongoDB.Bson.BsonType.String)]
+        public List<string> MusicianList { get; set; }
 
         [ BsonElement("event_ID"), BsonRepresentation(MongoDB.Bson.BsonType.String)]
         public string EventID { get; set; }
 
-        public EventMusician(string eventId, string musicianID)
+        public EventMusician(string eventId, List<string> MusicianList)
         {
             EventID = eventId;
-            MusicianID = musicianID;
+            this.MusicianList = MusicianList;
          
         }
     }

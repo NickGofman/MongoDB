@@ -38,7 +38,7 @@ namespace MongoDB
                                                   "Confirm Deletion",
                                                   MessageBoxButtons.YesNo,
                                                   MessageBoxIcon.Question);
-
+            var eventMusicianFilter = Builders<EventMusician>.Filter.Empty;
             if (result == DialogResult.Yes)
             {
                 try
@@ -50,9 +50,17 @@ namespace MongoDB
                     DeleteResult musicianDeleteResult = musiciansCollection.DeleteOne(musicianFilter);
 
                     // Delete the musician from the eventMusicianCollection table
-                    var eventMusicianFilter = Builders<EventMusician>.Filter.Eq(p => p.MusicianID, musicianId);
-                    //delete from table
+                    List<EventMusician> musicianAssignToEvents;
+                    musicianAssignToEvents = eventMusicianCollection.Aggregate().ToList();
+                    foreach (EventMusician eventMusician in musicianAssignToEvents)
+                    {
+                        foreach (string musicianID in eventMusician.MusicianList)
+                        {
+                            eventMusicianFilter = Builders<EventMusician>.Filter.Eq(musicianID, musicianId);
+                        }
+                    }
                     DeleteResult eventMusicianDeleteResult = eventMusicianCollection.DeleteMany(eventMusicianFilter);
+                    //delete from table
 
                     if (musicianDeleteResult.DeletedCount == 1 && eventMusicianDeleteResult.DeletedCount > 0)
                     {

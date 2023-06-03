@@ -35,6 +35,7 @@ namespace MongoDB
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btn_AssignMusicanToEvent = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.textBox_FilterMusicianInstrument = new System.Windows.Forms.TextBox();
@@ -105,7 +106,6 @@ namespace MongoDB
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.label19 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -196,6 +196,15 @@ namespace MongoDB
             this.groupBox10.TabIndex = 33;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Musician Filter";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(7, 227);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(391, 29);
+            this.label19.TabIndex = 35;
+            this.label19.Text = "Filter ONLY By Musician Instrument";
             // 
             // label18
             // 
@@ -648,6 +657,8 @@ namespace MongoDB
             this.dataGridView_AllAssignEvents.RowTemplate.Height = 24;
             this.dataGridView_AllAssignEvents.Size = new System.Drawing.Size(962, 240);
             this.dataGridView_AllAssignEvents.TabIndex = 0;
+       
+            this.dataGridView_AllAssignEvents.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_AllAssignEvents_CellDoubleClick);
             // 
             // tabPage2
             // 
@@ -948,21 +959,12 @@ namespace MongoDB
             this.dataGridView2.Size = new System.Drawing.Size(862, 189);
             this.dataGridView2.TabIndex = 0;
             // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(7, 227);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(391, 29);
-            this.label19.TabIndex = 35;
-            this.label19.Text = "Filter ONLY By Musician Instrument";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1731, 979);
+            this.ClientSize = new System.Drawing.Size(2104, 1208);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
