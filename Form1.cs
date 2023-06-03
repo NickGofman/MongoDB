@@ -201,7 +201,7 @@ namespace MongoDB
                 eventCollection.InsertOne(eventDetails);
 
                 // Refresh the collection view
-                LoadMusiciansUponScreen();
+                LoadEventsUponScreen(); ;
 
                 MessageBox.Show("Event details: " + eventDetails.ToString() + "\nInserted successfully", "Event Inserted", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -235,72 +235,6 @@ namespace MongoDB
             return new Event(dateTime, eventName, musicalType);
         }
 
-        private void btn_filterByMusicianName_Click(object sender, EventArgs e)
-        {
-            List<Musician> results;
-            string name = textBox_FilterMusicianName.Text;
-            //build the filter ('WHERE') filter by Musician Name, and add reference
-            FilterDefinition<Musician> filter =
-                Builders<Musician>.Filter.Eq(p => p.Name, name);
-            //preform the filter - make the filter query
-            results = musicianCollection.Find(filter).ToList();
-            //present the resukts upon the grid
-            dataGridView_Musician.DataSource = results;
-        }
-
-        private void btn_filterByMusicianAge_Click(object sender, EventArgs e)
-        {
-            List<Musician> results;
-            string age = textBox_FilterMusicianAge.Text;
-            //build the filter ('WHERE') filter by Musician age, and add reference
-            FilterDefinition<Musician> filter =
-                Builders<Musician>.Filter.Eq(p => p.Age, age);
-            //preform the filter - make the filter query
-            results = musicianCollection.Find(filter).ToList();
-            //present the resukts upon the grid
-            dataGridView_Musician.DataSource = results;
-        }
-
-        private void btn_filterByMusicianInstrument_Click(object sender, EventArgs e)
-        {
-            List<Musician> results;
-            string instrument = textBox_FilterMusicianInstrument.Text;
-            //build the filter ('WHERE') filter by Musician instrument, and add reference
-            FilterDefinition<Musician> filter =
-                Builders<Musician>.Filter.Eq(p => p.Instrument, instrument);
-            //preform the filter - make the filter query
-            results = musicianCollection.Find(filter).ToList();
-            //present the resukts upon the grid
-            dataGridView_Musician.DataSource = results;
-        }
-
-        private void btn_filterEventDate_Click(object sender, EventArgs e)
-        {
-            List<Event> results;
-            string date = dateTimePicker_filterDate.Text;
-
-            // Define the format of the input string (including Hebrew day and month names)
-            string format = "dddd d MMMM yyyy";
-
-            // Parse the combined string into a DateTime object
-            DateTime dateParse = DateTime.ParseExact(date, format, new CultureInfo("he-IL"));
-
-            // Get the start and end DateTime objects for the specified date
-            DateTime startDate = dateParse.Date;
-            //create a fake day for range
-            DateTime endDate = startDate.AddDays(1);
-
-            // Build the filter for Event date range
-            FilterDefinition<Event> filter = Builders<Event>.Filter.Gte(p => p.Date, startDate) &
-                                              Builders<Event>.Filter.Lt(p => p.Date, endDate);
-
-            // Perform the filter query
-            results = eventCollection.Find(filter).ToList();
-
-            // Present the results on the grid
-            dataGridView_Events.DataSource = results;
-        }
-
 
         private void btn_filterEventMusicalStyle_Click(object sender, EventArgs e)
         {
@@ -315,18 +249,7 @@ namespace MongoDB
             dataGridView_Events.DataSource = results;
         }
 
-        private void btn_filterEventByEventName_Click(object sender, EventArgs e)
-        {
-            List<Event> results;
-            string eventName = textBox_filterEventName.Text;
-            //build the filter ('WHERE') filter by Event EventName, and add reference
-            FilterDefinition<Event> filter =
-                Builders<Event>.Filter.Eq(p => p.EventName, eventName);
-            //preform the filter - make the filter query
-            results = eventCollection.Find(filter).ToList();
-            //present the resukts upon the grid
-            dataGridView_Events.DataSource = results;
-        }
+
 
         private void btn_RefreshEvents_Click(object sender, EventArgs e)
         {
@@ -454,6 +377,7 @@ namespace MongoDB
             }
         }
 
+        
         private void btn_FilterByMusicalType_Click(object sender, EventArgs e)
         {
             //string musicalType = textBox_FilterMusicalStyle.Text;
@@ -488,6 +412,100 @@ namespace MongoDB
        
     }
 
-      
+        private void dateTimePicker_filterDate_ValueChanged(object sender, EventArgs e)
+        {
+            List<Event> results;
+            string date = dateTimePicker_filterDate.Text;
+
+            // Define the format of the input string (including Hebrew day and month names)
+            string format = "dddd d MMMM yyyy";
+
+            // Parse the combined string into a DateTime object
+            DateTime dateParse = DateTime.ParseExact(date, format, new CultureInfo("he-IL"));
+
+            // Get the start and end DateTime objects for the specified date
+            DateTime startDate = dateParse.Date;
+            //create a fake day for range
+            DateTime endDate = startDate.AddDays(1);
+
+            // Build the filter for Event date range
+            FilterDefinition<Event> filter = Builders<Event>.Filter.Gte(p => p.Date, startDate) &
+                                              Builders<Event>.Filter.Lt(p => p.Date, endDate);
+
+            // Perform the filter query
+            results = eventCollection.Find(filter).ToList();
+
+            // Present the results on the grid
+            dataGridView_Events.DataSource = results;
+        }
+
+        private void textBox_FilterMusicalStyle_TextChanged(object sender, EventArgs e)
+        {
+            List<Event> results;
+            string musicalStyle = textBox_FilterMusicalStyle.Text;
+            //build the filter ('WHERE') filter by Event musicalStyle, and add reference
+            FilterDefinition<Event> filter =
+                Builders<Event>.Filter.Eq(p => p.MusicalStyle, musicalStyle);
+            //preform the filter - make the filter query
+            results = eventCollection.Find(filter).ToList();
+            //present the resukts upon the grid
+            dataGridView_Events.DataSource = results;
+        }
+
+        private void textBox_filterEventName_TextChanged(object sender, EventArgs e)
+        {
+            List<Event> results;
+            string eventName = textBox_filterEventName.Text;
+            if (eventName.Length == 0)
+            {
+                LoadEventsUponScreen();
+            }
+            //build the filter ('WHERE') filter by Event EventName, and add reference
+            FilterDefinition<Event> filter =
+                Builders<Event>.Filter.Eq(p => p.EventName, eventName);
+            //preform the filter - make the filter query
+            results = eventCollection.Find(filter).ToList();
+            //present the resukts upon the grid
+            dataGridView_Events.DataSource = results;
+        }
+
+        private void textBox_FilterMusicianName_TextChanged(object sender, EventArgs e)
+        {
+            List<Musician> results;
+            string name =  textBox_FilterMusicianName.Text;
+            //build the filter ('WHERE') filter by Musician age, and add reference
+            FilterDefinition<Musician> filter =
+                Builders<Musician>.Filter.Eq(p => p.Name, name);
+            //preform the filter - make the filter query
+            results = musicianCollection.Find(filter).ToList();
+            //present the resukts upon the grid
+            dataGridView_Musician.DataSource = results;
+        }
+
+        private void textBox_FilterMusicianAge_TextChanged(object sender, EventArgs e)
+        {
+            List<Musician> results;
+            string age = textBox_FilterMusicianAge.Text;
+            //build the filter ('WHERE') filter by Musician age, and add reference
+            FilterDefinition<Musician> filter =
+                Builders<Musician>.Filter.Eq(p => p.Age, age);
+            //preform the filter - make the filter query
+            results = musicianCollection.Find(filter).ToList();
+            //present the resukts upon the grid
+            dataGridView_Musician.DataSource = results;
+        }
+
+        private void textBox_FilterMusicianInstrument_TextChanged(object sender, EventArgs e)
+        {
+            List<Musician> results;
+            string instrument = textBox_FilterMusicianInstrument.Text;
+            //build the filter ('WHERE') filter by Musician instrument, and add reference
+            FilterDefinition<Musician> filter =
+                Builders<Musician>.Filter.Eq(p => p.Instrument, instrument);
+            //preform the filter - make the filter query
+            results = musicianCollection.Find(filter).ToList();
+            //present the resukts upon the grid
+            dataGridView_Musician.DataSource = results;
+        }
     }
 }

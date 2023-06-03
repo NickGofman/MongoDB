@@ -35,21 +35,20 @@ namespace MongoDB
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btn_AssignMusicanToEvent = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.textBox_FilterMusicianInstrument = new System.Windows.Forms.TextBox();
-            this.btn_filterByMusicianInstrument = new System.Windows.Forms.Button();
             this.textBox_FilterMusicianAge = new System.Windows.Forms.TextBox();
             this.textBox_FilterMusicianName = new System.Windows.Forms.TextBox();
-            this.btn_filterByMusicianAge = new System.Windows.Forms.Button();
-            this.btn_filterByMusicianName = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btn_RefreshMusician = new System.Windows.Forms.Button();
             this.dataGridView_Musician = new System.Windows.Forms.DataGridView();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.textBox_filterEventName = new System.Windows.Forms.TextBox();
-            this.btn_filterEventByEventName = new System.Windows.Forms.Button();
             this.textBox_FilterMusicalStyle = new System.Windows.Forms.TextBox();
-            this.btn_filterEventMusicalStyle = new System.Windows.Forms.Button();
-            this.btn_filterEventDate = new System.Windows.Forms.Button();
             this.dateTimePicker_filterDate = new System.Windows.Forms.DateTimePicker();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -106,6 +105,7 @@ namespace MongoDB
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.label19 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -137,10 +137,11 @@ namespace MongoDB
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Location = new System.Drawing.Point(12, 2);
+            this.tabControl1.Location = new System.Drawing.Point(14, 2);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1906, 939);
+            this.tabControl1.Size = new System.Drawing.Size(2144, 1174);
             this.tabControl1.TabIndex = 2;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.Form1_Load);
             // 
@@ -154,10 +155,11 @@ namespace MongoDB
             this.tabPage1.Controls.Add(this.groupBox_InsertProduct);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.groupBox2);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1898, 910);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage1.Size = new System.Drawing.Size(2136, 1141);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Insert Event and Musician";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -167,99 +169,99 @@ namespace MongoDB
             this.btn_AssignMusicanToEvent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btn_AssignMusicanToEvent.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_AssignMusicanToEvent.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btn_AssignMusicanToEvent.Location = new System.Drawing.Point(1207, 575);
+            this.btn_AssignMusicanToEvent.Location = new System.Drawing.Point(1699, 1040);
+            this.btn_AssignMusicanToEvent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_AssignMusicanToEvent.Name = "btn_AssignMusicanToEvent";
-            this.btn_AssignMusicanToEvent.Size = new System.Drawing.Size(166, 58);
+            this.btn_AssignMusicanToEvent.Size = new System.Drawing.Size(289, 72);
             this.btn_AssignMusicanToEvent.TabIndex = 34;
-            this.btn_AssignMusicanToEvent.Text = "Assign";
+            this.btn_AssignMusicanToEvent.Text = "Assign To Event";
             this.btn_AssignMusicanToEvent.UseVisualStyleBackColor = false;
             this.btn_AssignMusicanToEvent.Click += new System.EventHandler(this.btn_AssignMusicanToEvent_Click);
             // 
             // groupBox10
             // 
             this.groupBox10.BackColor = System.Drawing.Color.PapayaWhip;
+            this.groupBox10.Controls.Add(this.label19);
+            this.groupBox10.Controls.Add(this.label18);
+            this.groupBox10.Controls.Add(this.label17);
             this.groupBox10.Controls.Add(this.textBox_FilterMusicianInstrument);
-            this.groupBox10.Controls.Add(this.btn_filterByMusicianInstrument);
             this.groupBox10.Controls.Add(this.textBox_FilterMusicianAge);
             this.groupBox10.Controls.Add(this.textBox_FilterMusicianName);
-            this.groupBox10.Controls.Add(this.btn_filterByMusicianAge);
-            this.groupBox10.Controls.Add(this.btn_filterByMusicianName);
             this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.groupBox10.Location = new System.Drawing.Point(814, 575);
+            this.groupBox10.Location = new System.Drawing.Point(1036, 766);
+            this.groupBox10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(440, 237);
+            this.groupBox10.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox10.Size = new System.Drawing.Size(657, 346);
             this.groupBox10.TabIndex = 33;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Musician Filter";
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(7, 136);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(323, 29);
+            this.label18.TabIndex = 34;
+            this.label18.Text = "Filter ONLY By Musician Age";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(7, 42);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(345, 29);
+            this.label17.TabIndex = 33;
+            this.label17.Text = "Filter ONLY By Musician Name";
+            // 
             // textBox_FilterMusicianInstrument
             // 
-            this.textBox_FilterMusicianInstrument.Location = new System.Drawing.Point(259, 184);
+            this.textBox_FilterMusicianInstrument.Location = new System.Drawing.Point(404, 221);
+            this.textBox_FilterMusicianInstrument.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_FilterMusicianInstrument.Name = "textBox_FilterMusicianInstrument";
-            this.textBox_FilterMusicianInstrument.Size = new System.Drawing.Size(171, 30);
+            this.textBox_FilterMusicianInstrument.Size = new System.Drawing.Size(228, 35);
             this.textBox_FilterMusicianInstrument.TabIndex = 26;
-            // 
-            // btn_filterByMusicianInstrument
-            // 
-            this.btn_filterByMusicianInstrument.Location = new System.Drawing.Point(7, 179);
-            this.btn_filterByMusicianInstrument.Name = "btn_filterByMusicianInstrument";
-            this.btn_filterByMusicianInstrument.Size = new System.Drawing.Size(246, 40);
-            this.btn_filterByMusicianInstrument.TabIndex = 25;
-            this.btn_filterByMusicianInstrument.Text = "Filter ONLY By Instrument";
-            this.btn_filterByMusicianInstrument.UseVisualStyleBackColor = true;
-            this.btn_filterByMusicianInstrument.Click += new System.EventHandler(this.btn_filterByMusicianInstrument_Click);
+            this.textBox_FilterMusicianInstrument.TextChanged += new System.EventHandler(this.textBox_FilterMusicianInstrument_TextChanged);
             // 
             // textBox_FilterMusicianAge
             // 
-            this.textBox_FilterMusicianAge.Location = new System.Drawing.Point(259, 116);
+            this.textBox_FilterMusicianAge.Location = new System.Drawing.Point(404, 136);
+            this.textBox_FilterMusicianAge.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_FilterMusicianAge.Name = "textBox_FilterMusicianAge";
-            this.textBox_FilterMusicianAge.Size = new System.Drawing.Size(171, 30);
+            this.textBox_FilterMusicianAge.Size = new System.Drawing.Size(228, 35);
             this.textBox_FilterMusicianAge.TabIndex = 24;
+            this.textBox_FilterMusicianAge.TextChanged += new System.EventHandler(this.textBox_FilterMusicianAge_TextChanged);
             // 
             // textBox_FilterMusicianName
             // 
-            this.textBox_FilterMusicianName.Location = new System.Drawing.Point(259, 48);
+            this.textBox_FilterMusicianName.Location = new System.Drawing.Point(404, 42);
+            this.textBox_FilterMusicianName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_FilterMusicianName.Name = "textBox_FilterMusicianName";
-            this.textBox_FilterMusicianName.Size = new System.Drawing.Size(171, 30);
+            this.textBox_FilterMusicianName.Size = new System.Drawing.Size(228, 35);
             this.textBox_FilterMusicianName.TabIndex = 23;
-            // 
-            // btn_filterByMusicianAge
-            // 
-            this.btn_filterByMusicianAge.Location = new System.Drawing.Point(7, 111);
-            this.btn_filterByMusicianAge.Name = "btn_filterByMusicianAge";
-            this.btn_filterByMusicianAge.Size = new System.Drawing.Size(246, 40);
-            this.btn_filterByMusicianAge.TabIndex = 22;
-            this.btn_filterByMusicianAge.Text = "Filter ONLY By Age";
-            this.btn_filterByMusicianAge.UseVisualStyleBackColor = true;
-            this.btn_filterByMusicianAge.Click += new System.EventHandler(this.btn_filterByMusicianAge_Click);
-            // 
-            // btn_filterByMusicianName
-            // 
-            this.btn_filterByMusicianName.Location = new System.Drawing.Point(7, 43);
-            this.btn_filterByMusicianName.Name = "btn_filterByMusicianName";
-            this.btn_filterByMusicianName.Size = new System.Drawing.Size(246, 40);
-            this.btn_filterByMusicianName.TabIndex = 20;
-            this.btn_filterByMusicianName.Text = "Filter ONLY By Musician NAME:";
-            this.btn_filterByMusicianName.UseVisualStyleBackColor = true;
-            this.btn_filterByMusicianName.Click += new System.EventHandler(this.btn_filterByMusicianName_Click);
+            this.textBox_FilterMusicianName.TextChanged += new System.EventHandler(this.textBox_FilterMusicianName_TextChanged);
             // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.btn_RefreshMusician);
             this.groupBox6.Controls.Add(this.dataGridView_Musician);
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox6.Location = new System.Drawing.Point(12, 615);
+            this.groupBox6.Location = new System.Drawing.Point(14, 769);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(778, 284);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox6.Size = new System.Drawing.Size(978, 355);
             this.groupBox6.TabIndex = 27;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "All Musician:";
             // 
             // btn_RefreshMusician
             // 
-            this.btn_RefreshMusician.Location = new System.Drawing.Point(256, 241);
+            this.btn_RefreshMusician.Location = new System.Drawing.Point(288, 301);
+            this.btn_RefreshMusician.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_RefreshMusician.Name = "btn_RefreshMusician";
-            this.btn_RefreshMusician.Size = new System.Drawing.Size(257, 34);
+            this.btn_RefreshMusician.Size = new System.Drawing.Size(289, 42);
             this.btn_RefreshMusician.TabIndex = 25;
             this.btn_RefreshMusician.Text = "Refresh Musicain";
             this.btn_RefreshMusician.UseVisualStyleBackColor = true;
@@ -267,82 +269,89 @@ namespace MongoDB
             // 
             // dataGridView_Musician
             // 
+            this.dataGridView_Musician.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView_Musician.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_Musician.Location = new System.Drawing.Point(6, 29);
+            this.dataGridView_Musician.Location = new System.Drawing.Point(7, 36);
+            this.dataGridView_Musician.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView_Musician.Name = "dataGridView_Musician";
             this.dataGridView_Musician.RowHeadersWidth = 51;
             this.dataGridView_Musician.RowTemplate.Height = 24;
-            this.dataGridView_Musician.Size = new System.Drawing.Size(766, 206);
+            this.dataGridView_Musician.Size = new System.Drawing.Size(955, 258);
             this.dataGridView_Musician.TabIndex = 0;
             this.dataGridView_Musician.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Musician_CellDoubleClick);
             // 
             // groupBox9
             // 
             this.groupBox9.BackColor = System.Drawing.Color.PapayaWhip;
+            this.groupBox9.Controls.Add(this.label16);
+            this.groupBox9.Controls.Add(this.label15);
+            this.groupBox9.Controls.Add(this.label14);
             this.groupBox9.Controls.Add(this.textBox_filterEventName);
-            this.groupBox9.Controls.Add(this.btn_filterEventByEventName);
             this.groupBox9.Controls.Add(this.textBox_FilterMusicalStyle);
-            this.groupBox9.Controls.Add(this.btn_filterEventMusicalStyle);
-            this.groupBox9.Controls.Add(this.btn_filterEventDate);
             this.groupBox9.Controls.Add(this.dateTimePicker_filterDate);
             this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.groupBox9.Location = new System.Drawing.Point(804, 316);
+            this.groupBox9.Location = new System.Drawing.Point(1036, 412);
+            this.groupBox9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(542, 237);
+            this.groupBox9.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox9.Size = new System.Drawing.Size(658, 296);
             this.groupBox9.TabIndex = 32;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Event Filter";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(15, 236);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(310, 29);
+            this.label16.TabIndex = 32;
+            this.label16.Text = "Filter ONLY By Event Name";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(15, 147);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(320, 29);
+            this.label15.TabIndex = 31;
+            this.label15.Text = "Filter ONLY By Musical Style";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(15, 63);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(229, 29);
+            this.label14.TabIndex = 30;
+            this.label14.Text = "Filter ONLY By Date";
+            // 
             // textBox_filterEventName
             // 
-            this.textBox_filterEventName.Location = new System.Drawing.Point(281, 184);
+            this.textBox_filterEventName.Location = new System.Drawing.Point(335, 230);
+            this.textBox_filterEventName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_filterEventName.Name = "textBox_filterEventName";
-            this.textBox_filterEventName.Size = new System.Drawing.Size(238, 30);
+            this.textBox_filterEventName.Size = new System.Drawing.Size(306, 35);
             this.textBox_filterEventName.TabIndex = 29;
-            // 
-            // btn_filterEventByEventName
-            // 
-            this.btn_filterEventByEventName.Location = new System.Drawing.Point(7, 179);
-            this.btn_filterEventByEventName.Name = "btn_filterEventByEventName";
-            this.btn_filterEventByEventName.Size = new System.Drawing.Size(227, 40);
-            this.btn_filterEventByEventName.TabIndex = 28;
-            this.btn_filterEventByEventName.Text = "Filter ONLY By Event Name";
-            this.btn_filterEventByEventName.UseVisualStyleBackColor = true;
-            this.btn_filterEventByEventName.Click += new System.EventHandler(this.btn_filterEventByEventName_Click);
+            this.textBox_filterEventName.TextChanged += new System.EventHandler(this.textBox_filterEventName_TextChanged);
             // 
             // textBox_FilterMusicalStyle
             // 
-            this.textBox_FilterMusicalStyle.Location = new System.Drawing.Point(281, 121);
+            this.textBox_FilterMusicalStyle.Location = new System.Drawing.Point(335, 144);
+            this.textBox_FilterMusicalStyle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_FilterMusicalStyle.Name = "textBox_FilterMusicalStyle";
-            this.textBox_FilterMusicalStyle.Size = new System.Drawing.Size(238, 30);
+            this.textBox_FilterMusicalStyle.Size = new System.Drawing.Size(306, 35);
             this.textBox_FilterMusicalStyle.TabIndex = 27;
-            // 
-            // btn_filterEventMusicalStyle
-            // 
-            this.btn_filterEventMusicalStyle.Location = new System.Drawing.Point(7, 111);
-            this.btn_filterEventMusicalStyle.Name = "btn_filterEventMusicalStyle";
-            this.btn_filterEventMusicalStyle.Size = new System.Drawing.Size(227, 40);
-            this.btn_filterEventMusicalStyle.TabIndex = 26;
-            this.btn_filterEventMusicalStyle.Text = "Filter ONLY By Musical Style";
-            this.btn_filterEventMusicalStyle.UseVisualStyleBackColor = true;
-            this.btn_filterEventMusicalStyle.Click += new System.EventHandler(this.btn_filterEventMusicalStyle_Click);
-            // 
-            // btn_filterEventDate
-            // 
-            this.btn_filterEventDate.Location = new System.Drawing.Point(7, 42);
-            this.btn_filterEventDate.Name = "btn_filterEventDate";
-            this.btn_filterEventDate.Size = new System.Drawing.Size(227, 40);
-            this.btn_filterEventDate.TabIndex = 25;
-            this.btn_filterEventDate.Text = "Filter ONLY By Date";
-            this.btn_filterEventDate.UseVisualStyleBackColor = true;
-            this.btn_filterEventDate.Click += new System.EventHandler(this.btn_filterEventDate_Click);
+            this.textBox_FilterMusicalStyle.TextChanged += new System.EventHandler(this.textBox_FilterMusicalStyle_TextChanged);
             // 
             // dateTimePicker_filterDate
             // 
-            this.dateTimePicker_filterDate.Location = new System.Drawing.Point(281, 52);
+            this.dateTimePicker_filterDate.Location = new System.Drawing.Point(305, 58);
+            this.dateTimePicker_filterDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dateTimePicker_filterDate.Name = "dateTimePicker_filterDate";
-            this.dateTimePicker_filterDate.Size = new System.Drawing.Size(238, 30);
+            this.dateTimePicker_filterDate.Size = new System.Drawing.Size(336, 35);
             this.dateTimePicker_filterDate.TabIndex = 24;
+            this.dateTimePicker_filterDate.ValueChanged += new System.EventHandler(this.dateTimePicker_filterDate_ValueChanged);
             // 
             // groupBox5
             // 
@@ -357,9 +366,11 @@ namespace MongoDB
             this.groupBox5.Controls.Add(this.textBox_MusicalType);
             this.groupBox5.Controls.Add(this.label6);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(1158, 15);
+            this.groupBox5.Location = new System.Drawing.Point(1491, 18);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(392, 268);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox5.Size = new System.Drawing.Size(563, 335);
             this.groupBox5.TabIndex = 31;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Insert new Event";
@@ -367,42 +378,45 @@ namespace MongoDB
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(13, 89);
+            this.label13.Location = new System.Drawing.Point(15, 111);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(62, 25);
+            this.label13.Size = new System.Drawing.Size(75, 29);
             this.label13.TabIndex = 11;
             this.label13.Text = "Time:";
             // 
             // dateTimePicker_EventTime
             // 
             this.dateTimePicker_EventTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker_EventTime.Location = new System.Drawing.Point(167, 89);
+            this.dateTimePicker_EventTime.Location = new System.Drawing.Point(208, 111);
+            this.dateTimePicker_EventTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dateTimePicker_EventTime.Name = "dateTimePicker_EventTime";
-            this.dateTimePicker_EventTime.Size = new System.Drawing.Size(185, 30);
+            this.dateTimePicker_EventTime.Size = new System.Drawing.Size(208, 35);
             this.dateTimePicker_EventTime.TabIndex = 10;
             this.dateTimePicker_EventTime.Value = new System.DateTime(2023, 5, 31, 20, 0, 0, 0);
             // 
             // dateTimePicker_EventDate
             // 
-            this.dateTimePicker_EventDate.Location = new System.Drawing.Point(167, 39);
+            this.dateTimePicker_EventDate.Location = new System.Drawing.Point(208, 49);
+            this.dateTimePicker_EventDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dateTimePicker_EventDate.Name = "dateTimePicker_EventDate";
-            this.dateTimePicker_EventDate.Size = new System.Drawing.Size(185, 30);
+            this.dateTimePicker_EventDate.Size = new System.Drawing.Size(329, 35);
             this.dateTimePicker_EventDate.TabIndex = 9;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 39);
+            this.label7.Location = new System.Drawing.Point(15, 49);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(156, 25);
+            this.label7.Size = new System.Drawing.Size(187, 29);
             this.label7.TabIndex = 8;
             this.label7.Text = "Pick Event Date:";
             // 
             // btn_insertEvent
             // 
-            this.btn_insertEvent.Location = new System.Drawing.Point(173, 224);
+            this.btn_insertEvent.Location = new System.Drawing.Point(329, 281);
+            this.btn_insertEvent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_insertEvent.Name = "btn_insertEvent";
-            this.btn_insertEvent.Size = new System.Drawing.Size(179, 38);
+            this.btn_insertEvent.Size = new System.Drawing.Size(228, 48);
             this.btn_insertEvent.TabIndex = 6;
             this.btn_insertEvent.Text = "Insert New Event";
             this.btn_insertEvent.UseVisualStyleBackColor = true;
@@ -410,33 +424,35 @@ namespace MongoDB
             // 
             // textBox_EventName
             // 
-            this.textBox_EventName.Location = new System.Drawing.Point(167, 190);
+            this.textBox_EventName.Location = new System.Drawing.Point(208, 238);
+            this.textBox_EventName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_EventName.Name = "textBox_EventName";
-            this.textBox_EventName.Size = new System.Drawing.Size(185, 30);
+            this.textBox_EventName.Size = new System.Drawing.Size(208, 35);
             this.textBox_EventName.TabIndex = 5;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 193);
+            this.label5.Location = new System.Drawing.Point(15, 241);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(125, 25);
+            this.label5.Size = new System.Drawing.Size(150, 29);
             this.label5.TabIndex = 4;
             this.label5.Text = "Event Name:";
             // 
             // textBox_MusicalType
             // 
-            this.textBox_MusicalType.Location = new System.Drawing.Point(167, 136);
+            this.textBox_MusicalType.Location = new System.Drawing.Point(208, 170);
+            this.textBox_MusicalType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_MusicalType.Name = "textBox_MusicalType";
-            this.textBox_MusicalType.Size = new System.Drawing.Size(185, 30);
+            this.textBox_MusicalType.Size = new System.Drawing.Size(208, 35);
             this.textBox_MusicalType.TabIndex = 3;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 141);
+            this.label6.Location = new System.Drawing.Point(15, 176);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(135, 25);
+            this.label6.Size = new System.Drawing.Size(162, 29);
             this.label6.TabIndex = 2;
             this.label6.Text = "Musical Type:";
             // 
@@ -451,18 +467,21 @@ namespace MongoDB
             this.groupBox_InsertProduct.Controls.Add(this.textBox_MusicianIns);
             this.groupBox_InsertProduct.Controls.Add(this.label1);
             this.groupBox_InsertProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox_InsertProduct.Location = new System.Drawing.Point(796, 15);
+            this.groupBox_InsertProduct.Location = new System.Drawing.Point(1036, 18);
+            this.groupBox_InsertProduct.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox_InsertProduct.Name = "groupBox_InsertProduct";
-            this.groupBox_InsertProduct.Size = new System.Drawing.Size(356, 268);
+            this.groupBox_InsertProduct.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox_InsertProduct.Size = new System.Drawing.Size(400, 335);
             this.groupBox_InsertProduct.TabIndex = 30;
             this.groupBox_InsertProduct.TabStop = false;
             this.groupBox_InsertProduct.Text = "Insert Musician";
             // 
             // btn_InsertMusician
             // 
-            this.btn_InsertMusician.Location = new System.Drawing.Point(156, 207);
+            this.btn_InsertMusician.Location = new System.Drawing.Point(186, 281);
+            this.btn_InsertMusician.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_InsertMusician.Name = "btn_InsertMusician";
-            this.btn_InsertMusician.Size = new System.Drawing.Size(185, 38);
+            this.btn_InsertMusician.Size = new System.Drawing.Size(208, 48);
             this.btn_InsertMusician.TabIndex = 6;
             this.btn_InsertMusician.Text = "Insert Musician";
             this.btn_InsertMusician.UseVisualStyleBackColor = true;
@@ -470,49 +489,52 @@ namespace MongoDB
             // 
             // textBox_MusicianName
             // 
-            this.textBox_MusicianName.Location = new System.Drawing.Point(156, 44);
+            this.textBox_MusicianName.Location = new System.Drawing.Point(176, 55);
+            this.textBox_MusicianName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_MusicianName.Name = "textBox_MusicianName";
-            this.textBox_MusicianName.Size = new System.Drawing.Size(185, 30);
+            this.textBox_MusicianName.Size = new System.Drawing.Size(208, 35);
             this.textBox_MusicianName.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 44);
+            this.label3.Location = new System.Drawing.Point(3, 55);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(147, 25);
+            this.label3.Size = new System.Drawing.Size(179, 29);
             this.label3.TabIndex = 4;
             this.label3.Text = "Musician Name";
             // 
             // textBox_MusicianAge
             // 
-            this.textBox_MusicianAge.Location = new System.Drawing.Point(156, 159);
+            this.textBox_MusicianAge.Location = new System.Drawing.Point(176, 199);
+            this.textBox_MusicianAge.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_MusicianAge.Name = "textBox_MusicianAge";
-            this.textBox_MusicianAge.Size = new System.Drawing.Size(185, 30);
+            this.textBox_MusicianAge.Size = new System.Drawing.Size(208, 35);
             this.textBox_MusicianAge.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 159);
+            this.label2.Location = new System.Drawing.Point(15, 199);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 25);
+            this.label2.Size = new System.Drawing.Size(56, 29);
             this.label2.TabIndex = 2;
             this.label2.Text = "Age";
             // 
             // textBox_MusicianIns
             // 
-            this.textBox_MusicianIns.Location = new System.Drawing.Point(156, 99);
+            this.textBox_MusicianIns.Location = new System.Drawing.Point(176, 124);
+            this.textBox_MusicianIns.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_MusicianIns.Name = "textBox_MusicianIns";
-            this.textBox_MusicianIns.Size = new System.Drawing.Size(185, 30);
+            this.textBox_MusicianIns.Size = new System.Drawing.Size(208, 35);
             this.textBox_MusicianIns.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 102);
+            this.label1.Location = new System.Drawing.Point(7, 128);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 25);
+            this.label1.Size = new System.Drawing.Size(130, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Instrument:";
             // 
@@ -521,18 +543,21 @@ namespace MongoDB
             this.groupBox1.Controls.Add(this.btn_RefreshEvents);
             this.groupBox1.Controls.Add(this.dataGridView_Events);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(14, 301);
+            this.groupBox1.Location = new System.Drawing.Point(16, 376);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(778, 308);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Size = new System.Drawing.Size(976, 385);
             this.groupBox1.TabIndex = 26;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "All Events:";
             // 
             // btn_RefreshEvents
             // 
-            this.btn_RefreshEvents.Location = new System.Drawing.Point(262, 252);
+            this.btn_RefreshEvents.Location = new System.Drawing.Point(295, 315);
+            this.btn_RefreshEvents.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_RefreshEvents.Name = "btn_RefreshEvents";
-            this.btn_RefreshEvents.Size = new System.Drawing.Size(257, 34);
+            this.btn_RefreshEvents.Size = new System.Drawing.Size(289, 42);
             this.btn_RefreshEvents.TabIndex = 7;
             this.btn_RefreshEvents.Text = "Refresh Events";
             this.btn_RefreshEvents.UseVisualStyleBackColor = true;
@@ -540,12 +565,14 @@ namespace MongoDB
             // 
             // dataGridView_Events
             // 
+            this.dataGridView_Events.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView_Events.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_Events.Location = new System.Drawing.Point(6, 29);
+            this.dataGridView_Events.Location = new System.Drawing.Point(7, 36);
+            this.dataGridView_Events.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView_Events.Name = "dataGridView_Events";
             this.dataGridView_Events.RowHeadersWidth = 51;
             this.dataGridView_Events.RowTemplate.Height = 24;
-            this.dataGridView_Events.Size = new System.Drawing.Size(766, 205);
+            this.dataGridView_Events.Size = new System.Drawing.Size(953, 256);
             this.dataGridView_Events.TabIndex = 0;
             this.dataGridView_Events.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Events_CellDoubleClick);
             // 
@@ -555,30 +582,35 @@ namespace MongoDB
             this.groupBox2.Controls.Add(this.btn_refreshAllAssignEvents);
             this.groupBox2.Controls.Add(this.dataGridView_AllAssignEvents);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(6, 0);
+            this.groupBox2.Location = new System.Drawing.Point(7, 0);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(784, 295);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Size = new System.Drawing.Size(985, 369);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "All Assign Events:";
+            this.groupBox2.Text = "Assigned Events";
             // 
             // groupBox11
             // 
             this.groupBox11.Controls.Add(this.button1);
             this.groupBox11.Controls.Add(this.dataGridView1);
             this.groupBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox11.Location = new System.Drawing.Point(6, 500);
+            this.groupBox11.Location = new System.Drawing.Point(7, 625);
+            this.groupBox11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(778, 284);
+            this.groupBox11.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox11.Size = new System.Drawing.Size(875, 355);
             this.groupBox11.TabIndex = 27;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "All Musician:";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(256, 241);
+            this.button1.Location = new System.Drawing.Point(288, 301);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(257, 34);
+            this.button1.Size = new System.Drawing.Size(289, 42);
             this.button1.TabIndex = 25;
             this.button1.Text = "Refreash Musicain";
             this.button1.UseVisualStyleBackColor = true;
@@ -586,18 +618,20 @@ namespace MongoDB
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 29);
+            this.dataGridView1.Location = new System.Drawing.Point(7, 36);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(766, 206);
+            this.dataGridView1.Size = new System.Drawing.Size(862, 258);
             this.dataGridView1.TabIndex = 0;
             // 
             // btn_refreshAllAssignEvents
             // 
-            this.btn_refreshAllAssignEvents.Location = new System.Drawing.Point(268, 237);
+            this.btn_refreshAllAssignEvents.Location = new System.Drawing.Point(302, 296);
+            this.btn_refreshAllAssignEvents.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_refreshAllAssignEvents.Name = "btn_refreshAllAssignEvents";
-            this.btn_refreshAllAssignEvents.Size = new System.Drawing.Size(257, 34);
+            this.btn_refreshAllAssignEvents.Size = new System.Drawing.Size(289, 42);
             this.btn_refreshAllAssignEvents.TabIndex = 7;
             this.btn_refreshAllAssignEvents.Text = "Refresh Events";
             this.btn_refreshAllAssignEvents.UseVisualStyleBackColor = true;
@@ -605,20 +639,23 @@ namespace MongoDB
             // 
             // dataGridView_AllAssignEvents
             // 
+            this.dataGridView_AllAssignEvents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridView_AllAssignEvents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_AllAssignEvents.Location = new System.Drawing.Point(6, 29);
+            this.dataGridView_AllAssignEvents.Location = new System.Drawing.Point(7, 36);
+            this.dataGridView_AllAssignEvents.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView_AllAssignEvents.Name = "dataGridView_AllAssignEvents";
             this.dataGridView_AllAssignEvents.RowHeadersWidth = 51;
             this.dataGridView_AllAssignEvents.RowTemplate.Height = 24;
-            this.dataGridView_AllAssignEvents.Size = new System.Drawing.Size(778, 192);
+            this.dataGridView_AllAssignEvents.Size = new System.Drawing.Size(962, 240);
             this.dataGridView_AllAssignEvents.TabIndex = 0;
             // 
             // tabPage2
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1898, 910);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage2.Size = new System.Drawing.Size(2136, 1141);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Load and Filters";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -626,10 +663,11 @@ namespace MongoDB
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.groupBox8);
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Location = new System.Drawing.Point(4, 29);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1898, 910);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage3.Size = new System.Drawing.Size(2136, 1141);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Filters";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -645,9 +683,11 @@ namespace MongoDB
             this.groupBox8.Controls.Add(this.textBox_FilterByMusicalType);
             this.groupBox8.Controls.Add(this.btn_FilerByMusicianName);
             this.groupBox8.Controls.Add(this.btn_filterByDateRange);
-            this.groupBox8.Location = new System.Drawing.Point(12, 452);
+            this.groupBox8.Location = new System.Drawing.Point(14, 565);
+            this.groupBox8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(1110, 198);
+            this.groupBox8.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox8.Size = new System.Drawing.Size(1249, 248);
             this.groupBox8.TabIndex = 11;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Musician Specific Filters";
@@ -655,47 +695,51 @@ namespace MongoDB
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(743, 113);
+            this.label12.Location = new System.Drawing.Point(836, 141);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(33, 17);
+            this.label12.Size = new System.Drawing.Size(38, 20);
             this.label12.TabIndex = 18;
             this.label12.Text = "End";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(738, 56);
+            this.label11.Location = new System.Drawing.Point(830, 70);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(38, 17);
+            this.label11.Size = new System.Drawing.Size(44, 20);
             this.label11.TabIndex = 17;
             this.label11.Text = "Start";
             // 
             // dateTimePicker_filterByDateRangeEnd
             // 
-            this.dateTimePicker_filterByDateRangeEnd.Location = new System.Drawing.Point(792, 113);
+            this.dateTimePicker_filterByDateRangeEnd.Location = new System.Drawing.Point(891, 141);
+            this.dateTimePicker_filterByDateRangeEnd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dateTimePicker_filterByDateRangeEnd.Name = "dateTimePicker_filterByDateRangeEnd";
-            this.dateTimePicker_filterByDateRangeEnd.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker_filterByDateRangeEnd.Size = new System.Drawing.Size(224, 26);
             this.dateTimePicker_filterByDateRangeEnd.TabIndex = 16;
             // 
             // dateTimePicker_filterByDateRangeStart
             // 
-            this.dateTimePicker_filterByDateRangeStart.Location = new System.Drawing.Point(792, 54);
+            this.dateTimePicker_filterByDateRangeStart.Location = new System.Drawing.Point(891, 68);
+            this.dateTimePicker_filterByDateRangeStart.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dateTimePicker_filterByDateRangeStart.Name = "dateTimePicker_filterByDateRangeStart";
-            this.dateTimePicker_filterByDateRangeStart.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker_filterByDateRangeStart.Size = new System.Drawing.Size(224, 26);
             this.dateTimePicker_filterByDateRangeStart.TabIndex = 15;
             // 
             // textBox_FilerByMusicianName
             // 
-            this.textBox_FilerByMusicianName.Location = new System.Drawing.Point(237, 131);
+            this.textBox_FilerByMusicianName.Location = new System.Drawing.Point(267, 164);
+            this.textBox_FilerByMusicianName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_FilerByMusicianName.Name = "textBox_FilerByMusicianName";
-            this.textBox_FilerByMusicianName.Size = new System.Drawing.Size(190, 22);
+            this.textBox_FilerByMusicianName.Size = new System.Drawing.Size(213, 26);
             this.textBox_FilerByMusicianName.TabIndex = 14;
             // 
             // btn_FilterByMusicalType
             // 
-            this.btn_FilterByMusicalType.Location = new System.Drawing.Point(9, 37);
+            this.btn_FilterByMusicalType.Location = new System.Drawing.Point(10, 46);
+            this.btn_FilterByMusicalType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_FilterByMusicalType.Name = "btn_FilterByMusicalType";
-            this.btn_FilterByMusicalType.Size = new System.Drawing.Size(217, 40);
+            this.btn_FilterByMusicalType.Size = new System.Drawing.Size(244, 50);
             this.btn_FilterByMusicalType.TabIndex = 13;
             this.btn_FilterByMusicalType.Text = "Filter ONLY By Musical Type";
             this.btn_FilterByMusicalType.UseVisualStyleBackColor = true;
@@ -703,25 +747,28 @@ namespace MongoDB
             // 
             // textBox_FilterByMusicalType
             // 
-            this.textBox_FilterByMusicalType.Location = new System.Drawing.Point(237, 46);
+            this.textBox_FilterByMusicalType.Location = new System.Drawing.Point(267, 58);
+            this.textBox_FilterByMusicalType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_FilterByMusicalType.Name = "textBox_FilterByMusicalType";
-            this.textBox_FilterByMusicalType.Size = new System.Drawing.Size(190, 22);
+            this.textBox_FilterByMusicalType.Size = new System.Drawing.Size(213, 26);
             this.textBox_FilterByMusicalType.TabIndex = 12;
             // 
             // btn_FilerByMusicianName
             // 
-            this.btn_FilerByMusicianName.Location = new System.Drawing.Point(6, 113);
+            this.btn_FilerByMusicianName.Location = new System.Drawing.Point(7, 141);
+            this.btn_FilerByMusicianName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_FilerByMusicianName.Name = "btn_FilerByMusicianName";
-            this.btn_FilerByMusicianName.Size = new System.Drawing.Size(217, 40);
+            this.btn_FilerByMusicianName.Size = new System.Drawing.Size(244, 50);
             this.btn_FilerByMusicianName.TabIndex = 11;
             this.btn_FilerByMusicianName.Text = "Filter ONLY By Musician NAME:";
             this.btn_FilerByMusicianName.UseVisualStyleBackColor = true;
             // 
             // btn_filterByDateRange
             // 
-            this.btn_filterByDateRange.Location = new System.Drawing.Point(489, 46);
+            this.btn_filterByDateRange.Location = new System.Drawing.Point(550, 58);
+            this.btn_filterByDateRange.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_filterByDateRange.Name = "btn_filterByDateRange";
-            this.btn_filterByDateRange.Size = new System.Drawing.Size(217, 36);
+            this.btn_filterByDateRange.Size = new System.Drawing.Size(244, 45);
             this.btn_filterByDateRange.TabIndex = 9;
             this.btn_filterByDateRange.Text = "Filter By Date Range";
             this.btn_filterByDateRange.UseVisualStyleBackColor = true;
@@ -730,10 +777,11 @@ namespace MongoDB
             // 
             this.tabPage4.Controls.Add(this.groupBox3);
             this.tabPage4.Controls.Add(this.groupBox4);
-            this.tabPage4.Location = new System.Drawing.Point(4, 25);
+            this.tabPage4.Location = new System.Drawing.Point(4, 29);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1898, 910);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage4.Size = new System.Drawing.Size(2136, 1141);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -743,36 +791,41 @@ namespace MongoDB
             this.groupBox3.Controls.Add(this.btn_SpecificFilterByPrice_In);
             this.groupBox3.Controls.Add(this.btn_SpecificFilterByPrice_GTE);
             this.groupBox3.Controls.Add(this.textBox_SpecificPrice);
-            this.groupBox3.Location = new System.Drawing.Point(140, 79);
+            this.groupBox3.Location = new System.Drawing.Point(158, 99);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(752, 145);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox3.Size = new System.Drawing.Size(846, 181);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "FILTER BY PRIVE";
             // 
             // btn_SpecificFilterByPrice_In
             // 
-            this.btn_SpecificFilterByPrice_In.Location = new System.Drawing.Point(300, 76);
+            this.btn_SpecificFilterByPrice_In.Location = new System.Drawing.Point(338, 95);
+            this.btn_SpecificFilterByPrice_In.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_SpecificFilterByPrice_In.Name = "btn_SpecificFilterByPrice_In";
-            this.btn_SpecificFilterByPrice_In.Size = new System.Drawing.Size(290, 36);
+            this.btn_SpecificFilterByPrice_In.Size = new System.Drawing.Size(326, 45);
             this.btn_SpecificFilterByPrice_In.TabIndex = 5;
             this.btn_SpecificFilterByPrice_In.Text = "Filter ONLY BY PRICE:(In)";
             this.btn_SpecificFilterByPrice_In.UseVisualStyleBackColor = true;
             // 
             // btn_SpecificFilterByPrice_GTE
             // 
-            this.btn_SpecificFilterByPrice_GTE.Location = new System.Drawing.Point(6, 76);
+            this.btn_SpecificFilterByPrice_GTE.Location = new System.Drawing.Point(7, 95);
+            this.btn_SpecificFilterByPrice_GTE.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_SpecificFilterByPrice_GTE.Name = "btn_SpecificFilterByPrice_GTE";
-            this.btn_SpecificFilterByPrice_GTE.Size = new System.Drawing.Size(257, 36);
+            this.btn_SpecificFilterByPrice_GTE.Size = new System.Drawing.Size(289, 45);
             this.btn_SpecificFilterByPrice_GTE.TabIndex = 4;
             this.btn_SpecificFilterByPrice_GTE.Text = "Filter ONLY BY PRICE Greater or equal ";
             this.btn_SpecificFilterByPrice_GTE.UseVisualStyleBackColor = true;
             // 
             // textBox_SpecificPrice
             // 
-            this.textBox_SpecificPrice.Location = new System.Drawing.Point(6, 39);
+            this.textBox_SpecificPrice.Location = new System.Drawing.Point(7, 49);
+            this.textBox_SpecificPrice.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_SpecificPrice.Name = "textBox_SpecificPrice";
-            this.textBox_SpecificPrice.Size = new System.Drawing.Size(543, 22);
+            this.textBox_SpecificPrice.Size = new System.Drawing.Size(610, 26);
             this.textBox_SpecificPrice.TabIndex = 1;
             // 
             // groupBox4
@@ -782,36 +835,40 @@ namespace MongoDB
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.groupBox4.Location = new System.Drawing.Point(12, 214);
+            this.groupBox4.Location = new System.Drawing.Point(14, 268);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(767, 193);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox4.Size = new System.Drawing.Size(863, 241);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "BULK INSERT FROM FILE:";
             // 
             // btn_ImportFromFile
             // 
-            this.btn_ImportFromFile.Location = new System.Drawing.Point(278, 128);
+            this.btn_ImportFromFile.Location = new System.Drawing.Point(313, 160);
+            this.btn_ImportFromFile.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_ImportFromFile.Name = "btn_ImportFromFile";
-            this.btn_ImportFromFile.Size = new System.Drawing.Size(303, 39);
+            this.btn_ImportFromFile.Size = new System.Drawing.Size(341, 49);
             this.btn_ImportFromFile.TabIndex = 3;
             this.btn_ImportFromFile.Text = "Import File To Datebase";
             this.btn_ImportFromFile.UseVisualStyleBackColor = true;
             // 
             // textBox_FullPathForBulk
             // 
-            this.textBox_FullPathForBulk.Location = new System.Drawing.Point(139, 62);
+            this.textBox_FullPathForBulk.Location = new System.Drawing.Point(156, 78);
+            this.textBox_FullPathForBulk.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_FullPathForBulk.Name = "textBox_FullPathForBulk";
             this.textBox_FullPathForBulk.ReadOnly = true;
-            this.textBox_FullPathForBulk.Size = new System.Drawing.Size(599, 34);
+            this.textBox_FullPathForBulk.Size = new System.Drawing.Size(673, 39);
             this.textBox_FullPathForBulk.TabIndex = 2;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(27, 68);
+            this.label4.Location = new System.Drawing.Point(30, 85);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(113, 29);
+            this.label4.Size = new System.Drawing.Size(136, 32);
             this.label4.TabIndex = 1;
             this.label4.Text = "Full Path:";
             // 
@@ -821,9 +878,10 @@ namespace MongoDB
             this.tabPage5.Controls.Add(this.label9);
             this.tabPage5.Controls.Add(this.label10);
             this.tabPage5.Controls.Add(this.groupBox7);
-            this.tabPage5.Location = new System.Drawing.Point(4, 25);
+            this.tabPage5.Location = new System.Drawing.Point(4, 29);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1898, 910);
+            this.tabPage5.Size = new System.Drawing.Size(2136, 1141);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Assign Musician";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -831,27 +889,27 @@ namespace MongoDB
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(41, 328);
+            this.label8.Location = new System.Drawing.Point(46, 410);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(94, 17);
+            this.label8.Size = new System.Drawing.Size(107, 20);
             this.label8.TabIndex = 7;
             this.label8.Text = "Update Event";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(402, 274);
+            this.label9.Location = new System.Drawing.Point(452, 342);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(33, 17);
+            this.label9.Size = new System.Drawing.Size(38, 20);
             this.label9.TabIndex = 6;
             this.label9.Text = "Age";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(41, 274);
+            this.label10.Location = new System.Drawing.Point(46, 342);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(89, 17);
+            this.label10.Size = new System.Drawing.Size(101, 20);
             this.label10.TabIndex = 5;
             this.label10.Text = "Delete Event";
             // 
@@ -860,18 +918,21 @@ namespace MongoDB
             this.groupBox7.Controls.Add(this.button4);
             this.groupBox7.Controls.Add(this.dataGridView2);
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox7.Location = new System.Drawing.Point(3, 3);
+            this.groupBox7.Location = new System.Drawing.Point(3, 4);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(778, 227);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox7.Size = new System.Drawing.Size(875, 284);
             this.groupBox7.TabIndex = 1;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "All Events:";
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(262, 186);
+            this.button4.Location = new System.Drawing.Point(295, 232);
+            this.button4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(257, 34);
+            this.button4.Size = new System.Drawing.Size(289, 42);
             this.button4.TabIndex = 7;
             this.button4.Text = "Refresh Events";
             this.button4.UseVisualStyleBackColor = true;
@@ -879,19 +940,31 @@ namespace MongoDB
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(6, 29);
+            this.dataGridView2.Location = new System.Drawing.Point(7, 36);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(766, 151);
+            this.dataGridView2.Size = new System.Drawing.Size(862, 189);
             this.dataGridView2.TabIndex = 0;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(7, 227);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(391, 29);
+            this.label19.TabIndex = 35;
+            this.label19.Text = "Filter ONLY By Musician Instrument";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1524, 783);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1731, 979);
             this.Controls.Add(this.tabControl1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -976,17 +1049,11 @@ namespace MongoDB
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.TextBox textBox_FilterMusicianInstrument;
-        private System.Windows.Forms.Button btn_filterByMusicianInstrument;
         private System.Windows.Forms.TextBox textBox_FilterMusicianAge;
         private System.Windows.Forms.TextBox textBox_FilterMusicianName;
-        private System.Windows.Forms.Button btn_filterByMusicianAge;
-        private System.Windows.Forms.Button btn_filterByMusicianName;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.TextBox textBox_filterEventName;
-        private System.Windows.Forms.Button btn_filterEventByEventName;
         private System.Windows.Forms.TextBox textBox_FilterMusicalStyle;
-        private System.Windows.Forms.Button btn_filterEventMusicalStyle;
-        private System.Windows.Forms.Button btn_filterEventDate;
         private System.Windows.Forms.DateTimePicker dateTimePicker_filterDate;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label13;
@@ -1007,6 +1074,12 @@ namespace MongoDB
         private System.Windows.Forms.TextBox textBox_MusicianIns;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_AssignMusicanToEvent;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
     }
 }
 
