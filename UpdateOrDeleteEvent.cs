@@ -92,7 +92,7 @@ namespace MongoDB
             DateTime eventDateTimeUtc = eventDateTimeLocal.ToUniversalTime(); // Convert to UTC
 
             // Show a message box to confirm the update
-            DialogResult result = MessageBox.Show("Are you sure you want to update the event on: " + eventDateTimeLocal + "?",
+            DialogResult result = MessageBox.Show("Are you sure you want to update the event on: " + eventDateTimeUtc + "?",
                                                   "Confirm Update",
                                                   MessageBoxButtons.YesNo,
                                                   MessageBoxIcon.Question);

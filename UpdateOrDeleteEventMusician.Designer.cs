@@ -1,7 +1,7 @@
 ﻿
 namespace MongoDB
 {
-    partial class btn_UpdateOrDeleteEventMusician
+    partial class UpdateOrDeleteEventMusician
     {
         /// <summary>
         /// Required designer variable.
@@ -48,55 +48,58 @@ namespace MongoDB
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridView_AllAssignMusicianToEvent);
-            this.groupBox1.Location = new System.Drawing.Point(26, 158);
+            this.groupBox1.Location = new System.Drawing.Point(26, 180);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(332, 339);
+            this.groupBox1.Size = new System.Drawing.Size(374, 424);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Assigned Musician";
+            this.groupBox1.Text = "Assigned to the event";
             // 
             // dataGridView_AllAssignMusicianToEvent
             // 
             this.dataGridView_AllAssignMusicianToEvent.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridView_AllAssignMusicianToEvent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_AllAssignMusicianToEvent.Location = new System.Drawing.Point(3, 17);
+            this.dataGridView_AllAssignMusicianToEvent.Location = new System.Drawing.Point(3, 21);
+            this.dataGridView_AllAssignMusicianToEvent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView_AllAssignMusicianToEvent.Name = "dataGridView_AllAssignMusicianToEvent";
             this.dataGridView_AllAssignMusicianToEvent.RowHeadersWidth = 51;
             this.dataGridView_AllAssignMusicianToEvent.RowTemplate.Height = 24;
-            this.dataGridView_AllAssignMusicianToEvent.Size = new System.Drawing.Size(326, 320);
+            this.dataGridView_AllAssignMusicianToEvent.Size = new System.Drawing.Size(367, 400);
             this.dataGridView_AllAssignMusicianToEvent.TabIndex = 0;
             // 
             // btn_DeleteMusicianFromList
             // 
-            this.btn_DeleteMusicianFromList.Location = new System.Drawing.Point(92, 515);
+            this.btn_DeleteMusicianFromList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btn_DeleteMusicianFromList.Location = new System.Drawing.Point(104, 627);
             this.btn_DeleteMusicianFromList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_DeleteMusicianFromList.Name = "btn_DeleteMusicianFromList";
-            this.btn_DeleteMusicianFromList.Size = new System.Drawing.Size(136, 57);
+            this.btn_DeleteMusicianFromList.Size = new System.Drawing.Size(199, 71);
             this.btn_DeleteMusicianFromList.TabIndex = 1;
-            this.btn_DeleteMusicianFromList.Text = "DELETE";
-            this.btn_DeleteMusicianFromList.UseVisualStyleBackColor = true;
+            this.btn_DeleteMusicianFromList.Text = "Delete Musician(s) from event";
+            this.btn_DeleteMusicianFromList.UseVisualStyleBackColor = false;
             this.btn_DeleteMusicianFromList.Click += new System.EventHandler(this.btn_DeleteMusicianFromList_Click);
             // 
             // btn_UpdateMusicianList
             // 
-            this.btn_UpdateMusicianList.Location = new System.Drawing.Point(459, 515);
+            this.btn_UpdateMusicianList.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btn_UpdateMusicianList.Location = new System.Drawing.Point(506, 627);
             this.btn_UpdateMusicianList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_UpdateMusicianList.Name = "btn_UpdateMusicianList";
-            this.btn_UpdateMusicianList.Size = new System.Drawing.Size(136, 57);
+            this.btn_UpdateMusicianList.Size = new System.Drawing.Size(192, 71);
             this.btn_UpdateMusicianList.TabIndex = 2;
-            this.btn_UpdateMusicianList.Text = "UPDATE";
-            this.btn_UpdateMusicianList.UseVisualStyleBackColor = true;
+            this.btn_UpdateMusicianList.Text = "Add musician(s) to event";
+            this.btn_UpdateMusicianList.UseVisualStyleBackColor = false;
             this.btn_UpdateMusicianList.Click += new System.EventHandler(this.btn_UpdateMusicianList_Click);
             // 
             // textBox_UpdateEventMusicianEventDate
             // 
-            this.textBox_UpdateEventMusicianEventDate.Location = new System.Drawing.Point(212, 39);
+            this.textBox_UpdateEventMusicianEventDate.Location = new System.Drawing.Point(238, 49);
             this.textBox_UpdateEventMusicianEventDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_UpdateEventMusicianEventDate.Name = "textBox_UpdateEventMusicianEventDate";
             this.textBox_UpdateEventMusicianEventDate.ReadOnly = true;
-            this.textBox_UpdateEventMusicianEventDate.Size = new System.Drawing.Size(337, 22);
+            this.textBox_UpdateEventMusicianEventDate.Size = new System.Drawing.Size(379, 26);
             this.textBox_UpdateEventMusicianEventDate.TabIndex = 3;
             // 
             // label1
@@ -104,9 +107,9 @@ namespace MongoDB
             this.label1.AutoSize = true;
             this.label1.Cursor = System.Windows.Forms.Cursors.Cross;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label1.Location = new System.Drawing.Point(49, 94);
+            this.label1.Location = new System.Drawing.Point(55, 118);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 25);
+            this.label1.Size = new System.Drawing.Size(108, 29);
             this.label1.TabIndex = 4;
             this.label1.Text = "Event ID:";
             // 
@@ -115,49 +118,51 @@ namespace MongoDB
             this.label2.AutoSize = true;
             this.label2.Cursor = System.Windows.Forms.Cursors.Cross;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label2.Location = new System.Drawing.Point(36, 36);
+            this.label2.Location = new System.Drawing.Point(40, 45);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 25);
+            this.label2.Size = new System.Drawing.Size(135, 29);
             this.label2.TabIndex = 6;
             this.label2.Text = "Event Date:";
             // 
             // textBox_UpdateDeleteEventMusicianEventId
             // 
-            this.textBox_UpdateDeleteEventMusicianEventId.Location = new System.Drawing.Point(212, 97);
+            this.textBox_UpdateDeleteEventMusicianEventId.Location = new System.Drawing.Point(238, 121);
             this.textBox_UpdateDeleteEventMusicianEventId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_UpdateDeleteEventMusicianEventId.Name = "textBox_UpdateDeleteEventMusicianEventId";
             this.textBox_UpdateDeleteEventMusicianEventId.ReadOnly = true;
-            this.textBox_UpdateDeleteEventMusicianEventId.Size = new System.Drawing.Size(337, 22);
+            this.textBox_UpdateDeleteEventMusicianEventId.Size = new System.Drawing.Size(379, 26);
             this.textBox_UpdateDeleteEventMusicianEventId.TabIndex = 5;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dataGridView_AddMusciansToEvent);
-            this.groupBox2.Location = new System.Drawing.Point(374, 158);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.groupBox2.Location = new System.Drawing.Point(424, 180);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(332, 339);
+            this.groupBox2.Size = new System.Drawing.Size(374, 424);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Add Musician";
+            this.groupBox2.Text = "Musician to add to the event";
             // 
             // dataGridView_AddMusciansToEvent
             // 
             this.dataGridView_AddMusciansToEvent.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridView_AddMusciansToEvent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_AddMusciansToEvent.Location = new System.Drawing.Point(3, 17);
+            this.dataGridView_AddMusciansToEvent.Location = new System.Drawing.Point(3, 21);
+            this.dataGridView_AddMusciansToEvent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView_AddMusciansToEvent.Name = "dataGridView_AddMusciansToEvent";
             this.dataGridView_AddMusciansToEvent.RowHeadersWidth = 51;
             this.dataGridView_AddMusciansToEvent.RowTemplate.Height = 24;
-            this.dataGridView_AddMusciansToEvent.Size = new System.Drawing.Size(326, 320);
+            this.dataGridView_AddMusciansToEvent.Size = new System.Drawing.Size(367, 400);
             this.dataGridView_AddMusciansToEvent.TabIndex = 0;
             // 
-            // btn_UpdateOrDeleteEventMusician
+            // UpdateOrDeleteEventMusician
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(740, 674);
+            this.ClientSize = new System.Drawing.Size(878, 844);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox_UpdateDeleteEventMusicianEventId);
@@ -167,7 +172,8 @@ namespace MongoDB
             this.Controls.Add(this.btn_DeleteMusicianFromList);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "btn_UpdateOrDeleteEventMusician";
+            this.Name = "UpdateOrDeleteEventMusician";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "UpdateOrDeleteEventMusician";
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_AllAssignMusicianToEvent)).EndInit();

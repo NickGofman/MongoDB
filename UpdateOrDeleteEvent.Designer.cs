@@ -80,7 +80,7 @@ namespace MongoDB
             this.btn_UpdateEvent.Location = new System.Drawing.Point(366, 462);
             this.btn_UpdateEvent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_UpdateEvent.Name = "btn_UpdateEvent";
-            this.btn_UpdateEvent.Size = new System.Drawing.Size(213, 39);
+            this.btn_UpdateEvent.Size = new System.Drawing.Size(213, 51);
             this.btn_UpdateEvent.TabIndex = 21;
             this.btn_UpdateEvent.Text = "Update";
             this.btn_UpdateEvent.UseVisualStyleBackColor = false;
@@ -93,7 +93,7 @@ namespace MongoDB
             this.btn_DeleteEvent.Location = new System.Drawing.Point(109, 462);
             this.btn_DeleteEvent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_DeleteEvent.Name = "btn_DeleteEvent";
-            this.btn_DeleteEvent.Size = new System.Drawing.Size(213, 39);
+            this.btn_DeleteEvent.Size = new System.Drawing.Size(213, 51);
             this.btn_DeleteEvent.TabIndex = 20;
             this.btn_DeleteEvent.Text = "DELETE";
             this.btn_DeleteEvent.UseVisualStyleBackColor = false;

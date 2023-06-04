@@ -300,49 +300,12 @@ namespace MongoDB
 
             updateOrDeleteEventWin.ShowDialog();
             LoadEventsUponScreen();
+            LoadEventMusicanDetails();
         }
 
 
 
-        //private void btn_AssignMusicanToEvent_Click(object sender, EventArgs e)
-        //{
-        //    // Get the selected event and musician IDs
-        //    string eventId = dataGridView_Events.CurrentRow.Cells[0].Value.ToString();
-        //    List<string> listMusicianId = new List<string>();
-
-        //    string musicianId = dataGridView_Musician.CurrentRow.Cells[0].Value.ToString();
-        //    listMusicianId.Add(musicianId);
-        //    try
-        //    {
-
-
-        //        FilterDefinition<EventMusician> eventFilter = Builders<EventMusician>.Filter.Eq(p => p.EventID, eventId);
-        //        FilterDefinition<EventMusician> musicianAssignedFilter = Builders<EventMusician>.Filter.Eq(p => p.MusicianList, listMusicianId);
-        //        FilterDefinition<EventMusician> filter = Builders<EventMusician>.Filter.And(eventFilter, musicianAssignedFilter);
-
-        //        bool musicianAssigned = EventMusicianCollection.Find(filter).Any();
-        //        if (musicianAssigned)
-        //        {
-        //            MessageBox.Show("The selected musician is already assigned to the event.", "Assignment Exists", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //            return;
-        //        }
-        //        var eventMusician2 = EventMusicianCollection.Find(eventFilter);
-
-
-        //        // Create a new EventMusician object
-        //        EventMusician eventMusician = new EventMusician(eventId, listMusicianId);
-
-        //        // Insert the EventMusician object into the collection
-        //        EventMusicianCollection.InsertOne(eventMusician);
-        //        LoadEventMusicanDetails();
-
-        //        MessageBox.Show("Musician assigned to the event successfully.", "Assignment Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("An error occurred while assigning musician to the event:\n" + ex.Message, "Assignment Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
+        
         private void btn_AssignMusicanToEvent_Click(object sender, EventArgs e)
         {
             // Get the selected event and musician IDs
@@ -440,19 +403,7 @@ namespace MongoDB
         }
 
 
-        private void btn_FilterByMusicalType_Click(object sender, EventArgs e)
-        {
-            //string musicalType = textBox_FilterMusicalStyle.Text;
 
-            //// Filter the event details based on the musical type
-            //List<EventDetails> filteredEvents = EventMusicianCollection
-            //    .Where(eventDetails => eventDetails.MusicalStyle.Equals(musicalType, StringComparison.OrdinalIgnoreCase))
-            //    .ToList();
-
-            //// Set the filtered events as the data source for the dataGridView_AllAssignEvents control
-            //dataGridView_AllAssignEvents.DataSource = filteredEvents;
-
-        }
 
 
 
@@ -575,8 +526,12 @@ namespace MongoDB
             string eventMusicianID = dataGridView_AllAssignEvents.CurrentRow.Cells[5].Value.ToString();
             string eventMusicianDate = dataGridView_AllAssignEvents.CurrentRow.Cells[0].Value.ToString();
 
-            btn_UpdateOrDeleteEventMusician updateOrDeleteEventMusician = new btn_UpdateOrDeleteEventMusician(EventMusicianCollection, musicianCollection, eventMusicianID, eventMusicianDate);
+            UpdateOrDeleteEventMusician updateOrDeleteEventMusician = new UpdateOrDeleteEventMusician(EventMusicianCollection, musicianCollection,
+                eventMusicianID, eventMusicianDate);
             updateOrDeleteEventMusician.ShowDialog();
+            LoadEventMusicanDetails();
+
+
         }
 
 

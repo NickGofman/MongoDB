@@ -703,7 +703,7 @@ namespace MongoDB
             this.btn_FilterByMusicalType.TabIndex = 13;
             this.btn_FilterByMusicalType.Text = "Filter ONLY By Musical Type";
             this.btn_FilterByMusicalType.UseVisualStyleBackColor = true;
-            this.btn_FilterByMusicalType.Click += new System.EventHandler(this.btn_FilterByMusicalType_Click);
+           
             // 
             // textBox_FilterByMusicalType
             // 

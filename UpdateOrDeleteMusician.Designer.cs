@@ -45,9 +45,10 @@ namespace MongoDB
             // 
             this.btn_UpdateMusician.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btn_UpdateMusician.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_UpdateMusician.Location = new System.Drawing.Point(290, 362);
+            this.btn_UpdateMusician.Location = new System.Drawing.Point(326, 452);
+            this.btn_UpdateMusician.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_UpdateMusician.Name = "btn_UpdateMusician";
-            this.btn_UpdateMusician.Size = new System.Drawing.Size(189, 31);
+            this.btn_UpdateMusician.Size = new System.Drawing.Size(213, 48);
             this.btn_UpdateMusician.TabIndex = 21;
             this.btn_UpdateMusician.Text = "Update";
             this.btn_UpdateMusician.UseVisualStyleBackColor = false;
@@ -58,9 +59,10 @@ namespace MongoDB
             this.btn_DeleteMusician.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btn_DeleteMusician.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_DeleteMusician.ForeColor = System.Drawing.Color.Black;
-            this.btn_DeleteMusician.Location = new System.Drawing.Point(62, 362);
+            this.btn_DeleteMusician.Location = new System.Drawing.Point(70, 452);
+            this.btn_DeleteMusician.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_DeleteMusician.Name = "btn_DeleteMusician";
-            this.btn_DeleteMusician.Size = new System.Drawing.Size(189, 31);
+            this.btn_DeleteMusician.Size = new System.Drawing.Size(213, 48);
             this.btn_DeleteMusician.TabIndex = 20;
             this.btn_DeleteMusician.Text = "DELETE";
             this.btn_DeleteMusician.UseVisualStyleBackColor = false;
@@ -70,80 +72,84 @@ namespace MongoDB
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(10, 260);
+            this.label4.Location = new System.Drawing.Point(11, 325);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(225, 29);
+            this.label4.Size = new System.Drawing.Size(276, 32);
             this.label4.TabIndex = 19;
-            this.label4.Text = "Musician Instrument";
+            this.label4.Text = "Musician Instrument:";
             // 
             // textBox_MusicianNameUpdate
             // 
             this.textBox_MusicianNameUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_MusicianNameUpdate.Location = new System.Drawing.Point(203, 114);
+            this.textBox_MusicianNameUpdate.Location = new System.Drawing.Point(236, 142);
+            this.textBox_MusicianNameUpdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_MusicianNameUpdate.Name = "textBox_MusicianNameUpdate";
-            this.textBox_MusicianNameUpdate.Size = new System.Drawing.Size(319, 34);
+            this.textBox_MusicianNameUpdate.Size = new System.Drawing.Size(358, 39);
             this.textBox_MusicianNameUpdate.TabIndex = 18;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 114);
+            this.label3.Location = new System.Drawing.Point(14, 142);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(185, 29);
+            this.label3.Size = new System.Drawing.Size(218, 32);
             this.label3.TabIndex = 17;
             this.label3.Text = "Musician Name:";
             // 
             // textBox_MusicianAgeUpdate
             // 
             this.textBox_MusicianAgeUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_MusicianAgeUpdate.Location = new System.Drawing.Point(203, 186);
+            this.textBox_MusicianAgeUpdate.Location = new System.Drawing.Point(236, 232);
+            this.textBox_MusicianAgeUpdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_MusicianAgeUpdate.Name = "textBox_MusicianAgeUpdate";
-            this.textBox_MusicianAgeUpdate.Size = new System.Drawing.Size(319, 34);
+            this.textBox_MusicianAgeUpdate.Size = new System.Drawing.Size(358, 39);
             this.textBox_MusicianAgeUpdate.TabIndex = 16;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 186);
+            this.label2.Location = new System.Drawing.Point(14, 232);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(163, 29);
+            this.label2.Size = new System.Drawing.Size(194, 32);
             this.label2.TabIndex = 15;
             this.label2.Text = "Musician Age:";
             // 
             // textBox_MusicianID
             // 
             this.textBox_MusicianID.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_MusicianID.Location = new System.Drawing.Point(203, 41);
+            this.textBox_MusicianID.Location = new System.Drawing.Point(228, 51);
+            this.textBox_MusicianID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_MusicianID.Name = "textBox_MusicianID";
             this.textBox_MusicianID.ReadOnly = true;
-            this.textBox_MusicianID.Size = new System.Drawing.Size(319, 34);
+            this.textBox_MusicianID.Size = new System.Drawing.Size(358, 39);
             this.textBox_MusicianID.TabIndex = 14;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 41);
+            this.label1.Location = new System.Drawing.Point(14, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 29);
+            this.label1.Size = new System.Drawing.Size(170, 32);
             this.label1.TabIndex = 13;
             this.label1.Text = "Musician ID:";
             // 
             // textBox_MusicianInstrumentUpdate
             // 
             this.textBox_MusicianInstrumentUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_MusicianInstrumentUpdate.Location = new System.Drawing.Point(241, 260);
+            this.textBox_MusicianInstrumentUpdate.Location = new System.Drawing.Point(278, 325);
+            this.textBox_MusicianInstrumentUpdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_MusicianInstrumentUpdate.Name = "textBox_MusicianInstrumentUpdate";
-            this.textBox_MusicianInstrumentUpdate.Size = new System.Drawing.Size(281, 34);
+            this.textBox_MusicianInstrumentUpdate.Size = new System.Drawing.Size(316, 39);
             this.textBox_MusicianInstrumentUpdate.TabIndex = 22;
             // 
             // UpdateOrDeleteMusician
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(539, 450);
+            this.ClientSize = new System.Drawing.Size(606, 562);
             this.Controls.Add(this.textBox_MusicianInstrumentUpdate);
             this.Controls.Add(this.btn_UpdateMusician);
             this.Controls.Add(this.btn_DeleteMusician);
@@ -154,6 +160,7 @@ namespace MongoDB
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox_MusicianID);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UpdateOrDeleteMusician";
             this.Text = "UpdateOrDeleteMusician";
             this.ResumeLayout(false);

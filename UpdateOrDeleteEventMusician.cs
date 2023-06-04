@@ -12,17 +12,17 @@ using MongoDB.Models;
 
 namespace MongoDB
 {
-    public partial class btn_UpdateOrDeleteEventMusician : Form
+    public partial class UpdateOrDeleteEventMusician : Form
     {
         IMongoCollection<EventMusician> eventMusicianCollection;
         IMongoCollection<Musician> musicianCollection;
 
-        public btn_UpdateOrDeleteEventMusician()
+        public UpdateOrDeleteEventMusician()
         {
             InitializeComponent();
         }
 
-        public btn_UpdateOrDeleteEventMusician(IMongoCollection<EventMusician> eventMusicianCollection, IMongoCollection<Musician> musicianCollection, string eventMusicianID, string eventMusicianDate)
+        public UpdateOrDeleteEventMusician(IMongoCollection<EventMusician> eventMusicianCollection, IMongoCollection<Musician> musicianCollection, string eventMusicianID, string eventMusicianDate)
         {
             InitializeComponent();
             this.eventMusicianCollection = eventMusicianCollection;
@@ -52,8 +52,6 @@ namespace MongoDB
                     // Update the event musician document in the collection
                     eventMusicianCollection.ReplaceOne(m => m.EventMusicianID == musician.EventMusicianID, musician);
                 }
-
-                MessageBox.Show($"Musician with ID {musicianID} removed from the EventMusician list successfully.", "Deletion Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
