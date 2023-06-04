@@ -165,6 +165,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\AssignedMusicianView.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\EventDetails.cs" />
     <Compile Include="Models\EventMusician.cs" />

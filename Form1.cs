@@ -572,11 +572,11 @@ namespace MongoDB
 
         private void dataGridView_AllAssignEvents_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            UpdateOrDeleteEventMusician updateOrDeleteEventMusician = new UpdateOrDeleteEventMusician(EventMusicianCollection);
-            updateOrDeleteEventMusician.textBox_UpdateDeleteEventMusicianEventId.Text= dataGridView_AllAssignEvents.CurrentRow.Cells[5].Value.ToString();
-            updateOrDeleteEventMusician.textBox_UpdateEventMusicianEventDate.Text= dataGridView_AllAssignEvents.CurrentRow.Cells[0].Value.ToString();
-            updateOrDeleteEventMusician.ShowDialog();
+            string eventMusicianID = dataGridView_AllAssignEvents.CurrentRow.Cells[5].Value.ToString();
+            string eventMusicianDate = dataGridView_AllAssignEvents.CurrentRow.Cells[0].Value.ToString();
 
+            btn_UpdateOrDeleteEventMusician updateOrDeleteEventMusician = new btn_UpdateOrDeleteEventMusician(EventMusicianCollection, musicianCollection, eventMusicianID, eventMusicianDate);
+            updateOrDeleteEventMusician.ShowDialog();
         }
 
 
