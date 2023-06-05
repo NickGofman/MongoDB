@@ -139,7 +139,12 @@ namespace MongoDB
             List<Event> events;
             events = eventCollection.Aggregate().ToList();
             dataGridView_Events.DataSource = events;
+
             dataGridView_Events.Columns[0].Visible = false;
+      
+            dataGridView_Events.Columns[2].HeaderText = "Event Name";
+            dataGridView_Events.Columns[3].HeaderText = "Musical Style";
+
             dataGridView_Events.RowHeadersVisible = false;
 
 
@@ -221,7 +226,7 @@ namespace MongoDB
             bool eventExists = eventCollection.Find(filter).Any();
             if (eventExists)
             {
-                MessageBox.Show("Event details: " + eventDetails.ToString() + "\nEvent Already Exists on this date", "Event Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Event details: " + eventDetails.ToString() + "\nEvent Already Exists on this date", "Event Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

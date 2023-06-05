@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MongoDB.Models;
 using MongoDB.Driver;
+using System.Text.RegularExpressions;
+
 namespace MongoDB
 {
     public partial class UpdateOrDeleteMusician : Form
@@ -34,7 +36,7 @@ namespace MongoDB
 
 
             // Show a message box to confirm the deletion
-            DialogResult result = MessageBox.Show("Are you sure you want to delete the musician" + musicianName + " with ID: " + musicianId + "?",
+            DialogResult result = MessageBox.Show("Are you sure you want to delete the musician" + musicianName + "?",
                                                   "Confirm Deletion",
                                                   MessageBoxButtons.YesNo,
                                                   MessageBoxIcon.Question);
@@ -64,8 +66,7 @@ namespace MongoDB
                         }
                     }
 
-                   // DeleteResult eventMusicianDeleteResult = eventMusicianCollection.DeleteOne(eventMusicianFilter);
-                    //delete from table
+         
 
                     if (musicianDeleteResult.DeletedCount == 1 )
                     {
@@ -79,7 +80,7 @@ namespace MongoDB
                     }
                     else
                     {
-                        MessageBox.Show("Musician " + musicianName + " delete failed\n" + musicianId,
+                        MessageBox.Show("Musician " + musicianName + " delete failed\n" ,
                                         "Musician Delete Failed",
                                         MessageBoxButtons.OK,
                                         MessageBoxIcon.Error);
@@ -87,7 +88,7 @@ namespace MongoDB
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Musician delete failed\n" + musicianId +
+                    MessageBox.Show("Musician delete failed\n" + musicianName +
                                     "we got the following exception:\n" + ex.Message,
                                     "Musician Delete Failed",
                                     MessageBoxButtons.OK,
@@ -105,10 +106,22 @@ namespace MongoDB
             string musicianInstrument = textBox_MusicianInstrumentUpdate.Text;
 
             // Show a message box to confirm the update
-            DialogResult result = MessageBox.Show("Are you sure you want to update the musician " + musicianName + " with ID: " + musicianId + "?",
+            DialogResult result = MessageBox.Show("Are you sure you want to update the musician " + musicianName  + "?",
                                                   "Confirm Update",
                                                   MessageBoxButtons.YesNo,
                                                   MessageBoxIcon.Question);
+            if (musicianInstrument == "" || musicianName == "")
+            {
+                MessageBox.Show("Inputes shouldn't be empty.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                return; 
+            }
+            if (!Regex.IsMatch(musicianAge, @"^\d+$"))
+            {
+                MessageBox.Show("Musician Age must be a number.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                return; // age must be a number
+            }
 
             if (result == DialogResult.Yes)
             {
@@ -126,7 +139,7 @@ namespace MongoDB
 
                     if (updateResult.ModifiedCount == 1)
                     {
-                        MessageBox.Show("Musician " + musicianName + " with ID: " + musicianId + " updated successfully",
+                        MessageBox.Show("Musician " + musicianName +  " updated successfully",
                                         "Musician Updated",
                                         MessageBoxButtons.OK,
                                         MessageBoxIcon.Information);
@@ -134,7 +147,7 @@ namespace MongoDB
                     }
                     else
                     {
-                        MessageBox.Show("Musician update failed\n" + musicianId,
+                        MessageBox.Show("Musician update failed\n" + musicianName,
                                         "Musician Update Failed",
                                         MessageBoxButtons.OK,
                                         MessageBoxIcon.Error);
@@ -142,7 +155,7 @@ namespace MongoDB
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Musician update failed\n" + musicianId +
+                    MessageBox.Show("Musician update failed\n" + musicianName +
                                     "we got the following exception:\n" + ex.Message,
                                     "Musician Update Failed",
                                     MessageBoxButtons.OK,
