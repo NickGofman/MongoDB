@@ -21,7 +21,6 @@ namespace MongoDB.Models
 
         [BsonElement("musical_style"), BsonRepresentation(MongoDB.Bson.BsonType.String)]
         public string MusicalStyle { get; set; }
-        public List<string> MusicianIDs { get; set; } // List of musician IDs associated with the event
 
         public Event( DateTime date, string eventName, string musicalStyle)
         {
@@ -32,7 +31,9 @@ namespace MongoDB.Models
         }
         public override string ToString()
         {
-            return "Event Name: " + EventName + " Date: " + Date + " Musical Style:" + MusicalStyle;
+            string date = Date.ToString("dd/MM/yyyy");
+
+            return "Event Name: " + EventName + " Date: " + date + " Musical Style:" + MusicalStyle;
         }
     }
 }

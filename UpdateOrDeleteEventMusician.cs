@@ -16,6 +16,7 @@ namespace MongoDB
     {
         IMongoCollection<EventMusician> eventMusicianCollection;
         IMongoCollection<Musician> musicianCollection;
+        string eventMusicianID;
 
         public UpdateOrDeleteEventMusician()
         {
@@ -27,10 +28,10 @@ namespace MongoDB
             InitializeComponent();
             this.eventMusicianCollection = eventMusicianCollection;
             this.musicianCollection = musicianCollection;
-
+            this.eventMusicianID = eventMusicianID;
             // Set the text box values
-            textBox_UpdateDeleteEventMusicianEventId.Text = eventMusicianID;
-            textBox_UpdateEventMusicianEventDate.Text = eventMusicianDate;
+
+            label_UpdateEventMusicianEventDate.Text = eventMusicianDate;
 
             // Load the data
             LoadAssignedMusicians();
@@ -42,7 +43,7 @@ namespace MongoDB
             try
             {
                 // Retrieve the event musicians that contain the musician ID in the MusicianList
-                var musiciansToUpdate = eventMusicianCollection.Find(m => m.MusicianList.Contains(musicianID)).ToList();
+                var musiciansToUpdate = eventMusicianCollection.Find(m => m.MusicianList.Contains(musicianID) && m.EventMusicianID == eventMusicianID).ToList();
 
                 foreach (var musician in musiciansToUpdate)
                 {
@@ -63,8 +64,9 @@ namespace MongoDB
         {
             try
             {
-                // Retrieve the list of assigned musicians from the EventMusician collection
+                // Retrieve the list of assigned musicians for the current eventMusicianID
                 var assignedMusicians = eventMusicianCollection.AsQueryable()
+                    .Where(em => em.EventMusicianID == eventMusicianID)
                     .SelectMany(em => em.MusicianList)
                     .Distinct()
                     .ToList();
@@ -89,6 +91,12 @@ namespace MongoDB
                 // Set the DataTable as the data source for the DataGridView
                 dataGridView_AllAssignMusicianToEvent.DataSource = dataTable;
 
+                dataGridView_AllAssignMusicianToEvent.Columns[1].HeaderText = "Musician Name";
+                dataGridView_AllAssignMusicianToEvent.Columns[2].HeaderText = "Instrument";
+
+                dataGridView_AllAssignMusicianToEvent.Columns[3].Visible = false;
+
+                dataGridView_AllAssignMusicianToEvent.RowHeadersVisible = false;
                 // Disable cell value incrementing for the "Select" column
                 dataGridView_AllAssignMusicianToEvent.Columns["Select"].DefaultCellStyle.NullValue = false;
             }
@@ -139,6 +147,12 @@ namespace MongoDB
 
                 // Set the DataTable as the data source for the DataGridView
                 dataGridView_AddMusciansToEvent.DataSource = dataTable;
+                dataGridView_AddMusciansToEvent.Columns[1].HeaderText = "Musician Name";
+                dataGridView_AddMusciansToEvent.Columns[2].HeaderText = "Instrument";
+
+                dataGridView_AddMusciansToEvent.Columns[3].Visible = false;
+
+                dataGridView_AddMusciansToEvent.RowHeadersVisible = false;
 
                 // Disable cell value incrementing for the "Select" column
                 dataGridView_AddMusciansToEvent.Columns["Select"].DefaultCellStyle.NullValue = false;
@@ -150,11 +164,11 @@ namespace MongoDB
         }
 
 
+
         private void btn_DeleteMusicianFromList_Click(object sender, EventArgs e)
         {
             // Get the selected musician IDs and names from the DataGridView
             List<string> selectedMusicianIDs = new List<string>();
-            List<string> selectedMusicianNames = new List<string>();
 
             foreach (DataGridViewRow row in dataGridView_AllAssignMusicianToEvent.Rows)
             {
@@ -162,12 +176,16 @@ namespace MongoDB
                 if (checkboxCell.Value != null && (bool)checkboxCell.Value)
                 {
                     string musicianID = row.Cells["MusicianID"].Value.ToString();
-                    string musicianName = row.Cells["MusicianName"].Value.ToString();
 
                     selectedMusicianIDs.Add(musicianID);
-                    selectedMusicianNames.Add(musicianName);
                 }
             }
+            if (selectedMusicianIDs.Count == 0)
+            {
+                MessageBox.Show("You must select a Musician to delete from event", "Delete Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            else { 
 
             // Delete the selected musicians
             foreach (string musicianID in selectedMusicianIDs)
@@ -179,11 +197,11 @@ namespace MongoDB
             LoadAssignedMusicians();
 
             // Refresh the list of available musicians
-            string eventMusicianID = textBox_UpdateDeleteEventMusicianEventId.Text;
             LoadAvailableMusicians(eventMusicianID);
 
             // Display a message
             MessageBox.Show($"Deleted {selectedMusicianIDs.Count} musician(s) from the EventMusician list.", "Deletion Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btn_UpdateMusicianList_Click(object sender, EventArgs e)
@@ -200,12 +218,18 @@ namespace MongoDB
                     selectedMusicianIDs.Add(musicianID);
                 }
             }
-
-            // Retrieve the event musician ID
-            string eventMusicianID = textBox_UpdateDeleteEventMusicianEventId.Text;
-
-            try
+            if (selectedMusicianIDs.Count == 0)
             {
+
+                MessageBox.Show("You must select a Musician to assign to event", "Update Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else {
+
+
+                // Retrieve the event musician ID
+
+                try
+                {
                 // Find the event musician document in the collection
                 var eventMusician = eventMusicianCollection.Find(em => em.EventMusicianID == eventMusicianID).FirstOrDefault();
 
@@ -232,8 +256,9 @@ namespace MongoDB
             // Refresh the list of musicians
             LoadAssignedMusicians();
             LoadAvailableMusicians(eventMusicianID);
+            }
         }
 
-
+   
     }
 }

@@ -54,15 +54,20 @@ namespace MongoDB
                     musicianAssignToEvents = eventMusicianCollection.Aggregate().ToList();
                     foreach (EventMusician eventMusician in musicianAssignToEvents)
                     {
-                        foreach (string musicianID in eventMusician.MusicianList)
+                        var musicianList = eventMusician.MusicianList;
+                        if (musicianList.Contains(musicianId))
                         {
-                            eventMusicianFilter = Builders<EventMusician>.Filter.Eq(musicianID, musicianId);
+                            musicianList.Remove(musicianId);
+                            eventMusicianFilter = Builders<EventMusician>.Filter.Eq(p => p.EventMusicianID, eventMusician.EventMusicianID);
+                            var update = Builders<EventMusician>.Update.Set(p => p.MusicianList, musicianList);
+                            eventMusicianCollection.UpdateOne(eventMusicianFilter, update);
                         }
                     }
-                    DeleteResult eventMusicianDeleteResult = eventMusicianCollection.DeleteMany(eventMusicianFilter);
+
+                   // DeleteResult eventMusicianDeleteResult = eventMusicianCollection.DeleteOne(eventMusicianFilter);
                     //delete from table
 
-                    if (musicianDeleteResult.DeletedCount == 1 && eventMusicianDeleteResult.DeletedCount > 0)
+                    if (musicianDeleteResult.DeletedCount == 1 )
                     {
                         MessageBox.Show("Musician " + musicianName + " with ID: " + musicianId + " deleted successfully",
                                         "Musician Deleted",

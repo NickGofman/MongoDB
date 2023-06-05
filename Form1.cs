@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 
 namespace MongoDB
@@ -40,6 +41,8 @@ namespace MongoDB
             MongoClient mongoClient;
             dateTimePicker_EventTime.Format = DateTimePickerFormat.Time;
             dateTimePicker_EventTime.ShowUpDown = true;
+            dateTimePicker_FilterByTime.Format = DateTimePickerFormat.Time;
+            dateTimePicker_FilterByTime.ShowUpDown = true;
             //disable creating events in the past
             dateTimePicker_EventDate.MinDate = DateTime.Now;
 
@@ -100,9 +103,10 @@ namespace MongoDB
                             eventDetails.Date,
                             eventDetails?.EventName,
                             eventDetails?.MusicalStyle,
-                            musicianDetails?.Name,
-                            musicianDetails?.Instrument,
-                            eventMusician.EventMusicianID
+                             
+                            eventMusician.EventMusicianID, 
+                            eventMusician.MusicianList.Count
+
                         );
                         // Check if eventDetails and musicianDetails are null
 
@@ -112,9 +116,20 @@ namespace MongoDB
 
                 }
             }
-
+            //group all the assign muscian in one row
+            List<EventDetails> uniqueEventDetailsList = eventDetailsList.GroupBy(e => e.eventDate).Select(d => d.First()).ToList();
             // Set the eventDetailsList as the data source for the dataGridView_AllAssignEvents control
-            dataGridView_AllAssignEvents.DataSource = eventDetailsList;
+            dataGridView_AllAssignEvents.DataSource = uniqueEventDetailsList;
+
+            dataGridView_AllAssignEvents.Columns[0].HeaderText = "Date";
+            dataGridView_AllAssignEvents.Columns[1].HeaderText = "Event Name";
+            dataGridView_AllAssignEvents.Columns[2].HeaderText = "Musical Style";
+            dataGridView_AllAssignEvents.Columns[3].HeaderText = "Assigned Musician(s)";
+            //dataGridView_AllAssignEvents.Columns[3].Visible = false;
+            //dataGridView_AllAssignEvents.Columns[4].Visible = false;
+            dataGridView_AllAssignEvents.Columns[4].Visible = false;
+
+            dataGridView_AllAssignEvents.RowHeadersVisible = false;
         }
 
 
@@ -124,6 +139,10 @@ namespace MongoDB
             List<Event> events;
             events = eventCollection.Aggregate().ToList();
             dataGridView_Events.DataSource = events;
+            dataGridView_Events.Columns[0].Visible = false;
+            dataGridView_Events.RowHeadersVisible = false;
+
+
         }
 
         public void LoadMusiciansUponScreen()
@@ -131,7 +150,8 @@ namespace MongoDB
             List<Musician> musicians;
             musicians = musicianCollection.Aggregate().ToList();
             dataGridView_Musician.DataSource = musicians;
-
+            dataGridView_Musician.Columns[0].Visible = false;
+            dataGridView_Musician.RowHeadersVisible = false;
         }
 
 
@@ -140,7 +160,12 @@ namespace MongoDB
         {
             // Get musician details from the screen
             Musician musician = GetMusicianDetailsFromScreen();
+            if (!Regex.IsMatch(musician.Age, @"^\d+$"))
+            {
+                MessageBox.Show("Musician Age must be a number.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
+                return; // age must be a number
+            }
             // Validate the input fields
             if (string.IsNullOrWhiteSpace(musician.Name) || string.IsNullOrWhiteSpace(musician.Age) || string.IsNullOrWhiteSpace(musician.Instrument))
             {
@@ -202,11 +227,13 @@ namespace MongoDB
 
             try
             {
+            
+
                 // Insert the event into the collection
                 eventCollection.InsertOne(eventDetails);
 
                 // Refresh the collection view
-                LoadEventsUponScreen(); ;
+                LoadEventsUponScreen();
 
                 MessageBox.Show("Event details: " + eventDetails.ToString() + "\nInserted successfully", "Event Inserted", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -214,6 +241,7 @@ namespace MongoDB
             {
                 MessageBox.Show("The following error occurred:\n" + ex.Message, "Event NOT Inserted", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
 
@@ -235,9 +263,14 @@ namespace MongoDB
             string eventName = textBox_EventName.Text.ToLower();
             string musicalType = textBox_MusicalType.Text.ToLower();
 
+            Event newEevnt = new Event(dateTime, eventName, musicalType);
+            // Get the local time zone offset
+            TimeSpan timeZoneOffset = TimeZoneInfo.Local.GetUtcOffset(DateTime.UtcNow);
 
+            // Apply the offset to the event date and time
+            newEevnt.Date = newEevnt.Date.Add(timeZoneOffset);
 
-            return new Event(dateTime, eventName, musicalType);
+            return newEevnt;
         }
 
 
@@ -308,10 +341,18 @@ namespace MongoDB
         
         private void btn_AssignMusicanToEvent_Click(object sender, EventArgs e)
         {
-            // Get the selected event and musician IDs
-            string eventId = dataGridView_Events.CurrentRow.Cells[0].Value.ToString();
-            string musicianId = dataGridView_Musician.CurrentRow.Cells[0].Value.ToString();
-            try
+       
+            if (dataGridView_Events.CurrentRow ==null || dataGridView_Musician.CurrentRow == null)
+            {
+                MessageBox.Show("You must Select a musician and Event from the list.", "Assignment Exists", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            else {
+                // Get the selected event and musician IDs
+                string eventId = dataGridView_Events.CurrentRow.Cells[0].Value.ToString();
+                string musicianId = dataGridView_Musician.CurrentRow.Cells[0].Value.ToString();
+
+                try
             {
                 // Retrieve the existing EventMusician object from the collection based on the eventId
                 EventMusician existingEventMusician = EventMusicianCollection.Find(p => p.EventID == eventId).FirstOrDefault();
@@ -357,6 +398,7 @@ namespace MongoDB
             {
                 MessageBox.Show("An error occurred while assigning musician to the event:\n" + ex.Message, "Assignment Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            }
         }
 
         private void dataGridView_Musician_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -381,6 +423,7 @@ namespace MongoDB
 
             // Reload the musicians upon screen after the dialog is closed
             LoadMusiciansUponScreen();
+            LoadEventMusicanDetails();
 
 
         }
@@ -403,10 +446,7 @@ namespace MongoDB
         }
 
 
-
-
-
-
+      
         private void btn_refreshAllAssignEvents_Click(object sender, EventArgs e)
         {
             try
@@ -429,6 +469,9 @@ namespace MongoDB
         {
             List<Event> results;
             string date = dateTimePicker_filterDate.Text;
+           
+            
+         
 
             // Define the format of the input string (including Hebrew day and month names)
             string format = "dddd d MMMM yyyy";
@@ -447,83 +490,118 @@ namespace MongoDB
 
             // Perform the filter query
             results = eventCollection.Find(filter).ToList();
-
-            // Present the results on the grid
-            dataGridView_Events.DataSource = results;
+           
+            
+                // Present the results on the grid
+                dataGridView_Events.DataSource = results;
+            
+            
         }
 
         private void textBox_FilterMusicalStyle_TextChanged(object sender, EventArgs e)
         {
             List<Event> results;
             string musicalStyle = textBox_FilterMusicalStyle.Text;
-            //build the filter ('WHERE') filter by Event musicalStyle, and add reference
-            FilterDefinition<Event> filter =
-                Builders<Event>.Filter.Eq(p => p.MusicalStyle, musicalStyle);
-            //preform the filter - make the filter query
-            results = eventCollection.Find(filter).ToList();
-            //present the resukts upon the grid
-            dataGridView_Events.DataSource = results;
+            if (musicalStyle.Equals(""))
+            {
+                LoadMusiciansUponScreen();
+            }
+            {
+                //build the filter ('WHERE') filter by Event musicalStyle, and add reference
+                FilterDefinition<Event> filter =
+                    Builders<Event>.Filter.Where(p => p.MusicalStyle.Contains(musicalStyle));
+                //preform the filter - make the filter query
+                results = eventCollection.Find(filter).ToList();
+                //present the resukts upon the grid
+                dataGridView_Events.DataSource = results;
+            }
         }
 
         private void textBox_filterEventName_TextChanged(object sender, EventArgs e)
         {
             List<Event> results;
             string eventName = textBox_filterEventName.Text;
-            if (eventName.Length == 0)
+            if (eventName.Equals(""))
             {
                 LoadEventsUponScreen();
             }
-            //build the filter ('WHERE') filter by Event EventName, and add reference
-            FilterDefinition<Event> filter =
-                Builders<Event>.Filter.Eq(p => p.EventName, eventName);
-            //preform the filter - make the filter query
-            results = eventCollection.Find(filter).ToList();
-            //present the resukts upon the grid
-            dataGridView_Events.DataSource = results;
+            else
+            {
+                //build the filter ('WHERE') filter by Event EventName, and add reference
+                FilterDefinition<Event> filter =
+                    Builders<Event>.Filter.Where(p => p.EventName.Contains(eventName));
+                //preform the filter - make the filter query
+                results = eventCollection.Find(filter).ToList();
+                //present the resukts upon the grid
+                dataGridView_Events.DataSource = results;
+            }
         }
 
         private void textBox_FilterMusicianName_TextChanged(object sender, EventArgs e)
         {
             List<Musician> results;
             string name = textBox_FilterMusicianName.Text;
-            //build the filter ('WHERE') filter by Musician age, and add reference
-            FilterDefinition<Musician> filter =
-                Builders<Musician>.Filter.Eq(p => p.Name, name);
-            //preform the filter - make the filter query
-            results = musicianCollection.Find(filter).ToList();
-            //present the resukts upon the grid
-            dataGridView_Musician.DataSource = results;
+            if (name.Equals(""))
+            {
+                LoadMusiciansUponScreen();
+            }
+            else
+            {
+                //build the filter ('WHERE') filter by Musician age, and add reference
+                FilterDefinition<Musician> filter =
+                Builders<Musician>.Filter.Where(p => p.Name.Contains(name));
+                //preform the filter - make the filter query
+                results = musicianCollection.Find(filter).ToList();
+                //present the resukts upon the grid
+                dataGridView_Musician.DataSource = results;
+            }
         }
 
         private void textBox_FilterMusicianAge_TextChanged(object sender, EventArgs e)
         {
+
             List<Musician> results;
             string age = textBox_FilterMusicianAge.Text;
-            //build the filter ('WHERE') filter by Musician age, and add reference
-            FilterDefinition<Musician> filter =
+            if (age.Equals(""))
+            {
+                LoadMusiciansUponScreen();
+            }
+            else
+            {
+                //build the filter ('WHERE') filter by Musician age, and add reference
+                FilterDefinition<Musician> filter =
                 Builders<Musician>.Filter.Eq(p => p.Age, age);
-            //preform the filter - make the filter query
-            results = musicianCollection.Find(filter).ToList();
-            //present the resukts upon the grid
-            dataGridView_Musician.DataSource = results;
+                //preform the filter - make the filter query
+                results = musicianCollection.Find(filter).ToList();
+                //present the resukts upon the grid
+                dataGridView_Musician.DataSource = results;
+            }
         }
 
         private void textBox_FilterMusicianInstrument_TextChanged(object sender, EventArgs e)
         {
             List<Musician> results;
             string instrument = textBox_FilterMusicianInstrument.Text;
+            if (instrument.Equals(""))
+            {
+                LoadMusiciansUponScreen();
+            }
+            else { 
+            
+            
             //build the filter ('WHERE') filter by Musician instrument, and add reference
             FilterDefinition<Musician> filter =
-                Builders<Musician>.Filter.Eq(p => p.Instrument, instrument);
+                Builders<Musician>.Filter.Where(p => p.Instrument.Contains(instrument));
             //preform the filter - make the filter query
             results = musicianCollection.Find(filter).ToList();
             //present the resukts upon the grid
             dataGridView_Musician.DataSource = results;
+            }
         }
 
         private void dataGridView_AllAssignEvents_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            string eventMusicianID = dataGridView_AllAssignEvents.CurrentRow.Cells[5].Value.ToString();
+            string eventMusicianID = dataGridView_AllAssignEvents.CurrentRow.Cells[4].Value.ToString();
             string eventMusicianDate = dataGridView_AllAssignEvents.CurrentRow.Cells[0].Value.ToString();
 
             UpdateOrDeleteEventMusician updateOrDeleteEventMusician = new UpdateOrDeleteEventMusician(EventMusicianCollection, musicianCollection,
@@ -534,6 +612,34 @@ namespace MongoDB
 
         }
 
+      
 
+        private void dateTimePicker_FilterByTime_ValueChanged(object sender, EventArgs e)
+        {
+            List<Event> results;
+            string time = dateTimePicker_FilterByTime.Text;
+
+            // Define the format of the input time string
+            string timeFormat = "HH:mm:ss";
+
+            // Parse the time string into a DateTime object
+            DateTime timeParse = DateTime.ParseExact(time, timeFormat, CultureInfo.InvariantCulture);
+
+            // Get the selected time value
+            TimeSpan selectedTime = timeParse.TimeOfDay;
+
+            // Build the filter for Event time range
+            FilterDefinition<Event> filter = Builders<Event>.Filter.Empty; // Start with an empty filter
+
+            // Perform the filter query and sort by time
+            results = eventCollection.Find(filter)
+                .ToList()
+                .Where(p => p.Date.TimeOfDay == selectedTime)
+                .OrderBy(p => p.Date.TimeOfDay)
+                .ToList();
+
+            // Present the results on the grid
+            dataGridView_Events.DataSource = results;
+        }
     }
 }

@@ -11,18 +11,19 @@ namespace MongoDB.Models
         public DateTime eventDate { get; set; }
         public string eventName { get; set; }
         public string eventStyle { get; set; }
-        public  string musicianName { get; set; }
-        public string musicianInstrument { get; set; }
+        public int musicianCount { get; set; }
+
         public string eventMusicianID { get; set; }
 
 
 
-        public EventDetails(DateTime eventDate, string eventName, string eventStyle, string musicianName, string musicianInstrument,string eventMusicianID) {
+        public EventDetails(DateTime eventDate, string eventName, string eventStyle,string eventMusicianID, int musicianCount) {
             this.eventDate = eventDate;
             this.eventName = eventName;
             this.eventStyle = eventStyle;
-            this.musicianName = musicianName;
-            this.musicianInstrument = musicianInstrument;
+            this.musicianCount = musicianCount;
+
+
             this.eventMusicianID = eventMusicianID;
 
 
