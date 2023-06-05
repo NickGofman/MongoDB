@@ -74,7 +74,7 @@ namespace MongoDB
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(11, 325);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(276, 32);
+            this.label4.Size = new System.Drawing.Size(275, 32);
             this.label4.TabIndex = 19;
             this.label4.Text = "Musician Instrument:";
             // 
@@ -93,7 +93,7 @@ namespace MongoDB
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(14, 142);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(218, 32);
+            this.label3.Size = new System.Drawing.Size(217, 32);
             this.label3.TabIndex = 17;
             this.label3.Text = "Musician Name:";
             // 
@@ -112,7 +112,7 @@ namespace MongoDB
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(14, 232);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(194, 32);
+            this.label2.Size = new System.Drawing.Size(193, 32);
             this.label2.TabIndex = 15;
             this.label2.Text = "Musician Age:";
             // 
@@ -132,7 +132,7 @@ namespace MongoDB
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(14, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(170, 32);
+            this.label1.Size = new System.Drawing.Size(169, 32);
             this.label1.TabIndex = 13;
             this.label1.Text = "Musician ID:";
             // 
@@ -162,6 +162,7 @@ namespace MongoDB
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UpdateOrDeleteMusician";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "UpdateOrDeleteMusician";
             this.ResumeLayout(false);
             this.PerformLayout();
