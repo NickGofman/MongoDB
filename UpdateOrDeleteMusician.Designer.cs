@@ -45,7 +45,7 @@ namespace MongoDB
             // 
             this.btn_UpdateMusician.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btn_UpdateMusician.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_UpdateMusician.Location = new System.Drawing.Point(326, 452);
+            this.btn_UpdateMusician.Location = new System.Drawing.Point(322, 405);
             this.btn_UpdateMusician.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_UpdateMusician.Name = "btn_UpdateMusician";
             this.btn_UpdateMusician.Size = new System.Drawing.Size(213, 48);
@@ -59,7 +59,7 @@ namespace MongoDB
             this.btn_DeleteMusician.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btn_DeleteMusician.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_DeleteMusician.ForeColor = System.Drawing.Color.Black;
-            this.btn_DeleteMusician.Location = new System.Drawing.Point(70, 452);
+            this.btn_DeleteMusician.Location = new System.Drawing.Point(73, 405);
             this.btn_DeleteMusician.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_DeleteMusician.Name = "btn_DeleteMusician";
             this.btn_DeleteMusician.Size = new System.Drawing.Size(213, 48);
@@ -149,7 +149,7 @@ namespace MongoDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(606, 562);
+            this.ClientSize = new System.Drawing.Size(606, 498);
             this.Controls.Add(this.textBox_MusicianInstrumentUpdate);
             this.Controls.Add(this.btn_UpdateMusician);
             this.Controls.Add(this.btn_DeleteMusician);

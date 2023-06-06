@@ -303,7 +303,7 @@ namespace MongoDB
 
                 //refresh the collection view
                 LoadEventsUponScreen();
-                MessageBox.Show("Event list upload refreshed successfully");
+                MessageBox.Show("Events list refreshed successfully", "Refresh succeed");
 
             }
             catch (Exception ex)
@@ -440,7 +440,7 @@ namespace MongoDB
 
                 //refresh the collection view
                 LoadMusiciansUponScreen();
-                MessageBox.Show("Musician list upload refreshed successfully");
+                MessageBox.Show("Musicians list refreshed successfully","Refresh succeed");
 
             }
             catch (Exception ex)
@@ -458,7 +458,7 @@ namespace MongoDB
             {
                 LoadEventMusicanDetails();
 
-                MessageBox.Show("EventMusican list upload refreshed successfully");
+                MessageBox.Show("Assigned events list refreshed successfully", "Refresh succeed");
 
             }
             catch (Exception ex)

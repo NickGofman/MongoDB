@@ -77,7 +77,7 @@ namespace MongoDB
             // 
             this.btn_UpdateEvent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btn_UpdateEvent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_UpdateEvent.Location = new System.Drawing.Point(366, 462);
+            this.btn_UpdateEvent.Location = new System.Drawing.Point(374, 372);
             this.btn_UpdateEvent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_UpdateEvent.Name = "btn_UpdateEvent";
             this.btn_UpdateEvent.Size = new System.Drawing.Size(213, 51);
@@ -90,7 +90,7 @@ namespace MongoDB
             // 
             this.btn_DeleteEvent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btn_DeleteEvent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_DeleteEvent.Location = new System.Drawing.Point(109, 462);
+            this.btn_DeleteEvent.Location = new System.Drawing.Point(106, 372);
             this.btn_DeleteEvent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_DeleteEvent.Name = "btn_DeleteEvent";
             this.btn_DeleteEvent.Size = new System.Drawing.Size(213, 51);
@@ -171,7 +171,7 @@ namespace MongoDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(685, 562);
+            this.ClientSize = new System.Drawing.Size(685, 470);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.TimePicker_EventTimeUpdate);
             this.Controls.Add(this.dateTimePicker_EventDateUpdate);
