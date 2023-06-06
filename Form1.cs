@@ -12,7 +12,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
-
+using MongoDB.Bson;
+using System.IO;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.IO;
 
 namespace MongoDB
 {
@@ -24,7 +27,7 @@ namespace MongoDB
         IMongoCollection<Models.Musician> musicianCollection;
         IMongoCollection<Models.Event> eventCollection;
         IMongoCollection<Models.EventMusician> EventMusicianCollection;
-
+        IMongoDatabase db;
         public Form1()
         {
             InitializeComponent();
@@ -54,8 +57,7 @@ namespace MongoDB
                 mongoClient = new MongoClient(connectionString);
 
                 // get the DB  OBJECT
-                IMongoDatabase db = mongoClient.GetDatabase(dbName);
-
+                db = mongoClient.GetDatabase(dbName);
                 // Get the collection that is called 'Musician,Event,EventMusicianCollection'
                 musicianCollection = db.GetCollection<Models.Musician>("Musician");
                 eventCollection = db.GetCollection<Models.Event>("Event");
@@ -103,8 +105,8 @@ namespace MongoDB
                             eventDetails.Date,
                             eventDetails?.EventName,
                             eventDetails?.MusicalStyle,
-                             
-                            eventMusician.EventMusicianID, 
+
+                            eventMusician.EventMusicianID,
                             eventMusician.MusicianList.Count
 
                         );
@@ -141,7 +143,7 @@ namespace MongoDB
             dataGridView_Events.DataSource = events;
 
             dataGridView_Events.Columns[0].Visible = false;
-      
+
             dataGridView_Events.Columns[2].HeaderText = "Event Name";
             dataGridView_Events.Columns[3].HeaderText = "Musical Style";
 
@@ -232,7 +234,7 @@ namespace MongoDB
 
             try
             {
-            
+
 
                 // Insert the event into the collection
                 eventCollection.InsertOne(eventDetails);
@@ -343,66 +345,67 @@ namespace MongoDB
 
 
 
-        
+
         private void btn_AssignMusicanToEvent_Click(object sender, EventArgs e)
         {
-       
-            if (dataGridView_Events.CurrentRow ==null || dataGridView_Musician.CurrentRow == null)
+
+            if (dataGridView_Events.CurrentRow == null || dataGridView_Musician.CurrentRow == null)
             {
                 MessageBox.Show("You must Select a musician and Event from the list.", "Assignment Exists", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-            else {
+            else
+            {
                 // Get the selected event and musician IDs
                 string eventId = dataGridView_Events.CurrentRow.Cells[0].Value.ToString();
                 string musicianId = dataGridView_Musician.CurrentRow.Cells[0].Value.ToString();
 
                 try
-            {
-                // Retrieve the existing EventMusician object from the collection based on the eventId
-                EventMusician existingEventMusician = EventMusicianCollection.Find(p => p.EventID == eventId).FirstOrDefault();
-                // Check if the musician is already assigned to the event
-                bool musicianAssigned = EventMusicianCollection.Find(p => p.EventID == eventId && p.MusicianList.Contains(musicianId)).Any();
-                if (musicianAssigned)
                 {
-                    MessageBox.Show("The selected musician is already assigned to the event.", "Assignment Exists", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                // Check if the EventMusician object already exists
-                if (existingEventMusician != null)
-                {
-                    // Update the MusicianIDs property by adding the new musicianId to the existing list
-                    existingEventMusician.MusicianList.Add(musicianId);
-
-                    // Update the EventMusician object in the collection
-                    var updateResult = EventMusicianCollection.ReplaceOne(p => p.EventMusicianID == existingEventMusician.EventMusicianID, existingEventMusician);
-
-                    if (updateResult.IsAcknowledged && updateResult.ModifiedCount > 0)
+                    // Retrieve the existing EventMusician object from the collection based on the eventId
+                    EventMusician existingEventMusician = EventMusicianCollection.Find(p => p.EventID == eventId).FirstOrDefault();
+                    // Check if the musician is already assigned to the event
+                    bool musicianAssigned = EventMusicianCollection.Find(p => p.EventID == eventId && p.MusicianList.Contains(musicianId)).Any();
+                    if (musicianAssigned)
                     {
-                        MessageBox.Show("Musician assigned to the event successfully.", "Assignment Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadEventMusicanDetails();
+                        MessageBox.Show("The selected musician is already assigned to the event.", "Assignment Exists", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    // Check if the EventMusician object already exists
+                    if (existingEventMusician != null)
+                    {
+                        // Update the MusicianIDs property by adding the new musicianId to the existing list
+                        existingEventMusician.MusicianList.Add(musicianId);
+
+                        // Update the EventMusician object in the collection
+                        var updateResult = EventMusicianCollection.ReplaceOne(p => p.EventMusicianID == existingEventMusician.EventMusicianID, existingEventMusician);
+
+                        if (updateResult.IsAcknowledged && updateResult.ModifiedCount > 0)
+                        {
+                            MessageBox.Show("Musician assigned to the event successfully.", "Assignment Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadEventMusicanDetails();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to assign musician to the event.", "Assignment Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Failed to assign musician to the event.", "Assignment Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        // Create a new EventMusician object with the eventId and a list containing the musicianId
+                        EventMusician eventMusician = new EventMusician(eventId, new List<string> { musicianId });
+
+                        // Insert the EventMusician object into the collection
+                        EventMusicianCollection.InsertOne(eventMusician);
+                        LoadEventMusicanDetails();
+
+                        MessageBox.Show("Musician assigned to the event successfully.", "Assignment Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    // Create a new EventMusician object with the eventId and a list containing the musicianId
-                    EventMusician eventMusician = new EventMusician(eventId, new List<string> { musicianId });
-
-                    // Insert the EventMusician object into the collection
-                    EventMusicianCollection.InsertOne(eventMusician);
-                    LoadEventMusicanDetails();
-
-                    MessageBox.Show("Musician assigned to the event successfully.", "Assignment Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("An error occurred while assigning musician to the event:\n" + ex.Message, "Assignment Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred while assigning musician to the event:\n" + ex.Message, "Assignment Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             }
         }
 
@@ -440,7 +443,7 @@ namespace MongoDB
 
                 //refresh the collection view
                 LoadMusiciansUponScreen();
-                MessageBox.Show("Musicians list refreshed successfully","Refresh succeed");
+                MessageBox.Show("Musicians list refreshed successfully", "Refresh succeed");
 
             }
             catch (Exception ex)
@@ -451,7 +454,7 @@ namespace MongoDB
         }
 
 
-      
+
         private void btn_refreshAllAssignEvents_Click(object sender, EventArgs e)
         {
             try
@@ -474,9 +477,9 @@ namespace MongoDB
         {
             List<Event> results;
             string date = dateTimePicker_filterDate.Text;
-           
-            
-         
+
+
+
 
             // Define the format of the input string (including Hebrew day and month names)
             string format = "dddd d MMMM yyyy";
@@ -495,12 +498,12 @@ namespace MongoDB
 
             // Perform the filter query
             results = eventCollection.Find(filter).ToList();
-           
-            
-                // Present the results on the grid
-                dataGridView_Events.DataSource = results;
-            
-            
+
+
+            // Present the results on the grid
+            dataGridView_Events.DataSource = results;
+
+
         }
 
         private void textBox_FilterMusicalStyle_TextChanged(object sender, EventArgs e)
@@ -591,16 +594,17 @@ namespace MongoDB
             {
                 LoadMusiciansUponScreen();
             }
-            else { 
-            
-            
-            //build the filter ('WHERE') filter by Musician instrument, and add reference
-            FilterDefinition<Musician> filter =
-                Builders<Musician>.Filter.Where(p => p.Instrument.Contains(instrument));
-            //preform the filter - make the filter query
-            results = musicianCollection.Find(filter).ToList();
-            //present the resukts upon the grid
-            dataGridView_Musician.DataSource = results;
+            else
+            {
+
+
+                //build the filter ('WHERE') filter by Musician instrument, and add reference
+                FilterDefinition<Musician> filter =
+                    Builders<Musician>.Filter.Where(p => p.Instrument.Contains(instrument));
+                //preform the filter - make the filter query
+                results = musicianCollection.Find(filter).ToList();
+                //present the resukts upon the grid
+                dataGridView_Musician.DataSource = results;
             }
         }
 
@@ -617,7 +621,7 @@ namespace MongoDB
 
         }
 
-      
+
 
         private void dateTimePicker_FilterByTime_ValueChanged(object sender, EventArgs e)
         {
@@ -646,5 +650,175 @@ namespace MongoDB
             // Present the results on the grid
             dataGridView_Events.DataSource = results;
         }
+        public void BackupAllCollections<T>(string backupFolderPath)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(backupFolderPath))
+                {
+                    MessageBox.Show("Backup folder path cannot be empty or null.", "Input Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                var collectionNames = db.ListCollectionNames().ToList();
+
+                foreach (var collectionName in collectionNames)
+                {
+                    var collection = db.GetCollection<T>(collectionName);
+                    var documents = collection.Find(new BsonDocument()).ToList();
+
+                    string backupFilePath = Path.Combine(backupFolderPath, $"{collectionName}.json");
+
+                    using (var writer = new StreamWriter(backupFilePath))
+                    {
+                        foreach (var document in documents)
+                        {
+                            writer.WriteLine(document.ToJson());
+                        }
+                    }
+                }
+                MessageBox.Show("Database Backup saved successfully at " + backupFolderPath, "Backup success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred during backup: {ex.Message}", "Backup Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void btn_BackupDB_Click(object sender, EventArgs e)
+        {
+            string backupFolderPath = textBox_BackupDBFilePath.Text;
+            BackupAllCollections<BsonDocument>(backupFolderPath);
+
+        }
+        public void RestoreAllCollections<T>(string backupFolderPath)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(backupFolderPath))
+                {
+                    MessageBox.Show("Backup folder path cannot be empty or null.", "Input Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                var backupFiles = Directory.GetFiles(backupFolderPath, "*.json");
+
+                foreach (var backupFilePath in backupFiles)
+                {
+                    string collectionName = Path.GetFileNameWithoutExtension(backupFilePath);
+                    var collection = db.GetCollection<T>(collectionName);
+
+                    using (var reader = new StreamReader(backupFilePath))
+                    {
+                        string line;
+                        while ((line = reader.ReadLine()) != null)
+                        {
+                            try
+                            {
+                                var document = BsonDocument.Parse(line);
+                                var typedDocument = BsonSerializer.Deserialize<T>(document);
+                                collection.InsertOne(typedDocument);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show($"Error restoring document in collection {collectionName}: {ex.Message}", "Restore Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+                MessageBox.Show("Database Restored successfully at ", "Restore success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred during restore: {ex.Message}", "Restore Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void btn_RestoreDB_Click(object sender, EventArgs e)
+        {
+            string backupFolderPath = textBox_RestoreDBFilePath.Text;
+            RestoreAllCollections<BsonDocument>(backupFolderPath);
+
+        }
+
+
+
+
+        //    public void RestoreAllCollectionsBSON<T>(string backupFolderPath)
+        //    {
+        //        try
+        //        {
+        //            if (string.IsNullOrEmpty(backupFolderPath))
+        //            {
+        //                MessageBox.Show("Backup folder path cannot be empty or null.", "Input Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //                return;
+        //            }
+
+        //            var backupFiles = Directory.GetFiles(backupFolderPath, "*.bson");
+
+        //            foreach (var backupFilePath in backupFiles)
+        //            {
+        //                string collectionName = Path.GetFileNameWithoutExtension(backupFilePath);
+        //                var collection = db.GetCollection<T>(collectionName);
+
+        //                using (var reader = new BsonBinaryReader(File.OpenRead(backupFilePath)))
+        //                {
+        //                    while (reader.ReadBsonType() != BsonType.EndOfDocument)
+        //                    {
+        //                        var document = BsonSerializer.Deserialize<T>(reader);
+        //                        collection.InsertOne(document);
+        //                    }
+        //                }
+        //            }
+
+        //            MessageBox.Show("Database restored successfully at " + backupFolderPath, "Restore success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show($"An error occurred during restore: {ex.Message}", "Restore Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //    }
+
+        //    public void BackupAllCollectionsBSON<T>(string backupFolderPath)
+        //    {
+        //        try
+        //        {
+        //            if (string.IsNullOrEmpty(backupFolderPath))
+        //            {
+        //                MessageBox.Show("Backup folder path cannot be empty or null.", "Input Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //                return;
+        //            }
+
+        //            var collectionNames = db.ListCollectionNames().ToList();
+
+        //            foreach (var collectionName in collectionNames)
+        //            {
+        //                var collection = db.GetCollection<T>(collectionName);
+        //                var documents = collection.Find(new BsonDocument()).ToList();
+
+        //                string backupFilePath = Path.Combine(backupFolderPath, $"{collectionName}.bson");
+
+        //                using (var writer = new BsonBinaryWriter(File.OpenWrite(backupFilePath)))
+        //                {
+        //                    foreach (var document in documents)
+        //                    {
+        //                        BsonSerializer.Serialize(writer, document);
+        //                    }
+        //                }
+        //            }
+
+        //            MessageBox.Show("Database backup saved successfully at " + backupFolderPath, "Backup success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show($"An error occurred during backup: {ex.Message}", "Backup Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //    }
+        //}
+
+
+
+
     }
 }
