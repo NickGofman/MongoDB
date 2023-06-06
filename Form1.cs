@@ -738,87 +738,86 @@ namespace MongoDB
         private void btn_RestoreDB_Click(object sender, EventArgs e)
         {
             string backupFolderPath = textBox_RestoreDBFilePath.Text;
-            RestoreAllCollections<BsonDocument>(backupFolderPath);
+            RestoreAllCollectionsBSON<BsonDocument>(backupFolderPath);
 
         }
 
 
 
 
-        //    public void RestoreAllCollectionsBSON<T>(string backupFolderPath)
-        //    {
-        //        try
-        //        {
-        //            if (string.IsNullOrEmpty(backupFolderPath))
-        //            {
-        //                MessageBox.Show("Backup folder path cannot be empty or null.", "Input Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //                return;
-        //            }
+        public void RestoreAllCollectionsBSON<T>(string backupFolderPath)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(backupFolderPath))
+                {
+                    MessageBox.Show("Backup folder path cannot be empty or null.", "Input Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-        //            var backupFiles = Directory.GetFiles(backupFolderPath, "*.bson");
+                var backupFiles = Directory.GetFiles(backupFolderPath, "*.bson");
 
-        //            foreach (var backupFilePath in backupFiles)
-        //            {
-        //                string collectionName = Path.GetFileNameWithoutExtension(backupFilePath);
-        //                var collection = db.GetCollection<T>(collectionName);
+                foreach (var backupFilePath in backupFiles)
+                {
+                    string collectionName = Path.GetFileNameWithoutExtension(backupFilePath);
+                    var collection = db.GetCollection<T>(collectionName);
 
-        //                using (var reader = new BsonBinaryReader(File.OpenRead(backupFilePath)))
-        //                {
-        //                    while (reader.ReadBsonType() != BsonType.EndOfDocument)
-        //                    {
-        //                        var document = BsonSerializer.Deserialize<T>(reader);
-        //                        collection.InsertOne(document);
-        //                    }
-        //                }
-        //            }
+                    using (var reader = new BsonBinaryReader(File.OpenRead(backupFilePath)))
+                    {
+                        while (reader.ReadBsonType() != BsonType.EndOfDocument)
+                        {
+                            var document = BsonSerializer.Deserialize<T>(reader);
+                            collection.InsertOne(document);
+                        }
+                    }
+                }
 
-        //            MessageBox.Show("Database restored successfully at " + backupFolderPath, "Restore success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show($"An error occurred during restore: {ex.Message}", "Restore Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        }
-        //    }
+                MessageBox.Show("Database restored successfully at " + backupFolderPath, "Restore success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred during restore: {ex.Message}", "Restore Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
-        //    public void BackupAllCollectionsBSON<T>(string backupFolderPath)
-        //    {
-        //        try
-        //        {
-        //            if (string.IsNullOrEmpty(backupFolderPath))
-        //            {
-        //                MessageBox.Show("Backup folder path cannot be empty or null.", "Input Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //                return;
-        //            }
+        public void BackupAllCollectionsBSON<T>(string backupFolderPath)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(backupFolderPath))
+                {
+                    MessageBox.Show("Backup folder path cannot be empty or null.", "Input Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-        //            var collectionNames = db.ListCollectionNames().ToList();
+                var collectionNames = db.ListCollectionNames().ToList();
 
-        //            foreach (var collectionName in collectionNames)
-        //            {
-        //                var collection = db.GetCollection<T>(collectionName);
-        //                var documents = collection.Find(new BsonDocument()).ToList();
+                foreach (var collectionName in collectionNames)
+                {
+                    var collection = db.GetCollection<T>(collectionName);
+                    var documents = collection.Find(new BsonDocument()).ToList();
 
-        //                string backupFilePath = Path.Combine(backupFolderPath, $"{collectionName}.bson");
+                    string backupFilePath = Path.Combine(backupFolderPath, $"{collectionName}.bson");
 
-        //                using (var writer = new BsonBinaryWriter(File.OpenWrite(backupFilePath)))
-        //                {
-        //                    foreach (var document in documents)
-        //                    {
-        //                        BsonSerializer.Serialize(writer, document);
-        //                    }
-        //                }
-        //            }
+                    using (var writer = new BsonBinaryWriter(File.OpenWrite(backupFilePath)))
+                    {
+                        foreach (var document in documents)
+                        {
+                            BsonSerializer.Serialize(writer, document);
+                        }
+                    }
+                }
 
-        //            MessageBox.Show("Database backup saved successfully at " + backupFolderPath, "Backup success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show($"An error occurred during backup: {ex.Message}", "Backup Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        }
-        //    }
-        //}
-
-
-
-
+                MessageBox.Show("Database backup saved successfully at " + backupFolderPath, "Backup success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred during backup: {ex.Message}", "Backup Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
+
+
+
+
 }
