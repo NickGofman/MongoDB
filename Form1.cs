@@ -733,7 +733,7 @@ namespace MongoDB
         private void btn_RestoreDB_Click(object sender, EventArgs e)
         {
             string backupFolderPath = textBox_RestoreDBFilePath.Text;
-            RestoreAllCollectionsBSON<BsonDocument>(backupFolderPath);
+            RestoreAllCollections<BsonDocument>(backupFolderPath);
 
         }
 
