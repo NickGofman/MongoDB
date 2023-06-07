@@ -140,8 +140,8 @@ namespace MongoDB
         {
             List<Event> events;
             events = eventCollection.Aggregate().ToList();
+            //dataGridView_EventsMiscellaneos
             dataGridView_Events.DataSource = events;
-
             dataGridView_Events.Columns[0].Visible = false;
 
             dataGridView_Events.Columns[2].HeaderText = "Event Name";
@@ -815,6 +815,8 @@ namespace MongoDB
                 MessageBox.Show($"An error occurred during backup: {ex.Message}", "Backup Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        
     }
 
 

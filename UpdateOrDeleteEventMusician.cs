@@ -16,7 +16,7 @@ namespace MongoDB
     {
         IMongoCollection<EventMusician> eventMusicianCollection;
         IMongoCollection<Musician> musicianCollection;
-        string eventMusicianID;
+        string eventMusicianID; 
 
         public UpdateOrDeleteEventMusician()
         {
@@ -30,7 +30,6 @@ namespace MongoDB
             this.musicianCollection = musicianCollection;
             this.eventMusicianID = eventMusicianID;
             // Set the text box values
-
             label_UpdateEventMusicianEventDate.Text = eventMusicianDate;
 
             // Load the data
@@ -42,8 +41,8 @@ namespace MongoDB
         {
             try
             {
-                // Retrieve the event musicians that contain the musician ID in the MusicianList
-                var musiciansToUpdate = eventMusicianCollection.Find(m => m.MusicianList.Contains(musicianID) && m.EventMusicianID == eventMusicianID).ToList();
+                // Retrieve the event musicians list that contain the musician ID in the MusicianList
+                var musiciansToUpdate = eventMusicianCollection.Find(mv => mv.MusicianList.Contains(musicianID) && mv.EventMusicianID == eventMusicianID).ToList();
 
                 foreach (var musician in musiciansToUpdate)
                 {
