@@ -69,8 +69,6 @@ namespace MongoDB
                 LoadMusiciansUponScreen();
                 LoadEventsUponScreen();
                 LoadEventMusicanDetails();
-                // insert default file path for bulk activities, when first form loaded
-                // textBox_FullPathForBulk.Text = externalFile;
                 WindowState = FormWindowState.Maximized;
 
             }
@@ -142,6 +140,11 @@ namespace MongoDB
             events = eventCollection.Aggregate().ToList();
             //dataGridView_EventsMiscellaneos
             dataGridView_Events.DataSource = events;
+            dataGridView_EventsMiscellaneos.DataSource = events;
+            dataGridView_EventsMiscellaneos.Columns[2].HeaderText = "Event Name";
+            dataGridView_EventsMiscellaneos.Columns[3].HeaderText = "Musical Style";
+            dataGridView_EventsMiscellaneos.RowHeadersVisible = false;
+            dataGridView_EventsMiscellaneos.Columns[0].Visible = false;
             dataGridView_Events.Columns[0].Visible = false;
 
             dataGridView_Events.Columns[2].HeaderText = "Event Name";
@@ -159,6 +162,9 @@ namespace MongoDB
             dataGridView_Musician.DataSource = musicians;
             dataGridView_Musician.Columns[0].Visible = false;
             dataGridView_Musician.RowHeadersVisible = false;
+            dataGridView_MusicianMiscellaneos.DataSource = musicians;
+            dataGridView_MusicianMiscellaneos.Columns[0].Visible = false;
+            dataGridView_MusicianMiscellaneos.RowHeadersVisible = false;
         }
 
 
@@ -281,18 +287,7 @@ namespace MongoDB
         }
 
 
-        private void btn_filterEventMusicalStyle_Click(object sender, EventArgs e)
-        {
-            List<Event> results;
-            string musicalStyle = textBox_FilterMusicalStyle.Text;
-            //build the filter ('WHERE') filter by Event musicalStyle, and add reference
-            FilterDefinition<Event> filter =
-                Builders<Event>.Filter.Eq(p => p.MusicalStyle, musicalStyle);
-            //preform the filter - make the filter query
-            results = eventCollection.Find(filter).ToList();
-            //present the resukts upon the grid
-            dataGridView_Events.DataSource = results;
-        }
+        
 
 
 
@@ -501,7 +496,7 @@ namespace MongoDB
 
 
             // Present the results on the grid
-            dataGridView_Events.DataSource = results;
+            dataGridView_EventsMiscellaneos.DataSource = results;
 
 
         }
@@ -521,7 +516,7 @@ namespace MongoDB
                 //preform the filter - make the filter query
                 results = eventCollection.Find(filter).ToList();
                 //present the resukts upon the grid
-                dataGridView_Events.DataSource = results;
+                dataGridView_EventsMiscellaneos.DataSource = results;
             }
         }
 
@@ -541,7 +536,7 @@ namespace MongoDB
                 //preform the filter - make the filter query
                 results = eventCollection.Find(filter).ToList();
                 //present the resukts upon the grid
-                dataGridView_Events.DataSource = results;
+                dataGridView_EventsMiscellaneos.DataSource = results;
             }
         }
 
@@ -561,7 +556,7 @@ namespace MongoDB
                 //preform the filter - make the filter query
                 results = musicianCollection.Find(filter).ToList();
                 //present the resukts upon the grid
-                dataGridView_Musician.DataSource = results;
+                dataGridView_MusicianMiscellaneos.DataSource = results;
             }
         }
 
@@ -582,7 +577,7 @@ namespace MongoDB
                 //preform the filter - make the filter query
                 results = musicianCollection.Find(filter).ToList();
                 //present the resukts upon the grid
-                dataGridView_Musician.DataSource = results;
+                dataGridView_MusicianMiscellaneos.DataSource = results;
             }
         }
 
@@ -604,7 +599,7 @@ namespace MongoDB
                 //preform the filter - make the filter query
                 results = musicianCollection.Find(filter).ToList();
                 //present the resukts upon the grid
-                dataGridView_Musician.DataSource = results;
+                dataGridView_MusicianMiscellaneos.DataSource = results;
             }
         }
 
@@ -648,7 +643,7 @@ namespace MongoDB
                 .ToList();
 
             // Present the results on the grid
-            dataGridView_Events.DataSource = results;
+            dataGridView_EventsMiscellaneos.DataSource = results;
         }
         public void BackupAllCollections<T>(string backupFolderPath)
         {
