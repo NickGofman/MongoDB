@@ -684,6 +684,9 @@ namespace MongoDB
         {
             string backupFolderPath = textBox_BackupDBFilePath.Text;
             BackupAllCollections<BsonDocument>(backupFolderPath);
+            LoadMusiciansUponScreen();
+            LoadEventMusicanDetails();
+            LoadEventsUponScreen();
 
         }
         public void RestoreAllCollections<T>(string backupFolderPath)
@@ -734,7 +737,9 @@ namespace MongoDB
         {
             string backupFolderPath = textBox_RestoreDBFilePath.Text;
             RestoreAllCollections<BsonDocument>(backupFolderPath);
-
+            LoadMusiciansUponScreen();
+            LoadEventMusicanDetails();
+            LoadEventsUponScreen();
         }
 
 
