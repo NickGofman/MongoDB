@@ -72,7 +72,7 @@ namespace MongoDB
                 LoadMusiciansUponScreen();
                 LoadEventsUponScreen();
                 LoadEventMusicanDetails();
-              //  WindowState = FormWindowState.Maximized;
+                //  WindowState = FormWindowState.Maximized;
 
             }
             catch (Exception ex)
@@ -83,8 +83,9 @@ namespace MongoDB
         }
 
         public void LoadEventMusicanDetails()
+        //load alll the assigned evnets details from the database to the view
         {
-            // Rest of the code remains the same
+
             List<EventMusician> musicianAssignToEvents;
             musicianAssignToEvents = EventMusicianCollection.Aggregate().ToList();
 
@@ -98,6 +99,7 @@ namespace MongoDB
                 {
                     Event eventDetails = eventCollection.Find(Builders<Event>.Filter.Eq(e => e.EventID, eventMusician.EventID)).FirstOrDefault();
                     Musician musicianDetails = musicianCollection.Find(Builders<Musician>.Filter.Eq(m => m.MusicianID, MusicianID)).FirstOrDefault();
+                    // Check if eventDetails and musicianDetails are null
                     if (eventDetails != null && musicianDetails != null)
                     {
                         // Create an EventDetails object with the relevant details
@@ -106,12 +108,10 @@ namespace MongoDB
                             eventDetails.Date,
                             eventDetails?.EventName,
                             eventDetails?.MusicalStyle,
-
                             eventMusician.EventMusicianID,
                             eventMusician.MusicianList.Count
 
                         );
-                        // Check if eventDetails and musicianDetails are null
 
                         // Add the EventDetails object to the list
                         eventDetailsList.Add(eventDetailsObj);
@@ -119,7 +119,7 @@ namespace MongoDB
 
                 }
             }
-            //group all the assign muscian in one row
+            //group all the assign muscian in one row(for the view)
             List<EventDetails> uniqueEventDetailsList = eventDetailsList.GroupBy(e => e.eventDate).Select(d => d.First()).ToList();
             // Set the eventDetailsList as the data source for the dataGridView_AllAssignEvents control
             dataGridView_AllAssignEvents.DataSource = uniqueEventDetailsList;
@@ -128,37 +128,34 @@ namespace MongoDB
             dataGridView_AllAssignEvents.Columns[1].HeaderText = "Event Name";
             dataGridView_AllAssignEvents.Columns[2].HeaderText = "Musical Style";
             dataGridView_AllAssignEvents.Columns[3].HeaderText = "Assigned Musician(s)";
-            //dataGridView_AllAssignEvents.Columns[3].Visible = false;
-            //dataGridView_AllAssignEvents.Columns[4].Visible = false;
             dataGridView_AllAssignEvents.Columns[4].Visible = false;
-
             dataGridView_AllAssignEvents.RowHeadersVisible = false;
         }
 
 
 
         public void LoadEventsUponScreen()
+        //load all the event's details from the database to the view
         {
             List<Event> events;
             events = eventCollection.Aggregate().ToList();
-            //dataGridView_EventsMiscellaneos
+            //events = events.OrderBy(e => e.Date).ToList();
             dataGridView_Events.DataSource = events;
+            dataGridView_Events.Columns[2].HeaderText = "Event Name";
+            dataGridView_Events.Columns[3].HeaderText = "Musical Style";
+            dataGridView_Events.RowHeadersVisible = false;
+            dataGridView_Events.Columns[0].Visible = false;
+
+            //dataGridView_EventsMiscellaneos
             dataGridView_EventsMiscellaneos.DataSource = events;
             dataGridView_EventsMiscellaneos.Columns[2].HeaderText = "Event Name";
             dataGridView_EventsMiscellaneos.Columns[3].HeaderText = "Musical Style";
             dataGridView_EventsMiscellaneos.RowHeadersVisible = false;
             dataGridView_EventsMiscellaneos.Columns[0].Visible = false;
-            dataGridView_Events.Columns[0].Visible = false;
-
-            dataGridView_Events.Columns[2].HeaderText = "Event Name";
-            dataGridView_Events.Columns[3].HeaderText = "Musical Style";
-
-            dataGridView_Events.RowHeadersVisible = false;
-
-
         }
 
         public void LoadMusiciansUponScreen()
+        //load all the musicians details from the database to the view
         {
             List<Musician> musicians;
             musicians = musicianCollection.Aggregate().ToList();
@@ -178,7 +175,7 @@ namespace MongoDB
             Musician musician = GetMusicianDetailsFromScreen();
             if (!Regex.IsMatch(musician.Age, @"^\d+$"))
             {
-                MessageBox.Show("Musician Age must be a number.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Musician Age must be a number.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return; // age must be a number
             }
@@ -207,6 +204,7 @@ namespace MongoDB
 
 
         public Musician GetMusicianDetailsFromScreen()
+        //get all the details about musician form the screen to insert them to the database
         {
             string musicianInstrument = textBox_MusicianIns.Text.ToLower();
             string musicianName = textBox_MusicianName.Text.ToLower();
@@ -223,7 +221,7 @@ namespace MongoDB
             // Check if any of the required fields are empty
             if (string.IsNullOrWhiteSpace(eventDetails.EventName) || string.IsNullOrWhiteSpace(eventDetails.MusicalStyle))
             {
-                MessageBox.Show("Please fill in all the required fields.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please fill in all the required fields.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return; // Exit the method if any required field is empty
             }
 
@@ -237,7 +235,7 @@ namespace MongoDB
             bool eventExists = eventCollection.Find(filter).Any();
             if (eventExists)
             {
-                MessageBox.Show("Event details: " + eventDetails.ToString() + "\nEvent Already Exists on this date", "Event Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Event details:\n" + eventDetails.ToString() + "\nEvent Already Exists on this date!", "Event Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -248,10 +246,10 @@ namespace MongoDB
                 // Insert the event into the collection
                 eventCollection.InsertOne(eventDetails);
 
-                // Refresh the collection view
+                // Refresh the list view
                 LoadEventsUponScreen();
 
-                MessageBox.Show("Event details: " + eventDetails.ToString() + "\nInserted successfully", "Event Inserted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Event details:\n" + eventDetails.ToString() + "\nInserted successfully", "Event Inserted", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -276,22 +274,24 @@ namespace MongoDB
             // Parse the combined string into a DateTime object
             DateTime dateTime = DateTime.ParseExact(eventDateTimeString, format, new CultureInfo("he-IL"));
 
+            // Get the local time zone for Israel
+            TimeZoneInfo israelTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Israel Standard Time");
+
+            // Convert the event date and time to UTC using the Israel time zone
+            DateTime utcDateTime = TimeZoneInfo.ConvertTimeToUtc(dateTime, israelTimeZone);
+
+            // Get the local time zone offset
+            TimeSpan timeZoneOffset = israelTimeZone.GetUtcOffset(dateTime);
+
+            // Apply the offset to the UTC date and time
+            DateTime localDateTime = utcDateTime.Add(timeZoneOffset);
+
             string eventName = textBox_EventName.Text.ToLower();
             string musicalType = textBox_MusicalType.Text.ToLower();
 
-            Event newEevnt = new Event(dateTime, eventName, musicalType);
-            // Get the local time zone offset
-            TimeSpan timeZoneOffset = TimeZoneInfo.Local.GetUtcOffset(DateTime.UtcNow);
-
-            // Apply the offset to the event date and time
-            newEevnt.Date = newEevnt.Date.Add(timeZoneOffset);
-
-            return newEevnt;
+            Event newEvent = new Event(localDateTime, eventName, musicalType);
+            return newEvent;
         }
-
-
-        
-
 
 
         private void btn_RefreshEvents_Click(object sender, EventArgs e)
@@ -299,8 +299,6 @@ namespace MongoDB
 
             try
             {
-
-
                 //refresh the collection view
                 LoadEventsUponScreen();
                 MessageBox.Show("Events list refreshed successfully", "Refresh succeed");
@@ -317,7 +315,6 @@ namespace MongoDB
 
         private void dataGridView_Events_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //ToDo- change the call and use the pther ctor (the one that gets a table)
             UpdateOrDeleteEvent updateOrDeleteEventWin = new UpdateOrDeleteEvent(eventCollection, EventMusicianCollection);
             updateOrDeleteEventWin.textBox_ID.Text = dataGridView_Events.CurrentRow.Cells[0].Value.ToString();
             updateOrDeleteEventWin.textBox_EventName.Text = dataGridView_Events.CurrentRow.Cells[2].Value.ToString();
@@ -328,15 +325,18 @@ namespace MongoDB
 
             // Assign date to DateTimePicker
             updateOrDeleteEventWin.dateTimePicker_EventDateUpdate.Value = dateTime.Date;
+            updateOrDeleteEventWin.dateTimePicker_EventDateUpdate.MinDate = DateTime.Now;
             // Set the CustomFormat to display and parse only the time component
             updateOrDeleteEventWin.TimePicker_EventTimeUpdate.Format = DateTimePickerFormat.Custom;
             updateOrDeleteEventWin.TimePicker_EventTimeUpdate.CustomFormat = "HH:mm:ss";
 
             // Assign time to TimePicker
             updateOrDeleteEventWin.TimePicker_EventTimeUpdate.Value = dateTime;
-            //todo- fill the rest of the fields...
+            
 
             updateOrDeleteEventWin.ShowDialog();
+
+            //refresh the lists with updated data
             LoadEventsUponScreen();
             LoadEventMusicanDetails();
         }
@@ -366,7 +366,7 @@ namespace MongoDB
                     bool musicianAssigned = EventMusicianCollection.Find(p => p.EventID == eventId && p.MusicianList.Contains(musicianId)).Any();
                     if (musicianAssigned)
                     {
-                        MessageBox.Show("The selected musician is already assigned to the event.", "Assignment Exists", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("The selected musician is already assigned to the event.", "Assignment Exists", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     // Check if the EventMusician object already exists
@@ -471,38 +471,75 @@ namespace MongoDB
 
         }
 
+        //private void dateTimePicker_filterDate_ValueChanged(object sender, EventArgs e)
+        //{
+        //    List<Event> results;
+        //    string date = dateTimePicker_filterDate.Text;
+
+
+
+
+        //    // Define the format of the input string (including Hebrew day and month names)
+        //    string format = "dddd d MMMM yyyy";
+
+        //    // Parse the combined string into a DateTime object
+        //    DateTime dateParse = DateTime.ParseExact(date, format, new CultureInfo("he-IL"));
+
+        //    // Get the start and end DateTime objects for the specified date
+        //    DateTime startDate = dateParse.Date;
+        //    //create a fake day for range
+        //    DateTime endDate = startDate.AddDays(1);
+
+        //    // Build the filter for Event date range
+        //    FilterDefinition<Event> filter = Builders<Event>.Filter.Gte(p => p.Date, startDate) &
+        //                                      Builders<Event>.Filter.Lt(p => p.Date, endDate);
+
+        //    // Perform the filter query
+        //    results = eventCollection.Find(filter).ToList();
+
+
+        //    // Present the results on the grid
+        //    dataGridView_EventsMiscellaneos.DataSource = results;
+
+
+        //}
+
+        //****************************************************************************************************************************//
+        //****************************************************************************************************************************//
+        //****************************************************************************************************************************//
+        //*****THERE IS A BUG WITH THIS FUNCTION IT DOESN'T SHOW TO CORRECT FILTERED DATE IN THE LIST AND ALSO THE FUNCTION ABOVE****//
+        //****************************************************************************************************************************//
+        //****************************************************************************************************************************//
+        //****************************************************************************************************************************//
         private void dateTimePicker_filterDate_ValueChanged(object sender, EventArgs e)
         {
-            List<Event> results;
-            string date = dateTimePicker_filterDate.Text;
+            // Get the selected date
+            DateTime selectedDate = dateTimePicker_filterDate.Value.Date;
 
+            // Get the local time zone for Israel
+            TimeZoneInfo israelTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Israel Standard Time");
 
+            // Convert the selected date to the local time zone
+            DateTime selectedDateLocal = TimeZoneInfo.ConvertTime(selectedDate, israelTimeZone);
 
-
-            // Define the format of the input string (including Hebrew day and month names)
-            string format = "dddd d MMMM yyyy";
-
-            // Parse the combined string into a DateTime object
-            DateTime dateParse = DateTime.ParseExact(date, format, new CultureInfo("he-IL"));
-
-            // Get the start and end DateTime objects for the specified date
-            DateTime startDate = dateParse.Date;
-            //create a fake day for range
-            DateTime endDate = startDate.AddDays(1);
+            // Get the start and end DateTime objects for the specified date in UTC
+            DateTime startDateUtc = selectedDateLocal.ToUniversalTime();
+            DateTime endDateUtc = startDateUtc.AddDays(1);
 
             // Build the filter for Event date range
-            FilterDefinition<Event> filter = Builders<Event>.Filter.Gte(p => p.Date, startDate) &
-                                              Builders<Event>.Filter.Lt(p => p.Date, endDate);
+            FilterDefinition<Event> filter = Builders<Event>.Filter.Gte(p => p.Date, startDateUtc) &
+                                              Builders<Event>.Filter.Lt(p => p.Date, endDateUtc);
 
             // Perform the filter query
-            results = eventCollection.Find(filter).ToList();
-
+            List<Event> results = eventCollection.Find(filter).ToList();
 
             // Present the results on the grid
             dataGridView_EventsMiscellaneos.DataSource = results;
-
-
         }
+
+
+
+
 
         private void textBox_FilterMusicalStyle_TextChanged(object sender, EventArgs e)
         {
@@ -614,9 +651,8 @@ namespace MongoDB
             UpdateOrDeleteEventMusician updateOrDeleteEventMusician = new UpdateOrDeleteEventMusician(EventMusicianCollection, musicianCollection,
                 eventMusicianID, eventMusicianDate);
             updateOrDeleteEventMusician.ShowDialog();
+            //load new data to the list of assigned events after closing the dialog
             LoadEventMusicanDetails();
-
-
         }
 
 
@@ -658,11 +694,13 @@ namespace MongoDB
                     return;
                 }
 
-                var collectionNames = db.ListCollectionNames().ToList();
+                //get a list of collections name that we want to backup
+                var collectionNames = db.ListCollectionNames().ToList();//get a list of collections name that we want to backup
+
 
                 foreach (var collectionName in collectionNames)
                 {
-                    var collection = db.GetCollection<T>(collectionName);
+                    var collection = db.GetCollection<T>(collectionName);//get the current collection from mongoDB
                     var documents = collection.Find(new BsonDocument()).ToList();
 
                     string backupFilePath = Path.Combine(backupFolderPath, $"{collectionName}.json");
@@ -675,7 +713,7 @@ namespace MongoDB
                         }
                     }
                 }
-                MessageBox.Show("Database Backup saved successfully at " + backupFolderPath, "Backup success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Database Backup saved successfully at\n" + backupFolderPath, "Backup success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             catch (Exception ex)
@@ -687,9 +725,6 @@ namespace MongoDB
         {
             string backupFolderPath = textBox_BackupDBFilePath.Text;
             BackupAllCollections<BsonDocument>(backupFolderPath);
-            LoadMusiciansUponScreen();
-            LoadEventMusicanDetails();
-            LoadEventsUponScreen();
 
         }
         public void RestoreAllCollections<T>(string backupFolderPath)
@@ -698,7 +733,7 @@ namespace MongoDB
             {
                 if (string.IsNullOrEmpty(backupFolderPath))
                 {
-                    MessageBox.Show("Backup folder path cannot be empty or null.", "Input Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Restore folder path cannot be empty or null.", "Input Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -727,7 +762,7 @@ namespace MongoDB
                         }
                     }
                 }
-                MessageBox.Show("Database Restored successfully at ", "Restore success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Database Restored successfully", "Restore success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -740,89 +775,11 @@ namespace MongoDB
         {
             string backupFolderPath = textBox_RestoreDBFilePath.Text;
             RestoreAllCollections<BsonDocument>(backupFolderPath);
+
+            //loads the data after perform restore
             LoadMusiciansUponScreen();
             LoadEventMusicanDetails();
             LoadEventsUponScreen();
         }
-
-
-
-
-        public void RestoreAllCollectionsBSON<T>(string backupFolderPath)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(backupFolderPath))
-                {
-                    MessageBox.Show("Backup folder path cannot be empty or null.", "Input Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                var backupFiles = Directory.GetFiles(backupFolderPath, "*.bson");
-
-                foreach (var backupFilePath in backupFiles)
-                {
-                    string collectionName = Path.GetFileNameWithoutExtension(backupFilePath);
-                    var collection = db.GetCollection<T>(collectionName);
-
-                    using (var reader = new BsonBinaryReader(File.OpenRead(backupFilePath)))
-                    {
-                        while (reader.ReadBsonType() != BsonType.EndOfDocument)
-                        {
-                            var document = BsonSerializer.Deserialize<T>(reader);
-                            collection.InsertOne(document);
-                        }
-                    }
-                }
-
-                MessageBox.Show("Database restored successfully at " + backupFolderPath, "Restore success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred during restore: {ex.Message}", "Restore Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        public void BackupAllCollectionsBSON<T>(string backupFolderPath)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(backupFolderPath))
-                {
-                    MessageBox.Show("Backup folder path cannot be empty or null.", "Input Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                var collectionNames = db.ListCollectionNames().ToList();
-
-                foreach (var collectionName in collectionNames)
-                {
-                    var collection = db.GetCollection<T>(collectionName);
-                    var documents = collection.Find(new BsonDocument()).ToList();
-
-                    string backupFilePath = Path.Combine(backupFolderPath, $"{collectionName}.bson");
-
-                    using (var writer = new BsonBinaryWriter(File.OpenWrite(backupFilePath)))
-                    {
-                        foreach (var document in documents)
-                        {
-                            BsonSerializer.Serialize(writer, document);
-                        }
-                    }
-                }
-
-                MessageBox.Show("Database backup saved successfully at " + backupFolderPath, "Backup success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred during backup: {ex.Message}", "Backup Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        
     }
-
-
-
-
 }

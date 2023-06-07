@@ -31,9 +31,10 @@ namespace MongoDB.Models
         }
         public override string ToString()
         {
-            string date = Date.ToString("dd/MM/yyyy");
+            string date = Date.ToString("dd/MM/yyyy");//format the date to what we want to present
+            string time = Date.ToString("HH:mm");
 
-            return "Event Name: " + EventName + " Date: " + date + " Musical Style:" + MusicalStyle;
+            return "Event Name: " + EventName + " Date: " + date+" Time: "+time +" Musical Style: " + MusicalStyle;
         }
     }
 }

@@ -21,6 +21,7 @@ namespace MongoDB
         public UpdateOrDeleteEvent()
         {
             InitializeComponent();
+
         }
         public UpdateOrDeleteEvent(IMongoCollection<Event> events, IMongoCollection<EventMusician> eventMusicianCollection)
         {
@@ -83,49 +84,59 @@ namespace MongoDB
             }
         }
 
-
         private void btn_UpdateEvent_Click(object sender, EventArgs e)
         {
-            //get data from screen
+            // Get data from the screen
             string eventId = textBox_ID.Text;
             string eventName = textBox_EventName.Text;
             string eventMusicalType = textBox_EventMusicialtype.Text;
-            //check if input is valid
+
+            // Check if input is valid
             if (eventName == "" || eventMusicalType == "")
             {
-                MessageBox.Show("Inputs shouldn't be empty.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Inputs shouldn't be empty.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            DateTime eventDateTimeLocal = dateTimePicker_EventDateUpdate.Value; // Get the selected date in local time
-            DateTime eventTimeLocal = TimePicker_EventTimeUpdate.Value; // Get the selected time in local time
+            // Get the selected date and time in local time
+            DateTime eventDateTimeLocal = dateTimePicker_EventDateUpdate.Value;
+            DateTime eventTimeLocal = TimePicker_EventTimeUpdate.Value;
 
             // Combine the date and time to create the updated event date and time in local time zone
-            DateTime updatedDateTimeLocal = eventDateTimeLocal.Date + eventTimeLocal.TimeOfDay;
+            DateTimeOffset localDateTimeOffset = new DateTimeOffset(eventDateTimeLocal.Year, eventDateTimeLocal.Month, eventDateTimeLocal.Day,
+                eventTimeLocal.Hour, eventTimeLocal.Minute, eventTimeLocal.Second, TimeSpan.Zero);
 
-            // Convert the updated date and time to UTC
-            DateTime updatedDateTimeUtc = updatedDateTimeLocal.ToUniversalTime();
+            // Get the local time zone for Israel
+            TimeZoneInfo israelTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Israel Standard Time");
+
+            // Convert the local date and time to UTC using the Israel time zone
+            DateTimeOffset updatedDateTimeOffset = TimeZoneInfo.ConvertTime(localDateTimeOffset, israelTimeZone);
+
+            // Extract the UTC date and time
+            DateTime updatedDateTimeUtc = updatedDateTimeOffset.UtcDateTime;
 
             // Show a message box to confirm the update
-            DialogResult result = MessageBox.Show("Are you sure you want to update the event time to: " + updatedDateTimeLocal + "?",
+            DialogResult result = MessageBox.Show("Are you sure you want to update the event time to: " + updatedDateTimeOffset.UtcDateTime + "?",
                                                   "Confirm Update",
                                                   MessageBoxButtons.YesNo,
                                                   MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
-                // filter to get the event
+                // Filter to get the event
                 FilterDefinition<Event> filter = Builders<Event>.Filter.Eq(p => p.EventID, eventId);
-                // get the event that we want to update
+
+                // Get the event that we want to update
                 Event existingEvent = eventsCollection.Find(filter).FirstOrDefault();
 
                 if (existingEvent != null)
                 {
                     // Check if the updated date conflicts with any other existing events
-                    FilterDefinition<Event> conflictFilter = Builders<Event>.Filter.Ne(p => p.EventID, eventId)  // Exclude the current event being updated
-                                                             & Builders<Event>.Filter.Gte(p => p.Date, updatedDateTimeUtc.Date)  // Filter events with dates on or after the updated date
-                                                             & Builders<Event>.Filter.Lt(p => p.Date, updatedDateTimeUtc.Date.AddDays(1));  // this will ensure that events with days beyond the updated day following the updated date are excluded
-                    //check if there is an event that already have the same date
+                    FilterDefinition<Event> conflictFilter = Builders<Event>.Filter.Ne(p => p.EventID, eventId)
+                                                             & Builders<Event>.Filter.Gte(p => p.Date, updatedDateTimeUtc.Date)
+                                                             & Builders<Event>.Filter.Lt(p => p.Date, updatedDateTimeUtc.Date.AddDays(1));
+
+                    // Check if there is an event that already has the same date
                     bool eventExists = eventsCollection.Find(conflictFilter).Any();
                     if (eventExists)
                     {
@@ -171,6 +182,9 @@ namespace MongoDB
                 }
             }
         }
+
+
+
 
     }
 }

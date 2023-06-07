@@ -748,7 +748,7 @@ namespace MongoDB
             this.btn_RefreshEventsMIS.Name = "btn_RefreshEventsMIS";
             this.btn_RefreshEventsMIS.Size = new System.Drawing.Size(289, 42);
             this.btn_RefreshEventsMIS.TabIndex = 41;
-            this.btn_RefreshEventsMIS.Text = "Refresh Musicains";
+            this.btn_RefreshEventsMIS.Text = "Refresh Evemts";
             this.btn_RefreshEventsMIS.UseVisualStyleBackColor = true;
             this.btn_RefreshEventsMIS.Click += new System.EventHandler(this.btn_RefreshEvents_Click);
             // 
@@ -946,7 +946,7 @@ namespace MongoDB
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1617, 775);
+            this.ClientSize = new System.Drawing.Size(1643, 801);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
