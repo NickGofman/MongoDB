@@ -50,6 +50,9 @@ namespace MongoDB
             dateTimePicker_EventDate.MinDate = DateTime.Now;
 
 
+            this.Location = new Point(0, 0);
+            this.Size = Screen.PrimaryScreen.WorkingArea.Size;
+
 
             try
             {
@@ -69,7 +72,7 @@ namespace MongoDB
                 LoadMusiciansUponScreen();
                 LoadEventsUponScreen();
                 LoadEventMusicanDetails();
-                WindowState = FormWindowState.Maximized;
+              //  WindowState = FormWindowState.Maximized;
 
             }
             catch (Exception ex)
