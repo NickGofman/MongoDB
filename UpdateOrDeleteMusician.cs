@@ -51,7 +51,7 @@ namespace MongoDB
                     // Delete the musician from the musicians table
                     DeleteResult musicianDeleteResult = musiciansCollection.DeleteOne(musicianFilter);
 
-                    // Delete the musician from the eventMusicianCollection table
+                    // Deletes the musician from the events in which he is assigned
                     List<EventMusician> musicianAssignToEvents;
                     musicianAssignToEvents = eventMusicianCollection.Aggregate().ToList();
                     foreach (EventMusician eventMusician in musicianAssignToEvents)
@@ -70,7 +70,7 @@ namespace MongoDB
 
                     if (musicianDeleteResult.DeletedCount == 1 )
                     {
-                        MessageBox.Show("Musician " + musicianName + " with ID: " + musicianId + " deleted successfully",
+                        MessageBox.Show("Musician " + musicianName + " deleted successfully",
                                         "Musician Deleted",
                                         MessageBoxButtons.OK,
                                         MessageBoxIcon.Information);
@@ -102,7 +102,6 @@ namespace MongoDB
             string musicianId = textBox_MusicianID.Text;
             string musicianName = textBox_MusicianNameUpdate.Text;
             string musicianAge = textBox_MusicianAgeUpdate.Text;
-
             string musicianInstrument = textBox_MusicianInstrumentUpdate.Text;
 
             // Show a message box to confirm the update

@@ -116,7 +116,8 @@ namespace MongoDB
             DateTime updatedDateTimeUtc = updatedDateTimeOffset.UtcDateTime;
 
             // Show a message box to confirm the update
-            DialogResult result = MessageBox.Show("Are you sure you want to update the event time to: " + updatedDateTimeOffset.UtcDateTime + "?",
+            DialogResult result = MessageBox.Show("Are you sure you want to update the event to:\n"+"Event name: "+eventName +", Musical style: " +
+                eventMusicalType+", Event time: "+ updatedDateTimeUtc + "?",
                                                   "Confirm Update",
                                                   MessageBoxButtons.YesNo,
                                                   MessageBoxIcon.Question);
@@ -140,7 +141,7 @@ namespace MongoDB
                     bool eventExists = eventsCollection.Find(conflictFilter).Any();
                     if (eventExists)
                     {
-                        MessageBox.Show("Another event already exists on the updated date.", "Event Conflict", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Another event already exists on the updated date.", "Event Already Exist", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }

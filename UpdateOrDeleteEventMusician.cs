@@ -34,7 +34,7 @@ namespace MongoDB
 
             // Load the data
             LoadAssignedMusicians();
-            LoadAvailableMusicians(eventMusicianID);
+            LoadAvailableMusicians();
         }
 
         private void DeleteMusicianByID(string musicianID)
@@ -63,12 +63,10 @@ namespace MongoDB
         {
             try
             {
+
                 // Retrieve the list of assigned musicians for the current eventMusicianID
-                var assignedMusicians = eventMusicianCollection.AsQueryable()
-                    .Where(em => em.EventMusicianID == eventMusicianID)
-                    .SelectMany(em => em.MusicianList)
-                    .Distinct()
-                    .ToList();
+                var assignedMusicians = eventMusicianCollection.Find(em => em.EventMusicianID == eventMusicianID)
+                    .FirstOrDefault()?.MusicianList ?? new List<string>();
 
                 // Create a DataTable to hold the musician data
                 DataTable dataTable = new DataTable();
@@ -120,7 +118,7 @@ namespace MongoDB
             }
         }
 
-        private void LoadAvailableMusicians(string eventMusicianID)
+        private void LoadAvailableMusicians()
         {
             try
             {
@@ -166,12 +164,13 @@ namespace MongoDB
 
         private void btn_DeleteMusicianFromList_Click(object sender, EventArgs e)
         {
-            // Get the selected musician IDs and names from the DataGridView
             List<string> selectedMusicianIDs = new List<string>();
 
+            // Get the selected musician IDs and names from the DataGridView
             foreach (DataGridViewRow row in dataGridView_AllAssignMusicianToEvent.Rows)
             {
                 DataGridViewCheckBoxCell checkboxCell = (DataGridViewCheckBoxCell)row.Cells["Select"];
+                //add to the list only checked box
                 if (checkboxCell.Value != null && (bool)checkboxCell.Value)
                 {
                     string musicianID = row.Cells["MusicianID"].Value.ToString();
@@ -196,7 +195,7 @@ namespace MongoDB
             LoadAssignedMusicians();
 
             // Refresh the list of available musicians
-            LoadAvailableMusicians(eventMusicianID);
+            LoadAvailableMusicians();
 
             // Display a message
             MessageBox.Show($"Deleted {selectedMusicianIDs.Count} musician(s) from the EventMusician list.", "Deletion Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -205,12 +204,13 @@ namespace MongoDB
 
         private void btn_UpdateMusicianList_Click(object sender, EventArgs e)
         {
-            // Get the selected musician IDs from the DataGridView
             List<string> selectedMusicianIDs = new List<string>();
 
+            // Get the selected musician IDs from the DataGridView
             foreach (DataGridViewRow row in dataGridView_AddMusciansToEvent.Rows)
             {
                 DataGridViewCheckBoxCell checkboxCell = (DataGridViewCheckBoxCell)row.Cells["Select"];
+                //add to the list only checked box
                 if (checkboxCell.Value != null && (bool)checkboxCell.Value)
                 {
                     string musicianID = row.Cells["MusicianID"].Value.ToString();
@@ -225,8 +225,6 @@ namespace MongoDB
             else {
 
 
-                // Retrieve the event musician ID
-
                 try
                 {
                 // Find the event musician document in the collection
@@ -240,11 +238,11 @@ namespace MongoDB
                     // Update the event musician document in the collection
                     eventMusicianCollection.ReplaceOne(em => em.EventMusicianID == eventMusicianID, eventMusician);
 
-                    MessageBox.Show("Musicians added to the EventMusician list successfully.", "Update Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"{selectedMusicianIDs.Count} musician(s) assigned to the event successfully.", "Assign Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show($"EventMusician with ID {eventMusicianID} not found.", "Update Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"EventMusician with ID {eventMusicianID} not found.", "assign Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -254,7 +252,7 @@ namespace MongoDB
 
             // Refresh the list of musicians
             LoadAssignedMusicians();
-            LoadAvailableMusicians(eventMusicianID);
+            LoadAvailableMusicians();
             }
         }
 

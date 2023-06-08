@@ -163,7 +163,7 @@ namespace MongoDB
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UpdateOrDeleteMusician";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "UpdateOrDeleteMusician";
+            this.Text = "Update Or Delete Musician";
             this.ResumeLayout(false);
             this.PerformLayout();
 

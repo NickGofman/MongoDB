@@ -23,7 +23,6 @@ namespace MongoDB
     {
 
         string connectionString = ConfigurationManager.ConnectionStrings["MyMongo"].ConnectionString;
-        private readonly string externalFile = ConfigurationManager.AppSettings["ExternalFileForBulkActivities"];
         IMongoCollection<Models.Musician> musicianCollection;
         IMongoCollection<Models.Event> eventCollection;
         IMongoCollection<Models.EventMusician> EventMusicianCollection;
@@ -124,7 +123,7 @@ namespace MongoDB
             // Set the eventDetailsList as the data source for the dataGridView_AllAssignEvents control
             dataGridView_AllAssignEvents.DataSource = uniqueEventDetailsList;
 
-            dataGridView_AllAssignEvents.Columns[0].HeaderText = "Date";
+            dataGridView_AllAssignEvents.Columns[0].HeaderText = "Date And Time";
             dataGridView_AllAssignEvents.Columns[1].HeaderText = "Event Name";
             dataGridView_AllAssignEvents.Columns[2].HeaderText = "Musical Style";
             dataGridView_AllAssignEvents.Columns[3].HeaderText = "Assigned Musician(s)";
@@ -139,6 +138,7 @@ namespace MongoDB
         {
             List<Event> events;
             events = eventCollection.Aggregate().ToList();
+            //order the events list by date
             events = events.OrderBy(e => e.Date).ToList();
             dataGridView_Events.DataSource = events;
             dataGridView_Events.Columns[2].HeaderText = "Event Name";
@@ -146,6 +146,7 @@ namespace MongoDB
             dataGridView_Events.RowHeadersVisible = false;
             dataGridView_Events.Columns[0].Visible = false;
             dataGridView_Events.Columns[1].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
+            dataGridView_Events.Columns[1].HeaderText = "Date and Time";
             //dataGridView_EventsMiscellaneos
             dataGridView_EventsMiscellaneos.DataSource = events;
             dataGridView_EventsMiscellaneos.Columns[2].HeaderText = "Event Name";
@@ -153,6 +154,7 @@ namespace MongoDB
             dataGridView_EventsMiscellaneos.RowHeadersVisible = false;
             dataGridView_EventsMiscellaneos.Columns[0].Visible = false;
             dataGridView_EventsMiscellaneos.Columns[1].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
+            dataGridView_EventsMiscellaneos.Columns[1].HeaderText = "Date and Time";
         }
 
 
@@ -489,19 +491,6 @@ namespace MongoDB
             dataGridView_EventsMiscellaneos.DataSource = results;
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         private void textBox_FilterMusicalStyle_TextChanged(object sender, EventArgs e)
         {
             List<Event> results;
@@ -621,26 +610,19 @@ namespace MongoDB
         private void dateTimePicker_FilterByTime_ValueChanged(object sender, EventArgs e)
         {
             List<Event> results;
-            string time = dateTimePicker_FilterByTime.Text;
-
-            // Define the format of the input time string
-            string timeFormat = "HH:mm:ss";
-
-            // Parse the time string into a DateTime object
-            DateTime timeParse = DateTime.ParseExact(time, timeFormat, CultureInfo.InvariantCulture);
+            DateTime date = dateTimePicker_FilterByTime.Value;
 
             // Get the selected time value
-            TimeSpan selectedTime = timeParse.TimeOfDay;
+            TimeSpan selectedTime = date.TimeOfDay;
 
             // Build the filter for Event time range
             FilterDefinition<Event> filter = Builders<Event>.Filter.Empty; // Start with an empty filter
 
-            // Perform the filter query and sort by time
+            // Perform the filter query
             results = eventCollection.Find(filter)
                 .ToList()
-                .Where(p => p.Date.TimeOfDay == selectedTime)
-                .OrderBy(p => p.Date.TimeOfDay)
-                .ToList();
+                .Where(p => p.Date.TimeOfDay == selectedTime).ToList();
+
 
             // Present the results on the grid
             dataGridView_EventsMiscellaneos.DataSource = results;
@@ -656,7 +638,7 @@ namespace MongoDB
                 }
 
                 //get a list of collections name that we want to backup
-                var collectionNames = db.ListCollectionNames().ToList();//get a list of collections name that we want to backup
+                var collectionNames = db.ListCollectionNames().ToList();
 
 
                 foreach (var collectionName in collectionNames)
@@ -697,7 +679,7 @@ namespace MongoDB
                     MessageBox.Show("Restore folder path cannot be empty or null.", "Input Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
+                //get the files from the folder (files that end with .json extension)
                 var backupFiles = Directory.GetFiles(backupFolderPath, "*.json");
 
                 foreach (var backupFilePath in backupFiles)
