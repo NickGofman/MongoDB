@@ -139,20 +139,23 @@ namespace MongoDB
         {
             List<Event> events;
             events = eventCollection.Aggregate().ToList();
-            //events = events.OrderBy(e => e.Date).ToList();
+            events = events.OrderBy(e => e.Date).ToList();
             dataGridView_Events.DataSource = events;
             dataGridView_Events.Columns[2].HeaderText = "Event Name";
             dataGridView_Events.Columns[3].HeaderText = "Musical Style";
             dataGridView_Events.RowHeadersVisible = false;
             dataGridView_Events.Columns[0].Visible = false;
-
+            dataGridView_Events.Columns[1].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
             //dataGridView_EventsMiscellaneos
             dataGridView_EventsMiscellaneos.DataSource = events;
             dataGridView_EventsMiscellaneos.Columns[2].HeaderText = "Event Name";
             dataGridView_EventsMiscellaneos.Columns[3].HeaderText = "Musical Style";
             dataGridView_EventsMiscellaneos.RowHeadersVisible = false;
             dataGridView_EventsMiscellaneos.Columns[0].Visible = false;
+            dataGridView_EventsMiscellaneos.Columns[1].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
         }
+
+
 
         public void LoadMusiciansUponScreen()
         //load all the musicians details from the database to the view
@@ -258,38 +261,28 @@ namespace MongoDB
 
         }
 
-
-
         public Event GetEventDetailsFromScreen()
         {
-            string eventDate = dateTimePicker_EventDate.Text;
-            string eventTime = dateTimePicker_EventTime.Text;
-
-            // Combine the date and time strings into a single string
-            string eventDateTimeString = $"{eventDate} {eventTime}";
-
-            // Define the format of the input string (including Hebrew day and month names)
-            string format = "dddd d MMMM yyyy HH:mm:ss";
-
-            // Parse the combined string into a DateTime object
-            DateTime dateTime = DateTime.ParseExact(eventDateTimeString, format, new CultureInfo("he-IL"));
+            DateTime eventDateTimeLocal = dateTimePicker_EventDate.Value;
+            DateTime eventTimeLocal = dateTimePicker_EventTime.Value;
+            // Combine the date and time to create the  event date and time in local time zone
+            DateTimeOffset localDateTimeOffset = new DateTimeOffset(eventDateTimeLocal.Year, eventDateTimeLocal.Month, eventDateTimeLocal.Day,
+                eventTimeLocal.Hour, eventTimeLocal.Minute, eventTimeLocal.Second, TimeSpan.Zero);
 
             // Get the local time zone for Israel
             TimeZoneInfo israelTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Israel Standard Time");
 
-            // Convert the event date and time to UTC using the Israel time zone
-            DateTime utcDateTime = TimeZoneInfo.ConvertTimeToUtc(dateTime, israelTimeZone);
+            // Convert the local date and time to UTC using the Israel time zone
+            DateTimeOffset dateTimeOffset = TimeZoneInfo.ConvertTime(localDateTimeOffset, israelTimeZone);
 
-            // Get the local time zone offset
-            TimeSpan timeZoneOffset = israelTimeZone.GetUtcOffset(dateTime);
+            // Extract the UTC date and time
+            DateTime dateTimeUtc = dateTimeOffset.UtcDateTime;
 
-            // Apply the offset to the UTC date and time
-            DateTime localDateTime = utcDateTime.Add(timeZoneOffset);
 
             string eventName = textBox_EventName.Text.ToLower();
             string musicalType = textBox_MusicalType.Text.ToLower();
 
-            Event newEvent = new Event(localDateTime, eventName, musicalType);
+            Event newEvent = new Event(dateTimeUtc, eventName, musicalType);
             return newEvent;
         }
 
@@ -470,72 +463,40 @@ namespace MongoDB
             }
 
         }
-
-        //private void dateTimePicker_filterDate_ValueChanged(object sender, EventArgs e)
-        //{
-        //    List<Event> results;
-        //    string date = dateTimePicker_filterDate.Text;
-
-
-
-
-        //    // Define the format of the input string (including Hebrew day and month names)
-        //    string format = "dddd d MMMM yyyy";
-
-        //    // Parse the combined string into a DateTime object
-        //    DateTime dateParse = DateTime.ParseExact(date, format, new CultureInfo("he-IL"));
-
-        //    // Get the start and end DateTime objects for the specified date
-        //    DateTime startDate = dateParse.Date;
-        //    //create a fake day for range
-        //    DateTime endDate = startDate.AddDays(1);
-
-        //    // Build the filter for Event date range
-        //    FilterDefinition<Event> filter = Builders<Event>.Filter.Gte(p => p.Date, startDate) &
-        //                                      Builders<Event>.Filter.Lt(p => p.Date, endDate);
-
-        //    // Perform the filter query
-        //    results = eventCollection.Find(filter).ToList();
-
-
-        //    // Present the results on the grid
-        //    dataGridView_EventsMiscellaneos.DataSource = results;
-
-
-        //}
-
-        //****************************************************************************************************************************//
-        //****************************************************************************************************************************//
-        //****************************************************************************************************************************//
-        //*****THERE IS A BUG WITH THIS FUNCTION IT DOESN'T SHOW TO CORRECT FILTERED DATE IN THE LIST AND ALSO THE FUNCTION ABOVE****//
-        //****************************************************************************************************************************//
-        //****************************************************************************************************************************//
-        //****************************************************************************************************************************//
         private void dateTimePicker_filterDate_ValueChanged(object sender, EventArgs e)
         {
-            // Get the selected date
-            DateTime selectedDate = dateTimePicker_filterDate.Value.Date;
+            List<Event> results;
+            DateTime selectedDate = dateTimePicker_filterDate.Value;
+            
 
-            // Get the local time zone for Israel
-            TimeZoneInfo israelTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Israel Standard Time");
+            // Get the start and end DateTime objects for the specified date in local time
+            DateTime startDateLocal = selectedDate.Date;
+            DateTime endDateLocal = startDateLocal.AddDays(1);
 
-            // Convert the selected date to the local time zone
-            DateTime selectedDateLocal = TimeZoneInfo.ConvertTime(selectedDate, israelTimeZone);
-
-            // Get the start and end DateTime objects for the specified date in UTC
-            DateTime startDateUtc = selectedDateLocal.ToUniversalTime();
-            DateTime endDateUtc = startDateUtc.AddDays(1);
+            // Convert the local start and end dates to UTC
+            DateTime startDateUtc = TimeZoneInfo.ConvertTimeToUtc(startDateLocal, TimeZoneInfo.Local).AddHours(3);
+            DateTime endDateUtc = TimeZoneInfo.ConvertTimeToUtc(endDateLocal, TimeZoneInfo.Local).AddHours(3);
 
             // Build the filter for Event date range
             FilterDefinition<Event> filter = Builders<Event>.Filter.Gte(p => p.Date, startDateUtc) &
                                               Builders<Event>.Filter.Lt(p => p.Date, endDateUtc);
 
             // Perform the filter query
-            List<Event> results = eventCollection.Find(filter).ToList();
+            results = eventCollection.Find(filter).ToList();
+
 
             // Present the results on the grid
             dataGridView_EventsMiscellaneos.DataSource = results;
         }
+
+
+
+
+
+
+
+
+
 
 
 
