@@ -661,7 +661,7 @@ namespace MongoDB
 
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred during backup: {ex.Message}", "Backup Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error occurred during backup: please check your path", "Backup Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void btn_BackupDB_Click(object sender, EventArgs e)
@@ -684,7 +684,12 @@ namespace MongoDB
 
                 foreach (var backupFilePath in backupFiles)
                 {
+
                     string collectionName = Path.GetFileNameWithoutExtension(backupFilePath);
+
+                    //drop the current collections from the database (to avoid restore errors)
+                    db.DropCollection(collectionName);
+
                     var collection = db.GetCollection<T>(collectionName);
 
                     using (var reader = new StreamReader(backupFilePath))
@@ -700,7 +705,8 @@ namespace MongoDB
                             }
                             catch (Exception ex)
                             {
-                                MessageBox.Show($"Error restoring document in collection {collectionName}: {ex.Message}", "Restore Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show($"Somthing went wrong in the restore process check your {collectionName}.json files syntax", "Restore Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
                             }
                         }
                     }
@@ -709,7 +715,8 @@ namespace MongoDB
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred during restore: {ex.Message}", "Restore Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Somthing went wrong in the restore process check your path", "Restore Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
@@ -717,12 +724,26 @@ namespace MongoDB
         private void btn_RestoreDB_Click(object sender, EventArgs e)
         {
             string backupFolderPath = textBox_RestoreDBFilePath.Text;
-            RestoreAllCollections<BsonDocument>(backupFolderPath);
 
-            //loads the data after perform restore
-            LoadMusiciansUponScreen();
-            LoadEventMusicanDetails();
-            LoadEventsUponScreen();
+            // Display a confirmation dialog
+            DialogResult result = MessageBox.Show("You are about to delete your current collections are you sure you want to restore the database?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                RestoreAllCollections<BsonDocument>(backupFolderPath);
+
+                //loads the data after performing the restore
+                LoadMusiciansUponScreen();
+                LoadEventMusicanDetails();
+                LoadEventsUponScreen();
+            }
+        }
+
+        private void btn_ShowJsonFormat_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("{ \"_id\" : ObjectId(\"648206590d1688374fd85206\"), \"event_date\" : ISODate(\"2023-06-12T22:30:00Z\"), \"event_name\" : \"fun\", \"musical_style\" : \"metal\" }\r\n" +
+                "{ \"_id\" : ObjectId(\"648206da0d1688374fd85207\"), \"event_date\" : ISODate(\"2023-06-20T22:00:00Z\"), \"event_name\" : \"cool\", \"musical_style\" : \"rock\" }\r\n" +
+                "{ \"_id\" : ObjectId(\"648208b00d1688374fd85209\"), \"event_date\" : ISODate(\"2023-06-14T19:00:00Z\"), \"event_name\" : \"vibe\", \"musical_style\" : \"electronic\" }\r\n", "JSON Format");
         }
     }
 }

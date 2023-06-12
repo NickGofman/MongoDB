@@ -72,12 +72,12 @@ namespace MongoDB
             this.dataGridView_AllAssignMusicianToEvent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView_AllAssignMusicianToEvent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_AllAssignMusicianToEvent.EnableHeadersVisualStyles = false;
-            this.dataGridView_AllAssignMusicianToEvent.Location = new System.Drawing.Point(0, 35);
+            this.dataGridView_AllAssignMusicianToEvent.Location = new System.Drawing.Point(6, 35);
             this.dataGridView_AllAssignMusicianToEvent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView_AllAssignMusicianToEvent.Name = "dataGridView_AllAssignMusicianToEvent";
             this.dataGridView_AllAssignMusicianToEvent.RowHeadersWidth = 51;
             this.dataGridView_AllAssignMusicianToEvent.RowTemplate.Height = 24;
-            this.dataGridView_AllAssignMusicianToEvent.Size = new System.Drawing.Size(579, 389);
+            this.dataGridView_AllAssignMusicianToEvent.Size = new System.Drawing.Size(567, 383);
             this.dataGridView_AllAssignMusicianToEvent.TabIndex = 0;
             // 
             // btn_DeleteMusicianFromList
@@ -134,12 +134,12 @@ namespace MongoDB
             this.dataGridView_AddMusciansToEvent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView_AddMusciansToEvent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_AddMusciansToEvent.EnableHeadersVisualStyles = false;
-            this.dataGridView_AddMusciansToEvent.Location = new System.Drawing.Point(0, 35);
+            this.dataGridView_AddMusciansToEvent.Location = new System.Drawing.Point(6, 35);
             this.dataGridView_AddMusciansToEvent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView_AddMusciansToEvent.Name = "dataGridView_AddMusciansToEvent";
             this.dataGridView_AddMusciansToEvent.RowHeadersWidth = 51;
             this.dataGridView_AddMusciansToEvent.RowTemplate.Height = 24;
-            this.dataGridView_AddMusciansToEvent.Size = new System.Drawing.Size(626, 389);
+            this.dataGridView_AddMusciansToEvent.Size = new System.Drawing.Size(614, 383);
             this.dataGridView_AddMusciansToEvent.TabIndex = 0;
             // 
             // label_UpdateEventMusicianEventDate

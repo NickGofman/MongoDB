@@ -31,16 +31,16 @@ namespace MongoDB
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btn_refreshAllAssignEvents = new System.Windows.Forms.Button();
@@ -72,6 +72,24 @@ namespace MongoDB
             this.label6 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btn_BackupDB = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox_BackupDBFilePath = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btn_ShowJsonFormat = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btn_RestoreDB = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBox_RestoreDBFilePath = new System.Windows.Forms.TextBox();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.btn_RefreshMusiciansMis = new System.Windows.Forms.Button();
+            this.dataGridView_MusicianMiscellaneos = new System.Windows.Forms.DataGridView();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.btn_RefreshEventsMIS = new System.Windows.Forms.Button();
+            this.dataGridView_EventsMiscellaneos = new System.Windows.Forms.DataGridView();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -89,21 +107,6 @@ namespace MongoDB
             this.textBox_filterEventName = new System.Windows.Forms.TextBox();
             this.textBox_FilterMusicalStyle = new System.Windows.Forms.TextBox();
             this.dateTimePicker_filterDate = new System.Windows.Forms.DateTimePicker();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.btn_RefreshEventsMIS = new System.Windows.Forms.Button();
-            this.dataGridView_EventsMiscellaneos = new System.Windows.Forms.DataGridView();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.btn_RefreshMusiciansMis = new System.Windows.Forms.Button();
-            this.dataGridView_MusicianMiscellaneos = new System.Windows.Forms.DataGridView();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.btn_RestoreDB = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox_RestoreDBFilePath = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btn_BackupDB = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox_BackupDBFilePath = new System.Windows.Forms.TextBox();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_AllAssignEvents)).BeginInit();
@@ -115,15 +118,17 @@ namespace MongoDB
             this.groupBox5.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox13.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox12.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_MusicianMiscellaneos)).BeginInit();
+            this.groupBox10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_EventsMiscellaneos)).BeginInit();
             this.groupBox11.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
-            this.groupBox10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_EventsMiscellaneos)).BeginInit();
-            this.groupBox9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_MusicianMiscellaneos)).BeginInit();
-            this.groupBox4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage1
@@ -170,23 +175,23 @@ namespace MongoDB
             // 
             this.dataGridView_AllAssignEvents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView_AllAssignEvents.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Bisque;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_AllAssignEvents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle51.BackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle51.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle51.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle51.SelectionBackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle51.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle51.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_AllAssignEvents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle51;
             this.dataGridView_AllAssignEvents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView_AllAssignEvents.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle52.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle52.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle52.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle52.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle52.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle52.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView_AllAssignEvents.DefaultCellStyle = dataGridViewCellStyle52;
             this.dataGridView_AllAssignEvents.EnableHeadersVisualStyles = false;
             this.dataGridView_AllAssignEvents.Location = new System.Drawing.Point(7, 36);
             this.dataGridView_AllAssignEvents.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -244,14 +249,14 @@ namespace MongoDB
             // 
             this.dataGridView_Musician.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView_Musician.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Bisque;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_Musician.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle53.BackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle53.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle53.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle53.SelectionBackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle53.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle53.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Musician.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle53;
             this.dataGridView_Musician.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_Musician.EnableHeadersVisualStyles = false;
             this.dataGridView_Musician.Location = new System.Drawing.Point(11, 404);
@@ -259,14 +264,14 @@ namespace MongoDB
             this.dataGridView_Musician.MultiSelect = false;
             this.dataGridView_Musician.Name = "dataGridView_Musician";
             this.dataGridView_Musician.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_Musician.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle54.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle54.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle54.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle54.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle54.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle54.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Musician.RowHeadersDefaultCellStyle = dataGridViewCellStyle54;
             this.dataGridView_Musician.RowHeadersWidth = 51;
             this.dataGridView_Musician.RowTemplate.Height = 30;
             this.dataGridView_Musician.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -386,23 +391,23 @@ namespace MongoDB
             // 
             this.dataGridView_Events.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView_Events.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Bisque;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_Events.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle55.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle55.BackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle55.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle55.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle55.SelectionBackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle55.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle55.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Events.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle55;
             this.dataGridView_Events.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView_Events.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle56.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle56.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle56.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle56.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle56.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle56.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView_Events.DefaultCellStyle = dataGridViewCellStyle56;
             this.dataGridView_Events.EnableHeadersVisualStyles = false;
             this.dataGridView_Events.Location = new System.Drawing.Point(12, 401);
             this.dataGridView_Events.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -433,7 +438,7 @@ namespace MongoDB
             this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox5.Size = new System.Drawing.Size(650, 331);
+            this.groupBox5.Size = new System.Drawing.Size(643, 331);
             this.groupBox5.TabIndex = 31;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Insert new Event";
@@ -534,11 +539,9 @@ namespace MongoDB
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBox13);
+            this.tabPage2.Controls.Add(this.groupBox12);
             this.tabPage2.Controls.Add(this.groupBox11);
-            this.tabPage2.Controls.Add(this.groupBox10);
-            this.tabPage2.Controls.Add(this.groupBox9);
-            this.tabPage2.Controls.Add(this.groupBox4);
-            this.tabPage2.Controls.Add(this.groupBox3);
             this.tabPage2.Location = new System.Drawing.Point(4, 38);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
@@ -546,6 +549,252 @@ namespace MongoDB
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Miscellaneous";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.groupBox3);
+            this.groupBox13.Controls.Add(this.groupBox4);
+            this.groupBox13.Location = new System.Drawing.Point(3, 783);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(1796, 333);
+            this.groupBox13.TabIndex = 44;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "MongoDB Restore And Backup";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btn_BackupDB);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.textBox_BackupDBFilePath);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(36, 40);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox3.Size = new System.Drawing.Size(880, 275);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Backup Database";
+            // 
+            // btn_BackupDB
+            // 
+            this.btn_BackupDB.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btn_BackupDB.Location = new System.Drawing.Point(50, 196);
+            this.btn_BackupDB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_BackupDB.Name = "btn_BackupDB";
+            this.btn_BackupDB.Size = new System.Drawing.Size(263, 58);
+            this.btn_BackupDB.TabIndex = 2;
+            this.btn_BackupDB.Text = "Backup Database";
+            this.btn_BackupDB.UseVisualStyleBackColor = false;
+            this.btn_BackupDB.Click += new System.EventHandler(this.btn_BackupDB_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(44, 128);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(81, 32);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Path:";
+            // 
+            // textBox_BackupDBFilePath
+            // 
+            this.textBox_BackupDBFilePath.Location = new System.Drawing.Point(231, 128);
+            this.textBox_BackupDBFilePath.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox_BackupDBFilePath.Name = "textBox_BackupDBFilePath";
+            this.textBox_BackupDBFilePath.Size = new System.Drawing.Size(619, 39);
+            this.textBox_BackupDBFilePath.TabIndex = 0;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.btn_ShowJsonFormat);
+            this.groupBox4.Controls.Add(this.label10);
+            this.groupBox4.Controls.Add(this.btn_RestoreDB);
+            this.groupBox4.Controls.Add(this.label8);
+            this.groupBox4.Controls.Add(this.textBox_RestoreDBFilePath);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(946, 40);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox4.Size = new System.Drawing.Size(844, 275);
+            this.groupBox4.TabIndex = 1;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Restore Database";
+            // 
+            // btn_ShowJsonFormat
+            // 
+            this.btn_ShowJsonFormat.Image = global::MongoDB.Properties.Resources.icons8_info_50;
+            this.btn_ShowJsonFormat.Location = new System.Drawing.Point(769, 23);
+            this.btn_ShowJsonFormat.Name = "btn_ShowJsonFormat";
+            this.btn_ShowJsonFormat.Size = new System.Drawing.Size(59, 55);
+            this.btn_ShowJsonFormat.TabIndex = 5;
+            this.btn_ShowJsonFormat.UseVisualStyleBackColor = true;
+            this.btn_ShowJsonFormat.Click += new System.EventHandler(this.btn_ShowJsonFormat_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.Red;
+            this.label10.Location = new System.Drawing.Point(255, 34);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(516, 32);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "You can only restore from valid .json file";
+            // 
+            // btn_RestoreDB
+            // 
+            this.btn_RestoreDB.BackColor = System.Drawing.Color.Violet;
+            this.btn_RestoreDB.Location = new System.Drawing.Point(50, 196);
+            this.btn_RestoreDB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_RestoreDB.Name = "btn_RestoreDB";
+            this.btn_RestoreDB.Size = new System.Drawing.Size(263, 58);
+            this.btn_RestoreDB.TabIndex = 3;
+            this.btn_RestoreDB.Text = "Restore Database";
+            this.btn_RestoreDB.UseVisualStyleBackColor = false;
+            this.btn_RestoreDB.Click += new System.EventHandler(this.btn_RestoreDB_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(44, 131);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(81, 32);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Path:";
+            // 
+            // textBox_RestoreDBFilePath
+            // 
+            this.textBox_RestoreDBFilePath.Location = new System.Drawing.Point(231, 128);
+            this.textBox_RestoreDBFilePath.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox_RestoreDBFilePath.Name = "textBox_RestoreDBFilePath";
+            this.textBox_RestoreDBFilePath.Size = new System.Drawing.Size(597, 39);
+            this.textBox_RestoreDBFilePath.TabIndex = 1;
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.groupBox9);
+            this.groupBox12.Controls.Add(this.groupBox10);
+            this.groupBox12.Location = new System.Drawing.Point(3, 3);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(1796, 414);
+            this.groupBox12.TabIndex = 42;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Info Lists";
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.btn_RefreshMusiciansMis);
+            this.groupBox9.Controls.Add(this.dataGridView_MusicianMiscellaneos);
+            this.groupBox9.Location = new System.Drawing.Point(6, 27);
+            this.groupBox9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox9.Size = new System.Drawing.Size(910, 370);
+            this.groupBox9.TabIndex = 40;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "All Musician";
+            // 
+            // btn_RefreshMusiciansMis
+            // 
+            this.btn_RefreshMusiciansMis.Location = new System.Drawing.Point(223, 310);
+            this.btn_RefreshMusiciansMis.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_RefreshMusiciansMis.Name = "btn_RefreshMusiciansMis";
+            this.btn_RefreshMusiciansMis.Size = new System.Drawing.Size(289, 42);
+            this.btn_RefreshMusiciansMis.TabIndex = 41;
+            this.btn_RefreshMusiciansMis.Text = "Refresh Musicains";
+            this.btn_RefreshMusiciansMis.UseVisualStyleBackColor = true;
+            this.btn_RefreshMusiciansMis.Click += new System.EventHandler(this.btn_RefreshMusician_Click_1);
+            // 
+            // dataGridView_MusicianMiscellaneos
+            // 
+            this.dataGridView_MusicianMiscellaneos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView_MusicianMiscellaneos.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle57.BackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle57.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle57.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle57.SelectionBackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle57.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle57.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_MusicianMiscellaneos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle57;
+            this.dataGridView_MusicianMiscellaneos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle58.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle58.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle58.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle58.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle58.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle58.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView_MusicianMiscellaneos.DefaultCellStyle = dataGridViewCellStyle58;
+            this.dataGridView_MusicianMiscellaneos.EnableHeadersVisualStyles = false;
+            this.dataGridView_MusicianMiscellaneos.Location = new System.Drawing.Point(30, 46);
+            this.dataGridView_MusicianMiscellaneos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dataGridView_MusicianMiscellaneos.MultiSelect = false;
+            this.dataGridView_MusicianMiscellaneos.Name = "dataGridView_MusicianMiscellaneos";
+            this.dataGridView_MusicianMiscellaneos.ReadOnly = true;
+            this.dataGridView_MusicianMiscellaneos.RowHeadersWidth = 51;
+            this.dataGridView_MusicianMiscellaneos.RowTemplate.Height = 30;
+            this.dataGridView_MusicianMiscellaneos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView_MusicianMiscellaneos.Size = new System.Drawing.Size(863, 256);
+            this.dataGridView_MusicianMiscellaneos.TabIndex = 40;
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.btn_RefreshEventsMIS);
+            this.groupBox10.Controls.Add(this.dataGridView_EventsMiscellaneos);
+            this.groupBox10.Location = new System.Drawing.Point(936, 27);
+            this.groupBox10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox10.Size = new System.Drawing.Size(844, 370);
+            this.groupBox10.TabIndex = 42;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "All Events";
+            // 
+            // btn_RefreshEventsMIS
+            // 
+            this.btn_RefreshEventsMIS.Location = new System.Drawing.Point(261, 310);
+            this.btn_RefreshEventsMIS.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_RefreshEventsMIS.Name = "btn_RefreshEventsMIS";
+            this.btn_RefreshEventsMIS.Size = new System.Drawing.Size(289, 42);
+            this.btn_RefreshEventsMIS.TabIndex = 41;
+            this.btn_RefreshEventsMIS.Text = "Refresh Evemts";
+            this.btn_RefreshEventsMIS.UseVisualStyleBackColor = true;
+            this.btn_RefreshEventsMIS.Click += new System.EventHandler(this.btn_RefreshEvents_Click);
+            // 
+            // dataGridView_EventsMiscellaneos
+            // 
+            this.dataGridView_EventsMiscellaneos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView_EventsMiscellaneos.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle59.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle59.BackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle59.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle59.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle59.SelectionBackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle59.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle59.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_EventsMiscellaneos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle59;
+            this.dataGridView_EventsMiscellaneos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle60.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle60.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle60.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle60.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle60.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle60.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView_EventsMiscellaneos.DefaultCellStyle = dataGridViewCellStyle60;
+            this.dataGridView_EventsMiscellaneos.EnableHeadersVisualStyles = false;
+            this.dataGridView_EventsMiscellaneos.Location = new System.Drawing.Point(25, 46);
+            this.dataGridView_EventsMiscellaneos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dataGridView_EventsMiscellaneos.MultiSelect = false;
+            this.dataGridView_EventsMiscellaneos.Name = "dataGridView_EventsMiscellaneos";
+            this.dataGridView_EventsMiscellaneos.ReadOnly = true;
+            this.dataGridView_EventsMiscellaneos.RowHeadersWidth = 51;
+            this.dataGridView_EventsMiscellaneos.RowTemplate.Height = 30;
+            this.dataGridView_EventsMiscellaneos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView_EventsMiscellaneos.Size = new System.Drawing.Size(796, 256);
+            this.dataGridView_EventsMiscellaneos.TabIndex = 40;
             // 
             // groupBox11
             // 
@@ -570,7 +819,7 @@ namespace MongoDB
             this.groupBox7.Controls.Add(this.textBox_FilterMusicianAge);
             this.groupBox7.Controls.Add(this.textBox_FilterMusicianName);
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.groupBox7.Location = new System.Drawing.Point(19, 46);
+            this.groupBox7.Location = new System.Drawing.Point(36, 34);
             this.groupBox7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -645,11 +894,11 @@ namespace MongoDB
             this.groupBox8.Controls.Add(this.textBox_FilterMusicalStyle);
             this.groupBox8.Controls.Add(this.dateTimePicker_filterDate);
             this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.groupBox8.Location = new System.Drawing.Point(952, 46);
+            this.groupBox8.Location = new System.Drawing.Point(952, 34);
             this.groupBox8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox8.Size = new System.Drawing.Size(850, 288);
+            this.groupBox8.Size = new System.Drawing.Size(838, 288);
             this.groupBox8.TabIndex = 35;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Event Filter";
@@ -728,219 +977,6 @@ namespace MongoDB
             this.dateTimePicker_filterDate.TabIndex = 24;
             this.dateTimePicker_filterDate.ValueChanged += new System.EventHandler(this.dateTimePicker_filterDate_ValueChanged);
             // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.btn_RefreshEventsMIS);
-            this.groupBox10.Controls.Add(this.dataGridView_EventsMiscellaneos);
-            this.groupBox10.Location = new System.Drawing.Point(955, 46);
-            this.groupBox10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox10.Size = new System.Drawing.Size(844, 370);
-            this.groupBox10.TabIndex = 42;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "All Events";
-            // 
-            // btn_RefreshEventsMIS
-            // 
-            this.btn_RefreshEventsMIS.Location = new System.Drawing.Point(261, 310);
-            this.btn_RefreshEventsMIS.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btn_RefreshEventsMIS.Name = "btn_RefreshEventsMIS";
-            this.btn_RefreshEventsMIS.Size = new System.Drawing.Size(289, 42);
-            this.btn_RefreshEventsMIS.TabIndex = 41;
-            this.btn_RefreshEventsMIS.Text = "Refresh Evemts";
-            this.btn_RefreshEventsMIS.UseVisualStyleBackColor = true;
-            this.btn_RefreshEventsMIS.Click += new System.EventHandler(this.btn_RefreshEvents_Click);
-            // 
-            // dataGridView_EventsMiscellaneos
-            // 
-            this.dataGridView_EventsMiscellaneos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView_EventsMiscellaneos.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Bisque;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_EventsMiscellaneos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridView_EventsMiscellaneos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView_EventsMiscellaneos.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridView_EventsMiscellaneos.EnableHeadersVisualStyles = false;
-            this.dataGridView_EventsMiscellaneos.Location = new System.Drawing.Point(32, 46);
-            this.dataGridView_EventsMiscellaneos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dataGridView_EventsMiscellaneos.MultiSelect = false;
-            this.dataGridView_EventsMiscellaneos.Name = "dataGridView_EventsMiscellaneos";
-            this.dataGridView_EventsMiscellaneos.ReadOnly = true;
-            this.dataGridView_EventsMiscellaneos.RowHeadersWidth = 51;
-            this.dataGridView_EventsMiscellaneos.RowTemplate.Height = 30;
-            this.dataGridView_EventsMiscellaneos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView_EventsMiscellaneos.Size = new System.Drawing.Size(778, 256);
-            this.dataGridView_EventsMiscellaneos.TabIndex = 40;
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.btn_RefreshMusiciansMis);
-            this.groupBox9.Controls.Add(this.dataGridView_MusicianMiscellaneos);
-            this.groupBox9.Location = new System.Drawing.Point(3, 46);
-            this.groupBox9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox9.Size = new System.Drawing.Size(899, 370);
-            this.groupBox9.TabIndex = 40;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "All Musician";
-            // 
-            // btn_RefreshMusiciansMis
-            // 
-            this.btn_RefreshMusiciansMis.Location = new System.Drawing.Point(223, 310);
-            this.btn_RefreshMusiciansMis.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btn_RefreshMusiciansMis.Name = "btn_RefreshMusiciansMis";
-            this.btn_RefreshMusiciansMis.Size = new System.Drawing.Size(289, 42);
-            this.btn_RefreshMusiciansMis.TabIndex = 41;
-            this.btn_RefreshMusiciansMis.Text = "Refresh Musicains";
-            this.btn_RefreshMusiciansMis.UseVisualStyleBackColor = true;
-            this.btn_RefreshMusiciansMis.Click += new System.EventHandler(this.btn_RefreshMusician_Click_1);
-            // 
-            // dataGridView_MusicianMiscellaneos
-            // 
-            this.dataGridView_MusicianMiscellaneos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView_MusicianMiscellaneos.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Bisque;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_MusicianMiscellaneos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dataGridView_MusicianMiscellaneos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView_MusicianMiscellaneos.DefaultCellStyle = dataGridViewCellStyle10;
-            this.dataGridView_MusicianMiscellaneos.EnableHeadersVisualStyles = false;
-            this.dataGridView_MusicianMiscellaneos.Location = new System.Drawing.Point(17, 46);
-            this.dataGridView_MusicianMiscellaneos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dataGridView_MusicianMiscellaneos.MultiSelect = false;
-            this.dataGridView_MusicianMiscellaneos.Name = "dataGridView_MusicianMiscellaneos";
-            this.dataGridView_MusicianMiscellaneos.ReadOnly = true;
-            this.dataGridView_MusicianMiscellaneos.RowHeadersWidth = 51;
-            this.dataGridView_MusicianMiscellaneos.RowTemplate.Height = 30;
-            this.dataGridView_MusicianMiscellaneos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView_MusicianMiscellaneos.Size = new System.Drawing.Size(863, 256);
-            this.dataGridView_MusicianMiscellaneos.TabIndex = 40;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Controls.Add(this.btn_RestoreDB);
-            this.groupBox4.Controls.Add(this.label8);
-            this.groupBox4.Controls.Add(this.textBox_RestoreDBFilePath);
-            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(955, 762);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox4.Size = new System.Drawing.Size(844, 275);
-            this.groupBox4.TabIndex = 1;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Restore Database";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(255, 34);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(516, 32);
-            this.label10.TabIndex = 4;
-            this.label10.Text = "You can only restore from valid .json file";
-            // 
-            // btn_RestoreDB
-            // 
-            this.btn_RestoreDB.BackColor = System.Drawing.Color.Violet;
-            this.btn_RestoreDB.Location = new System.Drawing.Point(50, 196);
-            this.btn_RestoreDB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_RestoreDB.Name = "btn_RestoreDB";
-            this.btn_RestoreDB.Size = new System.Drawing.Size(263, 58);
-            this.btn_RestoreDB.TabIndex = 3;
-            this.btn_RestoreDB.Text = "Restore Database";
-            this.btn_RestoreDB.UseVisualStyleBackColor = false;
-            this.btn_RestoreDB.Click += new System.EventHandler(this.btn_RestoreDB_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(44, 131);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(135, 32);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "File Path:";
-            // 
-            // textBox_RestoreDBFilePath
-            // 
-            this.textBox_RestoreDBFilePath.Location = new System.Drawing.Point(231, 128);
-            this.textBox_RestoreDBFilePath.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox_RestoreDBFilePath.Name = "textBox_RestoreDBFilePath";
-            this.textBox_RestoreDBFilePath.Size = new System.Drawing.Size(597, 39);
-            this.textBox_RestoreDBFilePath.TabIndex = 1;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.btn_BackupDB);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.textBox_BackupDBFilePath);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(3, 768);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(880, 275);
-            this.groupBox3.TabIndex = 0;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Backup Database";
-            // 
-            // btn_BackupDB
-            // 
-            this.btn_BackupDB.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btn_BackupDB.Location = new System.Drawing.Point(50, 196);
-            this.btn_BackupDB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_BackupDB.Name = "btn_BackupDB";
-            this.btn_BackupDB.Size = new System.Drawing.Size(263, 58);
-            this.btn_BackupDB.TabIndex = 2;
-            this.btn_BackupDB.Text = "Backup Database";
-            this.btn_BackupDB.UseVisualStyleBackColor = false;
-            this.btn_BackupDB.Click += new System.EventHandler(this.btn_BackupDB_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(44, 128);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(135, 32);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "File Path:";
-            // 
-            // textBox_BackupDBFilePath
-            // 
-            this.textBox_BackupDBFilePath.Location = new System.Drawing.Point(231, 128);
-            this.textBox_BackupDBFilePath.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox_BackupDBFilePath.Name = "textBox_BackupDBFilePath";
-            this.textBox_BackupDBFilePath.Size = new System.Drawing.Size(619, 39);
-            this.textBox_BackupDBFilePath.TabIndex = 0;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -967,19 +1003,21 @@ namespace MongoDB
             this.groupBox5.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_MusicianMiscellaneos)).EndInit();
+            this.groupBox10.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_EventsMiscellaneos)).EndInit();
             this.groupBox11.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
-            this.groupBox10.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_EventsMiscellaneos)).EndInit();
-            this.groupBox9.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_MusicianMiscellaneos)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1050,6 +1088,9 @@ namespace MongoDB
         private System.Windows.Forms.Button btn_RefreshMusiciansMis;
         private System.Windows.Forms.DataGridView dataGridView_MusicianMiscellaneos;
         private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.Button btn_ShowJsonFormat;
     }
 }
 
