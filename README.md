@@ -21,5 +21,4 @@ The Musician Event Management System is a Windows Forms application built using 
 
 
 ## Authors
-[Nick Gofman]
-
+Nick Gofman, Saar Yanckovich
